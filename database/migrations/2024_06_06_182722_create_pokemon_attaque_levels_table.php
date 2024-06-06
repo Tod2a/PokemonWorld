@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('pokemon_attaque_levels', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pokemon_id')->constrained();
+            $table->foreignId('attaque_id')->constrained();
+            $table->integer('level');
             $table->timestamps();
         });
     }

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('imgurl');
+            $table->string('couleur');
             $table->timestamps();
         });
     }

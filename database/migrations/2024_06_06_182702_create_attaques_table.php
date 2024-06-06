@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('attaques', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('imgUrl');
+            $table->integer('force');
+            $table->integer('precision');
+            $table->text('description');
+            $table->boolean('sorte');
+            $table->foreignId('type_id')->constrained();
             $table->timestamps();
         });
     }

@@ -5,5 +5,9 @@
 !images/types/*.png
 !images/pokemon
 !images/pokemon/*.png
+!images/pokemon/*.jpg
 !images/attaque
 !images/attaque/*.png
+!images/layout
+!images/layout/*.jpg
+!images/pokemon.txt

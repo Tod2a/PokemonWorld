@@ -1,0 +1,54 @@
+Floroue
+
+Type : Plante
+Description : Floroue est un petit Pokémon ressemblant à un jeune loup. Son pelage est constitué de pétales verts et de feuilles en éclosion. Ses yeux brillent d'une lueur curieuse et son énergie déborde alors qu'il explore son environnement.
+
+
+Folunarque
+
+Type : Plante/Ténèbres
+Description : Folunarque est la forme évoluée de Floroue. Sa stature a grandi pour ressembler à un loup adulte, avec un pelage sombre mêlé de feuilles écarlates. Ses yeux luisent d'une lueur mystérieuse, et des motifs floraux ornent son corps. Folunarque se déplace silencieusement dans les bois, maîtrisant les ombres pour protéger son territoire.
+
+
+Noctoflore
+
+Type : Plante/Ténèbres
+Description : Noctoflore est la forme finale de Floroue, une créature imposante qui combine la puissance d'un loup avec la magie de la nature. Son pelage est un mélange ténébreux de noir et de vert, orné de motifs floraux lumineux. Ses yeux brillent d'une lueur énigmatique, capable de plonger les ennemis dans une illusion de nuit éternelle. Noctoflore est le gardien des forêts obscures, veillant sur la balance entre la lumière et les ténèbres.
+
+
+
+
+Emberaptor
+
+Type : Feu
+Description : Emberaptor est un petit oiseau de feu avec des plumes rougeoyantes et des yeux perçants comme des braises ardentes. Son corps est agile et léger, lui permettant de voler avec grâce dans les cieux. Sa queue est ornée de flammes dansantes, symbolisant sa nature ardente et passionnée.
+
+
+Infernalynx
+
+Type : Feu
+Description : Infernalynx est la forme évoluée d'Emberaptor. Sa taille a considérablement augmenté, et ses plumes sont maintenant enveloppées de flammes intenses. Son regard est féroce et déterminé, reflétant sa force intérieure et sa volonté inébranlable. Infernalynx est prêt à défier quiconque oserait menacer son territoire.
+
+
+Phoenixiraptor
+
+Type : Feu/Vol
+Description : Phoenixiraptor est la forme finale d'Emberaptor, une créature majestueuse qui incarne la puissance du feu et la liberté du ciel. Ses ailes sont immenses, couvertes de plumes flamboyantes qui scintillent à la lumière du soleil. Son corps est enveloppé de flammes éternelles, lui donnant une aura de pure énergie. Phoenixiraptor règne en maître sur les cieux, symbole de résurrection et de renaissance.
+
+
+
+
+Aquadon
+
+Type : Eau
+Description : Aquadon est un Pokémon aquatique de type Eau, semblable à un petit hippopotame. Sa peau est d'un bleu clair éclatant et lisse au toucher, parsemée de motifs en forme de vaguelettes qui scintillent sous la lumière du soleil. Sur son dos, il arbore fièrement une rangée de coraux colorés, formant un éventail de nuances vives et chatoyantes. Ses grands yeux ronds brillent d'une douce lueur curieuse, tandis que son sourire malicieux révèle des défenses d'un blanc nacré. 
+
+Glacierippo
+
+Type : Eau/Glace
+Description : Glacierippo, l'évolution d'Aquadon, est un majestueux Pokémon de type Eau/Glace. Sa taille imposante contraste avec la grâce ludique de son précurseur. Son corps robuste est désormais enveloppé d'une épaisse couche de glace étincelante, créant une aura de froid intense autour de lui. Les coraux colorés qui ornaient autrefois son dos ont fusionné avec la glace, formant des motifs cristallins éblouissants qui scintillent sous la lumière du soleil. Ses grands yeux ronds, autrefois remplis de curiosité, brillent maintenant d'une lueur froide, reflétant sa nouvelle maîtrise du froid arctique. Glacierippo se déplace avec une démarche majestueuse et déterminée, laissant une empreinte glacée là où il passe.
+
+Cryostodon
+
+Type : Eau/Glace
+Description : ryostodon, la forme ultime d'Aquadon, est une bête colossale qui domine les eaux gelées de l'Arctique. Malgré sa taille immense, sa silhouette conserve la forme reconnaissable d'un hippopotame, bien que maintenant entièrement recouverte de glace. Son corps massif émet une aura glaciale qui fait frissonner même les plus courageux. Ses défenses, jadis arrondies et ludiques, sont désormais de redoutables lames de glace capables de trancher à travers n'importe quoi. Cryostodon est le gardien des mers gelées, une force de la nature à ne pas sous-estimer.

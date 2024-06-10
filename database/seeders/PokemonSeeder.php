@@ -13,27 +13,36 @@ class PokemonSeeder extends Seeder
     public function run(): void
     {
         \App\Models\Pokemon::create([
-            'name' => 'test1',
-            'description' => 'test1',
+            'name' => 'Floroue',
+            'description' => 'à venir',
             'hp' => 50,
             'size' => 120,
             'weight' => 120,
-            'type1_id' => 1,
-            'type2_id' => 2,
-            'imgurl' => '/storage/images/pokemon/dark.png'
+            'type1_id' => 10,
+            'type2_id' => null,
+            'imgurl' => '/storage/images/pokemon/floroue.png'
         ]);
 
         \App\Models\Pokemon::create([
-            'name' => 'test2',
-            'description' => 'test2',
+            'name' => 'Folunarque',
+            'description' => 'à venir',
             'hp' => 50,
             'size' => 120,
             'weight' => 120,
-            'type1_id' => 3,
-            'type2_id' => 4,
-            'imgurl' => '/storage/images/pokemon/dark.png'
+            'type1_id' => 10,
+            'type2_id' => 2,
+            'imgurl' => '/storage/images/pokemon/folunarque.png'
+        ]);
+
+        \App\Models\Pokemon::create([
+            'name' => 'Noctoflore',
+            'description' => 'à venir',
+            'hp' => 50,
+            'size' => 120,
+            'weight' => 120,
+            'type1_id' => 10,
+            'type2_id' => 2,
+            'imgurl' => '/storage/images/pokemon/noctoflore.png'
         ]);
     }
-
-    
 }

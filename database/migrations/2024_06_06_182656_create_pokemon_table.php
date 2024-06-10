@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('size');
             $table->integer('weight');
             $table->foreignId('type1_id')->references('id')->on('types');
-            $table->foreignId('type2_id')->references('id')->on('types')->nullable();
+            $table->foreignId('type2_id')->nullable()->references('id')->on('types');
             $table->string('imgurl');
             $table->timestamps();
         });

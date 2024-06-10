@@ -20,18 +20,24 @@ defineProps({
         <table>
         <thead>
             <tr>
-            <th>Name</th>
-            <th>Description</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="pokemon in pokemons.data" :key="pokemon.id">
-            <td>{{ pokemon.name }}</td>
-            <td>{{ pokemon.description }}</td>
+                <td><img :src="pokemon.imgurl" :alt="'Image ' + pokemon.name"/></td>
+                <td>{{ pokemon.name }}</td>
+                <td>
+                    <img :src="pokemon.type1.imgurl" :alt="'Image ' + pokemon.name" v-if="pokemon.type1"/>
+                    <img :src="pokemon.type2.imgurl" :alt="'Image ' + pokemon.name" v-if="pokemon.type2"/>
+                </td>
+                <td>{{ pokemon.description }}</td>
             </tr>
         </tbody>
         </table>
-        <img src="/storage/images/layout/background.jpg"/>
     </GuestLayout>
 
 </template>

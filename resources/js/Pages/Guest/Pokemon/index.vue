@@ -3,18 +3,26 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 
+const props = defineProps({
+  types: Array
+})
 
 const searchQuery = ref('');
+const typeQuery = ref('');
 const pokemons = ref([]);
 
 const debouncedSearch = (() => {
     let timerId;
-
+    console.log('coucou');
     return () => {
         clearTimeout(timerId);
 
         timerId = setTimeout(async () => {
-            const response = await axios.get(route('pokemon.search'), {params: {query:searchQuery.value}});
+            const response = await axios.get(route('pokemon.search'), {
+                params: {
+                    query: searchQuery.value,
+                    type: typeQuery.value
+                }});
             pokemons.value = response.data;
         }, 300);
     };
@@ -34,6 +42,11 @@ onMounted(() => {
         </template>
 
         <input type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
+
+        <select v-model="typeQuery" @change="debouncedSearch">
+            <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
+        </select>
+
         <table>
         <thead>
             <tr>
@@ -48,13 +61,14 @@ onMounted(() => {
                 <td><img :src="pokemon.imgurl" :alt="'Image ' + pokemon.name"/></td>
                 <td>{{ pokemon.name }}</td>
                 <td>
-                    <img :src="pokemon.type1.imgurl" :alt="'Image ' + pokemon.name" v-if="pokemon.type1"/>
-                    <img :src="pokemon.type2.imgurl" :alt="'Image ' + pokemon.name" v-if="pokemon.type2"/>
+                    <img :src="pokemon.type1.imgurl" :alt=" pokemon.type1.name" v-if="pokemon.type1"/>
+                    <img :src="pokemon.type2.imgurl" :alt=" pokemon.type2.name" v-if="pokemon.type2"/>
                 </td>
                 <td>{{ pokemon.description }}</td>
             </tr>
         </tbody>
         </table>
+
     </GuestLayout>
 
 </template>

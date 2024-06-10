@@ -18,7 +18,8 @@ import { Link } from '@inertiajs/vue3';
         </div>
     </nav>
  
-    <div class="min-h-screen flex flex-col items-center justify-start pt-6 sm:pt-0 bg-gray-100">
+    <div class="min-h-screen bg-custom-background bg-cover bg-center bg-no-repeat flex flex-col items-center justify-start pt-6 sm:pt-0">
+   
         <header class="bg-white shadow" v-if="$slots.header">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <slot name="header" />
@@ -29,4 +30,6 @@ import { Link } from '@inertiajs/vue3';
             <slot />
         </div>
     </div>
+    
 </template>
+

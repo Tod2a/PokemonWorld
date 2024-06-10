@@ -31,7 +31,7 @@ defineProps({
             </tr>
         </tbody>
         </table>
-
+        <img src="/storage/images/layout/background.jpg"/>
     </GuestLayout>
 
 </template>

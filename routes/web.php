@@ -8,6 +8,8 @@ use Inertia\Inertia;
 
 Route::get('/', [PokemonController::class, 'index'])->name('pokemon.home');
 
+Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -18,4 +20,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

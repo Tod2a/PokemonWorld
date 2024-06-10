@@ -1,11 +1,28 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import { onMounted, ref } from 'vue';
 
-defineProps({
-  pokemons: Object
+
+const searchQuery = ref('');
+const pokemons = ref([]);
+
+const debouncedSearch = (() => {
+    let timerId;
+
+    return () => {
+        clearTimeout(timerId);
+
+        timerId = setTimeout(async () => {
+            const response = await axios.get(route('pokemon.search'), {params: {query:searchQuery.value}});
+            pokemons.value = response.data;
+        }, 300);
+    };
+})();
+
+onMounted(() => {
+    debouncedSearch();
 })
-
 </script>
 
 <template>
@@ -16,7 +33,7 @@ defineProps({
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Pokedex</h2>
         </template>
 
-
+        <input type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
         <table>
         <thead>
             <tr>

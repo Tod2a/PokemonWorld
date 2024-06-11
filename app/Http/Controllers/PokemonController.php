@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
+use App\Models\PokemonAttaqueLevel;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,18 @@ class PokemonController extends Controller
 
     public function show($id)
     {
-        $pokemon = Pokemon::findOrFail($id);
-        return inertia('Guest/Pokemon/show', ['pokemon' => $pokemon]);
+        $pokemon = Pokemon::with(['type1', 'type2', 'pokemonAttaqueLevels.attaque'])->findOrFail($id);
+
+        $pokemonAttaques = PokemonAttaqueLevel::where('pokemon_id', $id)
+            ->with(['attaque', 'attaque.category'])
+            ->get()
+            ->map(function ($pokemonAttaque) {
+                return [
+                    'attaque' => $pokemonAttaque->attaque,
+                    'level' => $pokemonAttaque->level,
+                ];
+            });
+
+        return inertia('Guest/Pokemon/show', ['pokemon' => $pokemon, 'pokemonAttaques' => $pokemonAttaques]);
     }
 }

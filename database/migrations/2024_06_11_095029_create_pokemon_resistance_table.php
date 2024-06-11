@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attaques', function (Blueprint $table) {
+        Schema::create('pokemon_resistance', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('power');
-            $table->integer('accuracy');
-            $table->text('description');
-            $table->foreignId('category_id')->constrained();
-            $table->foreignId('type_id')->constrained();
+            $table->foreignId('pokemon_id')->constrained()->onDelete('cascade');
+            $table->foreignId('type_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attaques');
+        Schema::dropIfExists('pokemon_resistance');
     }
 };

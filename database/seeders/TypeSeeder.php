@@ -85,7 +85,7 @@ class TypeSeeder extends Seeder
         ]);
 
         \App\Models\Type::create([
-            'name' => 'normal',
+            'name' => 'Normal',
             'imgurl' => '/storage/images/types/Normal.png',
             'color' => 'grey',
         ]);

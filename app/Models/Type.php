@@ -18,4 +18,14 @@ class Type extends Model
     {
         return $this->hasMany(Attaque::class);
     }
+
+    public function resistantPokemons()
+    {
+        return $this->belongsToMany(Pokemon::class, 'pokemon_resistance');
+    }
+
+    public function weakPokemons()
+    {
+        return $this->belongsToMany(Pokemon::class, 'pokemon_weakness');
+    }
 }

@@ -16,6 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('hp');
+            $table->integer('att');
+            $table->integer('def');
+            $table->integer('attspe');
+            $table->integer('defspe');
+            $table->integer('vit');
             $table->integer('size');
             $table->integer('weight');
             $table->foreignId('type1_id')->references('id')->on('types');

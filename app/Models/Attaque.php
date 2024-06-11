@@ -15,8 +15,13 @@ class Attaque extends Model
         return $this->belongsTo(Type::class);
     }
 
-    public function pokemonattaquelevels()
+    public function pokemonAttaqueLevels()
     {
-        return $this->hasMany(PokemonAttaqueLevel::class);
+        return $this->HasMany(PokemonAttaqueLevel::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

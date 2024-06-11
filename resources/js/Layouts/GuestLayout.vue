@@ -11,7 +11,7 @@ import { Link } from '@inertiajs/vue3';
             </Link>
         </div>
         <div class="flex-grow flex justify-center space-x-4 text-white">
-            <Link :href="route('pokemon.home')" class="inline-block px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+            <Link :href="route('pokemon.home')" :active="route().current('pokemon.home')" class="inline-block px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
                 Home
             </Link>
             <!-- Ajoutez ici d'autres liens de la navigation -->

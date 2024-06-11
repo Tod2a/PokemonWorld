@@ -1,7 +1,11 @@
 <?php
 
-use App\Http\Controllers\PokemonController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\{
+    PokemonController,
+    ProfileController,
+    Admin\PokemonController as AminPokemonController,
+};
+
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -10,6 +14,18 @@ Route::get('/', [PokemonController::class, 'index'])->name('pokemon.home');
 
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');
 Route::get('/pokemon/{id}', [PokemonController::class, 'show'])->name('pokemon.show');
+
+Route::get('/admin', function () {
+    return Inertia::render('Admin/index');
+})->middleware(['auth', 'verified'])->name('admin');
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('pokemon', AminPokemonController::class);
+});
+
+
+
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

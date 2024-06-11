@@ -14,7 +14,7 @@ class PokemonSeeder extends Seeder
     {
         \App\Models\Pokemon::create([
             'name' => 'Floroue',
-            'description' => 'à venir',
+            'description' => 'comming soon',
             'hp' => 50,
             'att' => 150,
             'def' => 75,
@@ -30,7 +30,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Folunarque',
-            'description' => 'à venir',
+            'description' => 'comming soon',
             'hp' => 50,
             'att' => 50,
             'def' => 50,
@@ -46,7 +46,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Noctoflore',
-            'description' => 'à venir',
+            'description' => 'comming soon',
             'hp' => 50,
             'att' => 50,
             'def' => 50,
@@ -62,7 +62,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Emberaptor',
-            'description' => 'à venir',
+            'description' => 'comming soon',
             'hp' => 50,
             'att' => 50,
             'def' => 50,
@@ -78,7 +78,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Infernalynx',
-            'description' => 'à venir',
+            'description' => 'comming soon',
             'hp' => 50,
             'att' => 50,
             'def' => 50,
@@ -94,7 +94,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Phoenixiraptor',
-            'description' => 'à venir',
+            'description' => 'comming soon',
             'hp' => 50,
             'att' => 50,
             'def' => 50,
@@ -110,7 +110,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Aquadon',
-            'description' => 'à venir',
+            'description' => 'comming soon',
             'hp' => 50,
             'att' => 50,
             'def' => 50,
@@ -126,7 +126,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Glacierippo',
-            'description' => 'à venir',
+            'description' => 'comming soon',
             'hp' => 50,
             'att' => 50,
             'def' => 50,
@@ -142,7 +142,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Cryostodon',
-            'description' => 'à venir',
+            'description' => 'comming soon',
             'hp' => 50,
             'att' => 50,
             'def' => 50,

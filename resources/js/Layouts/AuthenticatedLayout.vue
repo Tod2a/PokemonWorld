@@ -26,7 +26,7 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('pokemon.index')" :active="route().current('pokemon.index')">
+                                <NavLink :href="route('pokemon.index')" :active="route().current('pokemon.*')">
                                     Pokemon
                                 </NavLink>
                             </div>

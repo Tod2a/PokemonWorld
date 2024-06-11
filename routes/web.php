@@ -3,7 +3,7 @@
 use App\Http\Controllers\{
     PokemonController,
     ProfileController,
-    Admin\PokemonController as AminPokemonController,
+    Admin\PokemonController as AdminPokemonController,
 };
 
 use Illuminate\Foundation\Application;
@@ -20,7 +20,7 @@ Route::get('/admin', function () {
 })->middleware(['auth', 'verified'])->name('admin');
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('pokemon', AminPokemonController::class);
+    Route::resource('pokemon', AdminPokemonController::class);
 });
 
 

@@ -53,7 +53,7 @@ onMounted(() => {
                 <th>Image</th>
                 <th>Name</th>
                 <th>Type</th>
-                <th>Description</th>
+                <th>Details</th>
             </tr>
         </thead>
         <tbody>
@@ -64,7 +64,7 @@ onMounted(() => {
                     <img :src="pokemon.type1.imgurl" :alt=" pokemon.type1.name" v-if="pokemon.type1"/>
                     <img :src="pokemon.type2.imgurl" :alt=" pokemon.type2.name" v-if="pokemon.type2"/>
                 </td>
-                <td>{{ pokemon.description }}</td>
+                <td><a :href="'/pokemon/' + pokemon.id">clic</a></td>
             </tr>
         </tbody>
         </table>

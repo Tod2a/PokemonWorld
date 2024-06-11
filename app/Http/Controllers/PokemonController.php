@@ -40,4 +40,10 @@ class PokemonController extends Controller
 
         return response()->json($result);
     }
+
+    public function show($id)
+    {
+        $pokemon = Pokemon::findOrFail($id);
+        return inertia('Guest/Pokemon/show', ['pokemon' => $pokemon]);
+    }
 }

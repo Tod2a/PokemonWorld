@@ -9,6 +9,7 @@ use Inertia\Inertia;
 Route::get('/', [PokemonController::class, 'index'])->name('pokemon.home');
 
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');
+Route::get('/pokemon/{id}', [PokemonController::class, 'show'])->name('pokemon.show');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

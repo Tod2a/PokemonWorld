@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
 defineProps({
     pokemon:Array
@@ -17,11 +17,11 @@ defineProps({
         </template>
         <div class="flex justify-center">
             <div class="my-3">
-                <a :href="route('pokemon.create')" class="bg-gray-300 px-2 py-2 rounded-lg">Create</a>
+                <Link :href="route('pokemon.create')" class="bg-gray-300 px-2 py-2 rounded-lg">Create</Link>
             </div>
         </div>
-        
-        
+
+
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

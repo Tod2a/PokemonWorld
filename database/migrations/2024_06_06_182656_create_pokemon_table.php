@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pokemon', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->text('description');
             $table->integer('hp');
             $table->integer('att');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('weight');
             $table->foreignId('type1_id')->references('id')->on('types');
             $table->foreignId('type2_id')->nullable()->references('id')->on('types');
-            $table->string('imgurl');
+            $table->string('imgurl')->unique();
             $table->timestamps();
         });
     }

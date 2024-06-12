@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('attaques', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->integer('power');
             $table->integer('accuracy');
             $table->integer('maxpp');

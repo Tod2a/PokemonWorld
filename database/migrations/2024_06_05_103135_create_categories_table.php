@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('name', \App\Models\Category::category());
-            $table->string('imgurl');
+            $table->enum('name', \App\Models\Category::category())->unique();
+            $table->string('imgurl')->unique();
             $table->timestamps();
         });
     }

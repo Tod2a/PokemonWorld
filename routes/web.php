@@ -12,16 +12,16 @@ use Inertia\Inertia;
 
 Route::get('/', [PokemonController::class, 'index'])->name('pokemon.home');
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/admin/pokemon', AdminPokemonController::class);
+});
+
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');
 Route::get('/pokemon/{id}', [PokemonController::class, 'show'])->name('pokemon.show');
 
 Route::get('/admin', function () {
     return Inertia::render('Admin/index');
 })->middleware(['auth', 'verified'])->name('admin');
-
-Route::middleware(['auth'])->group(function () {
-    Route::resource('pokemon', AdminPokemonController::class);
-});
 
 
 

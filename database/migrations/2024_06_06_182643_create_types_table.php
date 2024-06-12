@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('imgurl');
+            $table->string('name')->unique();
+            $table->string('imgurl')->unique();
             $table->string('color');
             $table->timestamps();
         });

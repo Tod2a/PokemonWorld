@@ -37,7 +37,7 @@ onMounted(() => {
 
     <GuestLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Pokedex</h2>
+            <h2 class="font-semibold leading-tight">Pokedex</h2>
         </template>
 
         <div class="w-full mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">

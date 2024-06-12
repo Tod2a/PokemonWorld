@@ -50,7 +50,7 @@ class PokemonController extends Controller
 
         if ($request->hasFile('imgurl')) {
             $path = $request->file('imgurl')->store('images/pokemon', 'public');
-            $pokemon->imgurl = $path;
+            $pokemon->imgurl = 'storage/' . $path;
         }
 
         //if ($request->hasFile('imgurl')) {

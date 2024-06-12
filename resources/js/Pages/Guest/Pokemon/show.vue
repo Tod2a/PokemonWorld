@@ -90,13 +90,20 @@ const getStatColor = (stat) => {
                     </div>
                 </div>
             </div>
-            <div class="bg-white px-4 py-4 my-4 rounded-lg">
+            <div class="sm:max-w-md bg-white px-4 py-4 my-4 rounded-lg">
                 <h3>Attacks</h3>
-                <ul>
-                    <li v-for="pokemonAttaque in pokemonAttaques" :key="pokemonAttaque.attaque.id">
-                        {{ pokemonAttaque.attaque.name }} 
-                        {{ pokemonAttaque.attaque.category.name }}
-                        {{ pokemonAttaque.level }}
+                <ul class="py-2">
+                    <li>
+                        <span class="px-3">Category</span>
+                        <span class="px-3">Name</span>
+                        <span class="px-3">Level to learn</span>
+                        <span class="px-3">Type</span>
+                    </li>
+                    <li v-for="pokemonAttaque in pokemonAttaques" :key="pokemonAttaque.attaque.id" class="flex py-2">
+                        <span class="px-6"><img :src="pokemonAttaque.attaque.category.imgurl" :alt="pokemonAttaque.attaque.category.name"/></span>
+                        <span class="px-6">{{ pokemonAttaque.attaque.name }}</span>
+                        <span class="px-10">{{ pokemonAttaque.level }}</span>
+                        <span class="px-10"><img :src="pokemonAttaque.attaque.type.imgurl" :alt="pokemonAttaque.attaque.type.name" class="w-1/3"/></span>
                     </li>
                 </ul>
             </div>

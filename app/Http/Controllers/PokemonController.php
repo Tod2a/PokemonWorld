@@ -47,7 +47,7 @@ class PokemonController extends Controller
         $pokemon = Pokemon::with(['type1', 'type2', 'resistances', 'weaknesses'])->findOrFail($id);
         $types = Type::all();
         $pokemonAttaques = PokemonAttaqueLevel::where('pokemon_id', $id)
-            ->with(['attaque', 'attaque.category'])
+            ->with(['attaque', 'attaque.category', 'attaque.type'])
             ->get()
             ->map(function ($pokemonAttaque) {
                 return [

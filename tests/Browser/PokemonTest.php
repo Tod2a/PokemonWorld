@@ -12,7 +12,8 @@ class PokemonTest extends DuskTestCase
     public function testHomePageLoadsSuccessfully()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/pokemon/1')
+            $browser->visit('/')
+                ->pause(3000)
                 ->screenshot('testHomepage2')
                 ->assertSee('Pokedex');
         });

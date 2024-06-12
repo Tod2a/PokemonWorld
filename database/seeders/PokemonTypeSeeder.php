@@ -34,7 +34,7 @@ class PokemonTypeSeeder extends Seeder
         $fight = Type::where('name', 'Fight')->first();
         $fire = Type::where('name', 'Fire')->first();
         $flying = Type::where('name', 'Flying')->first();
-        $Ghost = Type::where('name', 'Ghost')->first();
+        $ghost = Type::where('name', 'Ghost')->first();
         $grass = Type::where('name', 'Grass')->first();
         $ground = Type::where('name', 'Ground')->first();
         $ice = Type::where('name', 'Ice')->first();
@@ -48,5 +48,8 @@ class PokemonTypeSeeder extends Seeder
         //add resistance and weakness to pokemon
         $floroue->resistances()->sync([$water->id, $electric->id, $grass->id, $ground->id], false);
         $floroue->weaknesses()->sync([$fire->id, $ice->id, $bug->id, $poison->id, $flying->id], false);
+
+        $folunarque->resistances()->sync([$water->id, $electric->id, $grass->id, $psychic->id, $ground->id, $ghost->id, $dark->id], false);
+        $folunarque->weaknesses()->sync([$fight->id, $fairy->id, $fire->id, $ice->id, $bug->id, $poison->id, $flying->id], false);
     }
 }

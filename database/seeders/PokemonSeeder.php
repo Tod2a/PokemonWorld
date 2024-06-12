@@ -25,7 +25,7 @@ class PokemonSeeder extends Seeder
             'weight' => 120,
             'type1_id' => 10,
             'type2_id' => null,
-            'imgurl' => '/storage/images/pokemon/floroue.jpg'
+            'imgurl' => 'images/pokemon/floroue.jpg'
         ]);
 
         \App\Models\Pokemon::create([
@@ -41,7 +41,7 @@ class PokemonSeeder extends Seeder
             'weight' => 120,
             'type1_id' => 10,
             'type2_id' => 2,
-            'imgurl' => '/storage/images/pokemon/folunarque.jpg'
+            'imgurl' => 'images/pokemon/folunarque.jpg'
         ]);
 
         \App\Models\Pokemon::create([
@@ -57,7 +57,7 @@ class PokemonSeeder extends Seeder
             'weight' => 120,
             'type1_id' => 10,
             'type2_id' => 2,
-            'imgurl' => '/storage/images/pokemon/noctoflore.jpg'
+            'imgurl' => 'images/pokemon/noctoflore.jpg'
         ]);
 
         \App\Models\Pokemon::create([
@@ -73,7 +73,7 @@ class PokemonSeeder extends Seeder
             'weight' => 120,
             'type1_id' => 7,
             'type2_id' => null,
-            'imgurl' => '/storage/images/pokemon/emberaptor.jpg'
+            'imgurl' => 'images/pokemon/emberaptor.jpg'
         ]);
 
         \App\Models\Pokemon::create([
@@ -89,7 +89,7 @@ class PokemonSeeder extends Seeder
             'weight' => 120,
             'type1_id' => 7,
             'type2_id' => null,
-            'imgurl' => '/storage/images/pokemon/infernalynx.jpg'
+            'imgurl' => 'images/pokemon/infernalynx.jpg'
         ]);
 
         \App\Models\Pokemon::create([
@@ -105,7 +105,7 @@ class PokemonSeeder extends Seeder
             'weight' => 120,
             'type1_id' => 7,
             'type2_id' => 8,
-            'imgurl' => '/storage/images/pokemon/phoenixiraptor.jpg'
+            'imgurl' => 'images/pokemon/phoenixiraptor.jpg'
         ]);
 
         \App\Models\Pokemon::create([
@@ -121,7 +121,7 @@ class PokemonSeeder extends Seeder
             'weight' => 120,
             'type1_id' => 18,
             'type2_id' => null,
-            'imgurl' => '/storage/images/pokemon/aquadon.jpg'
+            'imgurl' => 'images/pokemon/aquadon.jpg'
         ]);
 
         \App\Models\Pokemon::create([
@@ -137,7 +137,7 @@ class PokemonSeeder extends Seeder
             'weight' => 120,
             'type1_id' => 18,
             'type2_id' => 12,
-            'imgurl' => '/storage/images/pokemon/glacierippo.jpg'
+            'imgurl' => 'images/pokemon/glacierippo.jpg'
         ]);
 
         \App\Models\Pokemon::create([
@@ -153,7 +153,7 @@ class PokemonSeeder extends Seeder
             'weight' => 120,
             'type1_id' => 18,
             'type2_id' => 12,
-            'imgurl' => '/storage/images/pokemon/cryostodon.jpg'
+            'imgurl' => 'images/pokemon/cryostodon.jpg'
         ]);
     }
 }

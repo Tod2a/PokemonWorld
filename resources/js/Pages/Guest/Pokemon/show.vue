@@ -10,11 +10,11 @@ defineProps({
 
 const getStatColor = (stat) => {
     if (stat >= 100) {
-        return 'bg-green-500'; 
+        return 'bg-green-500';
     } else if (stat >= 50) {
-        return 'bg-yellow-500'; 
+        return 'bg-yellow-500';
     } else {
-        return 'bg-red-500'; 
+        return 'bg-red-500';
     }
 }
 
@@ -29,7 +29,7 @@ const getStatColor = (stat) => {
         <div class="flex flex-col">
             <div class="flex space-x-10">
                 <div class="w-full sm:max-w-md">
-                    <img class="rounded-lg" :src="pokemon.imgurl" :alt="pokemon.name"/>
+                    <img class="rounded-lg" :src="'storage/' + pokemon.imgurl" :alt="pokemon.name"/>
                 </div>
                 <div class="w-full sm:max-w-md flex flex-col justify-center items-center">
                     <img :src="pokemon.type1.imgurl"/>
@@ -40,7 +40,7 @@ const getStatColor = (stat) => {
                     <p>size: {{ pokemon.size/100 }}M</p>
                     <p>weight: {{ pokemon.weight/100 }}Kg</p>
                     <p>description: {{ pokemon.description }}</p>
-                </div>            
+                </div>
             </div>
             <div class="bg-white px-4 py-4 my-4 rounded-lg">
                 <h3>Resistances/Weaknesses</h3>
@@ -51,10 +51,10 @@ const getStatColor = (stat) => {
                             <div v-if="pokemon.resistances.some(resistance => resistance.name === type.name)" class="w-8 h-7 bg-green-300 ml-1"></div>
                             <div v-else-if="pokemon.weaknesses.some(weakness => weakness.name === type.name)" class="w-8 h-7 bg-red-300 ml-1"></div>
                             <div v-else class="w-8 h-7 bg-white ml-1"></div>
-                        </div>   
+                        </div>
                     </li>
                 </ul>
-            </div>  
+            </div>
             <div class="bg-white px-4 py-4 my-4 rounded-lg">
                 <h3>Stats</h3>
                 <div class="flex justify-between px-10">
@@ -116,7 +116,7 @@ const getStatColor = (stat) => {
                 </ul>
             </div>
         </div>
-    
+
     </GuestLayout>
-    
+
 </template>

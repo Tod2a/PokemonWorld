@@ -13,7 +13,6 @@ const pokemons = ref([]);
 
 const debouncedSearch = (() => {
     let timerId;
-    console.log('coucou');
     return () => {
         clearTimeout(timerId);
 

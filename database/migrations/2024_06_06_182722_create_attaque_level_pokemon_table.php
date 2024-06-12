@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pokemon_attaque_levels', function (Blueprint $table) {
+        Schema::create('attaque_level_pokemon', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pokemon_id')->constrained();
             $table->foreignId('attaque_id')->constrained();

@@ -17,7 +17,7 @@ class Attaque extends Model
 
     public function pokemonAttaqueLevels()
     {
-        return $this->HasMany(PokemonAttaqueLevel::class);
+        return $this->HasMany(AttaqueLevelPokemon::class);
     }
 
     public function category()

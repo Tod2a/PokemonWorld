@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PokemonAttaqueLevel extends Model
+class AttaqueLevelPokemon extends Model
 {
     use HasFactory;
 

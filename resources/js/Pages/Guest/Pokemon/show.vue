@@ -90,20 +90,28 @@ const getStatColor = (stat) => {
                     </div>
                 </div>
             </div>
-            <div class="sm:max-w-md bg-white px-4 py-4 my-4 rounded-lg">
+            <div class="bg-white px-4 py-4 my-4 rounded-lg">
                 <h3>Attacks</h3>
                 <ul class="py-2">
                     <li>
                         <span class="px-3">Category</span>
                         <span class="px-3">Name</span>
-                        <span class="px-3">Level to learn</span>
+                        <span class="px-3">Level</span>
+                        <span class="px-3">Power</span>
+                        <span class="px-3">Accuracy</span>
+                        <span class="px-3">MaxPP</span>
                         <span class="px-3">Type</span>
+                        <span>Description</span>
                     </li>
                     <li v-for="pokemonAttaque in pokemonAttaques" :key="pokemonAttaque.attaque.id" class="flex py-2">
                         <span class="px-6"><img :src="pokemonAttaque.attaque.category.imgurl" :alt="pokemonAttaque.attaque.category.name"/></span>
                         <span class="px-6">{{ pokemonAttaque.attaque.name }}</span>
-                        <span class="px-10">{{ pokemonAttaque.level }}</span>
-                        <span class="px-10"><img :src="pokemonAttaque.attaque.type.imgurl" :alt="pokemonAttaque.attaque.type.name" class="w-1/3"/></span>
+                        <span class="px-6">{{ pokemonAttaque.level }}</span>
+                        <span class="px-6">{{ pokemonAttaque.attaque.power }}</span>
+                        <span class="px-8">{{ pokemonAttaque.attaque.accuracy }}</span>
+                        <span class="px-8">{{ pokemonAttaque.attaque.maxpp }}</span>
+                        <span class="px-2"><img :src="pokemonAttaque.attaque.type.imgurl" :alt="pokemonAttaque.attaque.type.name" class="w-1/4"/></span>
+                        <span class="px-1">{{ pokemonAttaque.attaque.description }}</span>
                     </li>
                 </ul>
             </div>

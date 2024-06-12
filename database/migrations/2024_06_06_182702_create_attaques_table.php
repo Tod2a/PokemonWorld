@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('power');
             $table->integer('accuracy');
-            $table->text('description');
+            $table->integer('maxpp');
+            $table->string('description');
             $table->foreignId('category_id')->constrained();
             $table->foreignId('type_id')->constrained();
             $table->timestamps();

@@ -18,7 +18,9 @@ import { Head } from '@inertiajs/vue3';
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <p>Welcome on the administation Homepage</p>
-                        <p>Rules to create pokemon, types and attacks comming soon</p>
+                        <p>When you create a new pokemon, you will just see the startings attacks.</p>
+                        <p>we recommend to set the level at 1.</p>
+                        <p>You can add more attacks in the edit form when the pokemon is created</p>
                     </div>
                 </div>
             </div>

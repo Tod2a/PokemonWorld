@@ -18,6 +18,7 @@ class AttaqueSeeder extends Seeder
             'accuracy' => 100,
             'maxpp' => 35,
             'description' => 'coming soon',
+            'is_starting' => true,
             'category_id' => 1,
             'type_id' => 13,
         ]);
@@ -28,8 +29,20 @@ class AttaqueSeeder extends Seeder
             'accuracy' => 100,
             'maxpp' => 25,
             'description' => 'coming soon',
+            'is_starting' => true,
             'category_id' => 1,
             'type_id' => 2,
+        ]);
+
+        \App\Models\Attaque::create([
+            'name' => 'Leaf Blade',
+            'power' => 60,
+            'accuracy' => 100,
+            'maxpp' => 25,
+            'description' => 'coming soon',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 10,
         ]);
     }
 }

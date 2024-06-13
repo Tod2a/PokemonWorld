@@ -30,7 +30,7 @@ class PokemonController extends Controller
     public function create()
     {
         $types = Type::all();
-        $attacks = Attaque::all();
+        $attacks = Attaque::where('is_starting', true)->get();
         return inertia('Admin/Pokemon/create', ['types' => $types, 'attacks' => $attacks]);
     }
 

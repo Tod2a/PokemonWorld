@@ -124,6 +124,7 @@ const form = useForm({
                             <div>
                                 <label for="type2">Type2(nullable): </label>
                                 <select class="block mt-1 w-full" id="type2" v-model="form.type2">
+                                    <option value="">-- No Type2 --</option>
                                     <option v-for="type in types" :value="type.id" :key="type.id">{{ type.name }}</option>
                                 </select>
                                 <div v-if="form.errors.type2">{{ form.errors.type2 }}</div>
@@ -161,7 +162,6 @@ const form = useForm({
                                 <label for="attacks">Attacks</label>
                                 <ul>
                                     <li v-for="attack in attacks" :key="attack.id">
-                                        <input type="checkbox" :id="'attack' + attack.id" :value="attack.id" v-model="form.attacks">
                                         {{ attack.name }}
                                         <input type="number" v-model="form.attacks[attack.id]" placeholder="level ...">
                                     </li>

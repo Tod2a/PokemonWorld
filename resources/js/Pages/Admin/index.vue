@@ -19,7 +19,7 @@ import { Head } from '@inertiajs/vue3';
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <p>Welcome on the administation Homepage</p>
                         <p>When you create a new pokemon, you will just see the startings attacks.</p>
-                        <p>we recommend to set the level at 1.</p>
+                        <p>we recommend to set the level at 1, and leaving the input empty for the attacks not learned.</p>
                         <p>You can add more attacks in the edit form when the pokemon is created</p>
                     </div>
                 </div>

@@ -71,16 +71,19 @@ class PokemonController extends Controller
             $pokemon->weaknesses()->sync([$weakness], false);
         }
 
-        foreach ($request['attacks'] as $attack => $level) {
-            if ($attack > 0 && $level !== null) {
-                $attaquePokemon = AttaqueLevelPokemon::make();
-                $attaquePokemon->pokemon_id = $pokemon->id;
-                $attaquePokemon->attaque_id = $attack;
-                $attaquePokemon->level = $level;
-                $attaquePokemon->save();
+        if ($request['attacks'] !== null) {
+            foreach ($request['attacks'] as $attack => $level) {
+                if ($attack > 0 && $level !== null) {
+                    $attaquePokemon = AttaqueLevelPokemon::make();
+                    $attaquePokemon->pokemon_id = $pokemon->id;
+                    $attaquePokemon->attaque_id = $attack;
+                    $attaquePokemon->level = $level;
+                    $attaquePokemon->save();
+                }
             }
         }
     }
+
 
     /**
      * Display the specified resource.

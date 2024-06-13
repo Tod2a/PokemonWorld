@@ -1,10 +1,36 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import DangerButton from '@/Components/DangerButton.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
+import Modal from '@/Components/Modal.vue';
+import { ref } from 'vue';
 
 defineProps({
     pokemon:Array
 })
+
+const form = useForm({
+    id: null
+})
+
+const confirmingPokemonDeletion = ref(false);
+
+const confirmPokemonDeletion = ($id) => {
+    form.id = $id;
+    confirmingPokemonDeletion.value = true;
+};
+
+const deletePokemon = () => {
+    form.delete(route('pokemon.destroy', form.id), {
+        onSuccess : () => closeModal(),
+    });
+};
+
+const closeModal = () => {
+    confirmingPokemonDeletion.value = false;
+    form.reset();
+};
 
 </script>
 
@@ -56,9 +82,7 @@ defineProps({
                                 <td class="flex border px-4 py-2">{{ poke.type1.name }} <div v-if="poke.type2 !== null">/{{ poke.type2.name }}</div></td>
                                 <td class="border px-4 py-2 space-x-4">
                                     <a :href="route('pokemon.edit', poke.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</a>
-                                    <form @submit.prevent="this.$inertia.delete(route('pokemon.destroy', poke.id))">
-                                        <button type="submit" class="px-1 py-1 bg-red-300 rounded-lg">Delete</button>
-                                    </form>
+                                    <DangerButton @click="confirmPokemonDeletion(poke.id)">Delete</DangerButton>
                                 </td>
                             </tr>
                         </tbody>
@@ -72,6 +96,20 @@ defineProps({
                             </tr>
                         </tfoot>
                     </table>
+
+                    <Modal :show="confirmingPokemonDeletion" @close="closeModal">
+                        <div class="p-6">
+                            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                Are you sure you want to delete this pokemon?
+                            </h2> 
+                                                    
+                            <div class="mt-6 flex justify-end">
+                                <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
+                            
+                                <DangerButton @click="deletePokemon">Delete</DangerButton>
+                            </div>
+                        </div>
+                    </Modal>
                 </div>
             </div>
         </div>

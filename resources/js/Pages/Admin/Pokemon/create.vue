@@ -24,6 +24,8 @@ const form = useForm({
     type1: null,
     type2: null,
     imgurl: null,
+    resistances: [],
+    weaknesses: [],
 })
 
 </script>
@@ -125,6 +127,30 @@ const form = useForm({
                                 <input id="imgurl" type="file" @input="form.imgurl = $event.target.files[0]">
                                 <div v-if="form.errors.imgurl">{{ form.errors.imgurl }}</div>
                             </div>
+
+                            <div class="flex justify-between">
+
+                                <div>
+                                    <label>Resistances</label>
+                                    <div v-for="type in types" :key="'resistance' + type.id" >
+                                        <input type="checkbox" :id="'resistance' + type.id" :value="type.id" v-model="form.resistances">
+                                        <label :for="'resistance' + type.id">{{ type.name }}</label>
+                                    </div>
+                                    <div v-if="form.errors.resistances">{{ form.errors.resistances }}</div>
+                                </div>
+
+
+                                <div>
+                                    <label>Weaknesses</label>
+                                    <div v-for="type in types" :key="'weakness' + type.id">
+                                        <input type="checkbox" :id="'weakness' + type.id" :value="type.id" v-model="form.weaknesses">
+                                        <label :for="'weakness' + type.id">{{ type.name }}</label>
+                                    </div>
+                                    <div v-if="form.errors.weaknesses">{{ form.errors.weaknesses }}</div>
+                                </div>
+                            </div>
+                            
+
 
 
                             <div class="flex items-center gap-4">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PokemonCreateRequest;
 use App\Models\Pokemon;
 use App\Models\Type;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class PokemonController extends Controller
@@ -55,16 +56,15 @@ class PokemonController extends Controller
             $pokemon->imgurl = 'storage/' . $path;
         }
 
-        //if ($request->hasFile('imgurl')) {
-        //$file = $request->file('imgurl');
-        //$filename = time() . '' . $file->getClientOriginalName();
-        //$destinationPath = public_path('storage/images/pokemon');
-        //$file->move($destinationPath, $filename);
-        //$pokemon->img_path = 'storage/images/pokemon' . $filename;
-        //}
-
-
         $pokemon->save();
+
+        foreach ($request->validated()['resistances'] as $resistance) {
+            $pokemon->resistances()->sync([$resistance], false);
+        }
+
+        foreach ($request->validated()['weaknesses'] as $weakness) {
+            $pokemon->weaknesses()->sync([$weakness], false);
+        }
     }
 
     /**

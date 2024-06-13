@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqueResistance;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PokemonCreateRequest extends FormRequest
@@ -35,6 +36,8 @@ class PokemonCreateRequest extends FormRequest
             'type1' => 'required|min:1|max:18',
             'type2' => 'nullable|min:1|max:18',
             'imgurl' => 'required|image|unique:pokemon',
+            'weaknesses' => 'array',
+            'resistances' => ['array', new UniqueResistance],
         ];
     }
 }

@@ -1,6 +1,6 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 
 const props = defineProps({
@@ -11,22 +11,29 @@ const searchQuery = ref('');
 const typeQuery = ref('');
 const pokemons = ref([]);
 
+const fetchPokemons = async (url) => {
+    const response = await axios.get(url, {
+        params: {
+            query: searchQuery.value,
+            type: typeQuery.value
+        },
+        headers: {
+            'X-Inertia': true
+        }
+    });
+    pokemons.value = response.data;
+};
+
 const debouncedSearch = (() => {
     let timerId;
     return () => {
         clearTimeout(timerId);
 
-        timerId = setTimeout(async () => {
-            const response = await axios.get(route('pokemon.search'), {
-                params: {
-                    query: searchQuery.value,
-                    type: typeQuery.value
-                }});
-            pokemons.value = response.data;
+        timerId = setTimeout(() => {
+            fetchPokemons(route('pokemon.search'));
         }, 300);
     };
 })();
-
 onMounted(() => {
     debouncedSearch();
 })
@@ -70,9 +77,9 @@ onMounted(() => {
                 <tfoot>
                     <tr>
                         <td colspan="4" class="px-6">
-                            <inertia-link :href="pokemons.prev_page_url" v-if="pokemons.prev_page_url">&lt; Previous</inertia-link>
+                            <button @click="fetchPokemons(pokemons.prev_page_url)" v-if="pokemons.prev_page_url">&lt; Previous</button>
                             Page {{ pokemons.current_page }} of {{ pokemons.last_page }}
-                            <inertia-link :href="pokemons.next_page_url" v-if="pokemons.next_page_url">Next &gt;</inertia-link>
+                            <button @click="fetchPokemons(pokemons.next_page_url)" v-if="pokemons.next_page_url">Next &gt;</button>
                         </td>
                     </tr>
                 </tfoot>

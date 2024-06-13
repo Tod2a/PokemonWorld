@@ -89,9 +89,9 @@ const closeModal = () => {
                         <tfoot>
                             <tr>
                                 <td colspan="4" class="px-6">
-                                    <inertia-link :href="pokemon.prev_page_url" v-if="pokemon.prev_page_url">&lt; Previous</inertia-link>
+                                    <Link :href="pokemon.prev_page_url" v-if="pokemon.prev_page_url">&lt; Previous</Link>
                                     Page {{ pokemon.current_page }} of {{ pokemon.last_page }}
-                                    <inertia-link :href="pokemon.next_page_url" v-if="pokemon.next_page_url">Next &gt;</inertia-link>
+                                    <Link :href="pokemon.next_page_url" v-if="pokemon.next_page_url">Next &gt;</Link>
                                 </td>
                             </tr>
                         </tfoot>

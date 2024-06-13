@@ -63,12 +63,16 @@ class PokemonController extends Controller
 
         $pokemon->save();
 
-        foreach ($request->validated()['resistances'] as $resistance) {
-            $pokemon->resistances()->sync([$resistance], false);
+        if ($request['resistances'] !== null) {
+            foreach ($request->validated()['resistances'] as $resistance) {
+                $pokemon->resistances()->sync([$resistance], false);
+            }
         }
 
-        foreach ($request->validated()['weaknesses'] as $weakness) {
-            $pokemon->weaknesses()->sync([$weakness], false);
+        if ($request['weaknesses'] !== null) {
+            foreach ($request->validated()['weaknesses'] as $weakness) {
+                $pokemon->weaknesses()->sync([$weakness], false);
+            }
         }
 
         if ($request['attacks'] !== null) {

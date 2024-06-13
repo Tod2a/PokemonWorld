@@ -33,17 +33,7 @@ class PokemonCreateRequest extends FormRequest
             'size' => 'required|min:1',
             'weight' => 'required|min:1',
             'type1' => 'required|min:1|max:18',
-            'type2' => [
-                'nullable',
-                'integer',
-                'min:1',
-                'max:18',
-                function ($attribute, $value, $fail) {
-                    if ($value == $this->input('type1')) {
-                        $fail('The type2 must be different from type1.');
-                    }
-                },
-            ],
+            'type2' => 'nullable|min:1|max:18',
             'imgurl' => 'required|image|unique:pokemon',
         ];
     }

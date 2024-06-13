@@ -46,7 +46,9 @@ class PokemonController extends Controller
         $pokemon->size = $request->validated()['size'];
         $pokemon->weight = $request->validated()['weight'];
         $pokemon->type1_id = $request->validated()['type1'];
-        $pokemon->type2_id = $request->validated()['type2'];
+        if ($request['type1'] !== $request['type2']) {
+            $pokemon->type2_id = $request->validated()['type2'];
+        }
 
         if ($request->hasFile('imgurl')) {
             $path = $request->file('imgurl')->store('images/pokemon', 'public');

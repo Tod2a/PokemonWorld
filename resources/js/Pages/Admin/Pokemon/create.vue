@@ -51,67 +51,67 @@ const form = useForm({
                         <form @submit.prevent="form.post(route('pokemon.store'), { forceFormData: true })" class="flex flex-col">
                             <div>
                                 <label for="name">Name: </label>
-                                <input id="name" type="text" v-model="form.name">
+                                <input class="block mt-1 w-full" id="name" type="text" v-model="form.name">
                                 <div v-if="form.errors.name">{{ form.errors.name }}</div>
                             </div>
 
                             <div>
                                 <label for="description">Description: </label>
-                                <textarea id="description" v-model="form.description"/>
+                                <textarea class="block mt-1 w-full" id="description" v-model="form.description"/>
                                 <div v-if="form.errors.description">{{ form.errors.description }}</div>
                             </div>
 
                             <div>
                                 <label for="hp">hp: </label>
-                                <input id="hp" type="number" v-model="form.hp" step="1" max="150">
+                                <input class="block mt-1 w-full" id="hp" type="number" v-model="form.hp" step="1" max="150">
                                 <div v-if="form.errors.hp">{{ form.errors.hp }}</div>
                             </div>
 
                             <div>
                                 <label for="att">att: </label>
-                                <input id="att" type="number" v-model="form.att" step="1" max="150">
+                                <input class="block mt-1 w-full" id="att" type="number" v-model="form.att" step="1" max="150">
                                 <div v-if="form.errors.att">{{ form.errors.att }}</div>
                             </div>
 
                             <div>
                                 <label for="def">def: </label>
-                                <input id="def" type="number" v-model="form.def" step="1" max="150">
+                                <input class="block mt-1 w-full" id="def" type="number" v-model="form.def" step="1" max="150">
                                 <div v-if="form.errors.def">{{ form.errors.def }}</div>
                             </div>
 
                             <div>
                                 <label for="attspe">attspe: </label>
-                                <input id="attspe" type="number" v-model="form.attspe" step="1" max="150">
+                                <input class="block mt-1 w-full" id="attspe" type="number" v-model="form.attspe" step="1" max="150">
                                 <div v-if="form.errors.attspe">{{ form.errors.attspe }}</div>
                             </div>
 
                             <div>
                                 <label for="defspe">defspe: </label>
-                                <input id="defspe" type="number" v-model="form.defspe" step="1" max="150">
+                                <input class="block mt-1 w-full" id="defspe" type="number" v-model="form.defspe" step="1" max="150">
                                 <div v-if="form.errors.defspe">{{ form.errors.defspe }}</div>
                             </div>
 
                             <div>
                                 <label for="vit">vit: </label>
-                                <input id="vit" type="number" v-model="form.vit" step="1" max="150">
+                                <input class="block mt-1 w-full" id="vit" type="number" v-model="form.vit" step="1" max="150">
                                 <div v-if="form.errors.vit">{{ form.errors.vit }}</div>
                             </div>
 
                             <div>
                                 <label for="size">size(in grams): </label>
-                                <input id="size" type="number" v-model="form.size" step="1">
+                                <input class="block mt-1 w-full" id="size" type="number" v-model="form.size" step="1">
                                 <div v-if="form.errors.size">{{ form.errors.size }}</div>
                             </div>
 
                             <div>
                                 <label for="weight">weight(in centimeters): </label>
-                                <input id="weight" type="number" v-model="form.weight" step="1">
+                                <input class="block mt-1 w-full" id="weight" type="number" v-model="form.weight" step="1">
                                 <div v-if="form.errors.weight">{{ form.errors.weight }}</div>
                             </div>
 
                             <div>
                                 <label for="type1">Type1(not nullable): </label>
-                                <select id="type1" v-model="form.type1">
+                                <select class="block mt-1 w-full" id="type1" v-model="form.type1">
                                     <option v-for="type in types" :value="type.id" :key="type.id">{{ type.name }}</option>
                                 </select>
                                 <div v-if="form.errors.type1">{{ form.errors.type1 }}</div>
@@ -119,7 +119,7 @@ const form = useForm({
 
                             <div>
                                 <label for="type2">Type2(nullable): </label>
-                                <select id="type2" v-model="form.type2">
+                                <select class="block mt-1 w-full" id="type2" v-model="form.type2">
                                     <option v-for="type in types" :value="type.id" :key="type.id">{{ type.name }}</option>
                                 </select>
                                 <div v-if="form.errors.type2">{{ form.errors.type2 }}</div>
@@ -159,7 +159,7 @@ const form = useForm({
                                     <li v-for="attack in attacks" :key="attack.id">
                                         <input type="checkbox" :id="'attack' + attack.id" :value="attack.id" v-model="form.attacks">
                                         {{ attack.name }}
-                                        <input type="number" v-model="form.attacks[attack.id]">
+                                        <input type="number" v-model="form.attacks[attack.id]" placeholder="level ...">
                                     </li>
                                 </ul>
                             </div>

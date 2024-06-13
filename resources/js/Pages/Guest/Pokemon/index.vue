@@ -67,6 +67,15 @@ onMounted(() => {
                         <td class="px-6"><a :href="'/pokemon/' + pokemon.id" class="bg-blue-400 px-2 py-2 rounded-lg">Details</a></td>
                     </tr>
                 </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="4" class="px-6">
+                        <inertia-link :href="pokemons.prev_page_url" v-if="pokemons.prev_page_url">&lt; Previous</inertia-link>
+                        Page {{ pokemons.current_page }} of {{ pokemons.last_page }}
+                        <inertia-link :href="pokemons.next_page_url" v-if="pokemons.next_page_url">Next &gt;</inertia-link>
+                    </td>
+                </tr>
+            </tfoot>
             </table>
         </div>
     </GuestLayout>

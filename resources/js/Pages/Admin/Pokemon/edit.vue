@@ -6,6 +6,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 const props = defineProps({
     pokemon: Object,
+    types: Array,
     attacks: Array,
 })
 
@@ -22,7 +23,6 @@ const form = useForm({
     weight: null,
     type1: null,
     type2: null,
-    imgurl: null,
     resistances: [],
     weaknesses: [],
 })
@@ -41,6 +41,8 @@ form.size = props.pokemon.size;
 form.weight = props.pokemon.weight;
 form.type1 = props.pokemon.type1.id;
 form.type2 = props.pokemon.type2 ? props.pokemon.type2.id : null;
+form.resistances = props.pokemon.resistances.map(resistance => resistance.id);
+form.weaknesses = props.pokemon.weaknesses.map(weakness => weakness.id);
 
 </script>
 
@@ -122,6 +124,44 @@ form.type2 = props.pokemon.type2 ? props.pokemon.type2.id : null;
                                 <div v-if="form.errors.weight">{{ form.errors.weight }}</div>
                             </div>
                                
+                            <div>
+                                <label for="type1">Type1(not nullable): </label>
+                                <select class="block mt-1 w-full" id="type1" v-model="form.type1">
+                                    <option v-for="type in props.types" :value="type.id" :key="type.id">{{ type.name }}</option>
+                                </select>
+                                <div v-if="form.errors.type1">{{ form.errors.type1 }}</div>
+                            </div>
+
+                            <div>
+                                <label for="type2">Type2(nullable): </label>
+                                <select class="block mt-1 w-full" id="type2" v-model="form.type2">
+                                    <option value="">-- No Type2 --</option>
+                                    <option v-for="type in props.types" :value="type.id" :key="type.id">{{ type.name }}</option>
+                                </select>
+                                <div v-if="form.errors.type2">{{ form.errors.type2 }}</div>
+                            </div>
+
+                            <div class="flex justify-between">
+
+                                <div>
+                                    <label>Resistances</label>
+                                    <div v-for="type in props.types" :key="'resistance' + type.id" >
+                                        <input type="checkbox" :id="'resistance' + type.id" :value="type.id" v-model="form.resistances">
+                                        <label :for="'resistance' + type.id">{{ type.name }}</label>
+                                    </div>
+                                    <div v-if="form.errors.resistances">{{ form.errors.resistances }}</div>
+                                </div>
+
+
+                                <div>
+                                    <label>Weaknesses</label>
+                                    <div v-for="type in props.types" :key="'weakness' + type.id">
+                                        <input type="checkbox" :id="'weakness' + type.id" :value="type.id" v-model="form.weaknesses">
+                                        <label :for="'weakness' + type.id">{{ type.name }}</label>
+                                    </div>
+                                    <div v-if="form.errors.weaknesses">{{ form.errors.weaknesses }}</div>
+                                </div>
+                            </div>
 
 
                             <div class="flex items-center gap-4">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PokemonCreateRequest;
+use App\Http\Requests\PokemonUpdateRequest;
 use App\Models\Attaque;
 use App\Models\AttaqueLevelPokemon;
 use App\Models\Pokemon;
@@ -103,6 +104,7 @@ class PokemonController extends Controller
     public function edit(string $id)
     {
         $pokemon = Pokemon::with(['type1', 'type2', 'resistances', 'weaknesses'])->findOrFail($id);
+        $types = Type::all();
         $pokemonAttacks = AttaqueLevelPokemon::where('pokemon_id', $id)
             ->with(['attaque', 'attaque.category', 'attaque.type'])
             ->get()
@@ -113,26 +115,42 @@ class PokemonController extends Controller
                 ];
             });
 
-        return inertia('Admin/Pokemon/edit', ['pokemon' => $pokemon, 'attacks' => $pokemonAttacks]);
+        return inertia('Admin/Pokemon/edit', ['pokemon' => $pokemon, 'types' => $types, 'attacks' => $pokemonAttacks]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pokemon $pokemon)
+    public function update(PokemonUpdateRequest $request, Pokemon $pokemon)
     {
-        $pokemon->name = $request['name'];
-        $pokemon->description = $request['description'];
-        $pokemon->hp = $request['hp'];
-        $pokemon->att = $request['att'];
-        $pokemon->def = $request['def'];
-        $pokemon->attspe = $request['attspe'];
-        $pokemon->defspe = $request['defspe'];
-        $pokemon->vit = $request['vit'];
-        $pokemon->size = $request['size'];
-        $pokemon->weight = $request['weight'];
+        $pokemon->name = $request->validated()['name'];
+        $pokemon->description = $request->validated()['description'];
+        $pokemon->hp = $request->validated()['hp'];
+        $pokemon->att = $request->validated()['att'];
+        $pokemon->def = $request->validated()['def'];
+        $pokemon->attspe = $request->validated()['attspe'];
+        $pokemon->defspe = $request->validated()['defspe'];
+        $pokemon->vit = $request->validated()['vit'];
+        $pokemon->size = $request->validated()['size'];
+        $pokemon->weight = $request->validated()['weight'];
+        $pokemon->type1_id = $request->validated()['type1'];
+        if ($request['type1'] !== $request['type2']) {
+            $pokemon->type2_id = $request->validated()['type2'];
+        }
 
         $pokemon->save();
+
+        if (isset($request['resistances'])) {
+            $pokemon->resistances()->sync($request['resistances']);
+        } else {
+            $pokemon->resistances()->detach();
+        }
+
+        if (isset($request['weaknesses'])) {
+            $pokemon->weaknesses()->sync($request['weaknesses']);
+        } else {
+            $pokemon->weaknesses()->detach();
+        }
     }
 
     /**

@@ -4,15 +4,16 @@ namespace App\Http\Requests;
 
 use App\Rules\UniqueResistance;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class PokemonCreateRequest extends FormRequest
+class PokemonUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return True;
+        return true;
     }
 
     /**
@@ -22,8 +23,14 @@ class PokemonCreateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $pokemonId = $this->route('pokemon');
+
         return [
-            'name' => 'required|unique:pokemon|max:50',
+            'name' => [
+                'required',
+                'max:50',
+                Rule::unique('pokemon')->ignore($pokemonId), // Ignore le Pokémon actuellement en édition
+            ],
             'description' => 'required',
             'hp' => 'required|min:1|max:150',
             'att' => 'required|min:1|max:150',
@@ -35,7 +42,6 @@ class PokemonCreateRequest extends FormRequest
             'weight' => 'required|min:1',
             'type1' => 'required|min:1|max:18',
             'type2' => 'nullable|min:1|max:18',
-            'imgurl' => 'required|image|mimes:png,jpg',
             'weaknesses' => 'array',
             'resistances' => ['array', new UniqueResistance],
         ];

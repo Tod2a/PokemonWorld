@@ -56,6 +56,9 @@ defineProps({
                                 <td class="flex border px-4 py-2">{{ poke.type1.name }} <div v-if="poke.type2 !== null">/{{ poke.type2.name }}</div></td>
                                 <td class="border px-4 py-2 space-x-4">
                                     <a :href="route('pokemon.edit', poke.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</a>
+                                    <form @submit.prevent="this.$inertia.delete(route('pokemon.destroy', poke.id))">
+                                        <button type="submit" class="px-1 py-1 bg-red-300 rounded-lg">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>

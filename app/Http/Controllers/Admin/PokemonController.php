@@ -133,6 +133,7 @@ class PokemonController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pokemon = Pokemon::findOrFail($id);
+        $pokemon->delete();
     }
 }

@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PokemonCreateRequest;
+use App\Models\Attaque;
+use App\Models\AttaqueLevelPokemon;
 use App\Models\Pokemon;
 use App\Models\Type;
+use Database\Seeders\AttaqueSeeder;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
@@ -27,7 +30,8 @@ class PokemonController extends Controller
     public function create()
     {
         $types = Type::all();
-        return inertia('Admin/Pokemon/create', ['types' => $types]);
+        $attacks = Attaque::all();
+        return inertia('Admin/Pokemon/create', ['types' => $types, 'attacks' => $attacks]);
     }
 
     /**
@@ -35,6 +39,7 @@ class PokemonController extends Controller
      */
     public function store(PokemonCreateRequest $request)
     {
+
         $pokemon = Pokemon::make();
         $pokemon->name = $request->validated()['name'];
         $pokemon->description = $request->validated()['description'];
@@ -64,6 +69,16 @@ class PokemonController extends Controller
 
         foreach ($request->validated()['weaknesses'] as $weakness) {
             $pokemon->weaknesses()->sync([$weakness], false);
+        }
+
+        foreach ($request['attacks'] as $attack => $level) {
+            if ($attack > 0 && $level !== null) {
+                $attaquePokemon = AttaqueLevelPokemon::make();
+                $attaquePokemon->pokemon_id = $pokemon->id;
+                $attaquePokemon->attaque_id = $attack;
+                $attaquePokemon->level = $level;
+                $attaquePokemon->save();
+            }
         }
     }
 

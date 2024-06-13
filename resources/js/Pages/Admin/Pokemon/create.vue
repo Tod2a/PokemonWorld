@@ -8,7 +8,9 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 defineProps({
     types: Array,
+    attacks: Array,
 })
+
 
 const form = useForm({
     name: null,
@@ -26,6 +28,7 @@ const form = useForm({
     imgurl: null,
     resistances: [],
     weaknesses: [],
+    attacks: [],
 })
 
 </script>
@@ -115,7 +118,7 @@ const form = useForm({
                             </div>
 
                             <div>
-                                <label for="type2">Type2(nullable)</label>
+                                <label for="type2">Type2(nullable): </label>
                                 <select id="type2" v-model="form.type2">
                                     <option v-for="type in types" :value="type.id" :key="type.id">{{ type.name }}</option>
                                 </select>
@@ -150,7 +153,16 @@ const form = useForm({
                                 </div>
                             </div>
                             
-
+                            <div>
+                                <label for="attacks">Attacks</label>
+                                <ul>
+                                    <li v-for="attack in attacks" :key="attack.id">
+                                        <input type="checkbox" :id="'attack' + attack.id" :value="attack.id" v-model="form.attacks">
+                                        {{ attack.name }}
+                                        <input type="number" v-model="form.attacks[attack.id]">
+                                    </li>
+                                </ul>
+                            </div>
 
 
                             <div class="flex items-center gap-4">

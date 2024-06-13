@@ -1,16 +1,13 @@
 <script setup>
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
+import { Head, Link, useForm } from '@inertiajs/vue3';
+import { onMounted } from 'vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
-defineProps({
-    types: Array,
+const props = defineProps({
+    pokemon: Object,
     attacks: Array,
 })
-
 
 const form = useForm({
     name: null,
@@ -28,17 +25,31 @@ const form = useForm({
     imgurl: null,
     resistances: [],
     weaknesses: [],
-    attacks: [],
 })
+
+
+
+form.name = props.pokemon.name;
+form.description = props.pokemon.description;
+form.hp = props.pokemon.hp;
+form.att = props.pokemon.att;
+form.def = props.pokemon.def;
+form.attspe = props.pokemon.attspe;
+form.defspe = props.pokemon.defspe;
+form.vit = props.pokemon.vit;
+form.size = props.pokemon.size;
+form.weight = props.pokemon.weight;
+form.type1 = props.pokemon.type1.id;
+form.type2 = props.pokemon.type2 ? props.pokemon.type2.id : null;
 
 </script>
 
+
 <template>
     <Head title="Admin" />
-
-    <AuthenticatedLayout>
+    <authenticated-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Make a new pokemon</h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Administation {{ props.pokemon.name }}</h2>
         </template>
         <div class="flex justify-center">
             <div class="my-3">
@@ -46,13 +57,11 @@ const form = useForm({
             </div>
         </div>
 
-
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-
                     <div class="p-6 text-gray-900">
-                        <form @submit.prevent="form.post(route('pokemon.store'), { forceFormData: true })" class="flex flex-col">
+                        <form @submit.prevent="form.put(route('pokemon.update', props.pokemon))" class="flex flex-col">
                             <div>
                                 <label for="name">Name: </label>
                                 <input class="block mt-1 w-full" id="name" type="text" v-model="form.name">
@@ -112,61 +121,7 @@ const form = useForm({
                                 <input class="block mt-1 w-full" id="weight" type="number" v-model="form.weight" step="1">
                                 <div v-if="form.errors.weight">{{ form.errors.weight }}</div>
                             </div>
-
-                            <div>
-                                <label for="type1">Type1(not nullable): </label>
-                                <select class="block mt-1 w-full" id="type1" v-model="form.type1">
-                                    <option v-for="type in types" :value="type.id" :key="type.id">{{ type.name }}</option>
-                                </select>
-                                <div v-if="form.errors.type1">{{ form.errors.type1 }}</div>
-                            </div>
-
-                            <div>
-                                <label for="type2">Type2(nullable): </label>
-                                <select class="block mt-1 w-full" id="type2" v-model="form.type2">
-                                    <option v-for="type in types" :value="type.id" :key="type.id">{{ type.name }}</option>
-                                </select>
-                                <div v-if="form.errors.type2">{{ form.errors.type2 }}</div>
-                            </div>
-
-                            <div>
-                                <label for="imgurl"></label>
-                                <input id="imgurl" type="file" @input="form.imgurl = $event.target.files[0]">
-                                <div v-if="form.errors.imgurl">{{ form.errors.imgurl }}</div>
-                            </div>
-
-                            <div class="flex justify-between">
-
-                                <div>
-                                    <label>Resistances</label>
-                                    <div v-for="type in types" :key="'resistance' + type.id" >
-                                        <input type="checkbox" :id="'resistance' + type.id" :value="type.id" v-model="form.resistances">
-                                        <label :for="'resistance' + type.id">{{ type.name }}</label>
-                                    </div>
-                                    <div v-if="form.errors.resistances">{{ form.errors.resistances }}</div>
-                                </div>
-
-
-                                <div>
-                                    <label>Weaknesses</label>
-                                    <div v-for="type in types" :key="'weakness' + type.id">
-                                        <input type="checkbox" :id="'weakness' + type.id" :value="type.id" v-model="form.weaknesses">
-                                        <label :for="'weakness' + type.id">{{ type.name }}</label>
-                                    </div>
-                                    <div v-if="form.errors.weaknesses">{{ form.errors.weaknesses }}</div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label for="attacks">Attacks</label>
-                                <ul>
-                                    <li v-for="attack in attacks" :key="attack.id">
-                                        <input type="checkbox" :id="'attack' + attack.id" :value="attack.id" v-model="form.attacks">
-                                        {{ attack.name }}
-                                        <input type="number" v-model="form.attacks[attack.id]" placeholder="level ...">
-                                    </li>
-                                </ul>
-                            </div>
+                               
 
 
                             <div class="flex items-center gap-4">
@@ -187,5 +142,6 @@ const form = useForm({
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+
+    </authenticated-layout>
 </template>

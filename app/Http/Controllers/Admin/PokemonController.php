@@ -19,7 +19,7 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemons = Pokemon::paginate(12);
+        $pokemons = Pokemon::with(['type1', 'type2'])->paginate(12);
 
         return inertia('Admin/Pokemon/index', ['pokemon' => $pokemons]);
     }
@@ -95,15 +95,37 @@ class PokemonController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pokemon = Pokemon::with(['type1', 'type2', 'resistances', 'weaknesses'])->findOrFail($id);
+        $pokemonAttacks = AttaqueLevelPokemon::where('pokemon_id', $id)
+            ->with(['attaque', 'attaque.category', 'attaque.type'])
+            ->get()
+            ->map(function ($pokemonAttaque) {
+                return [
+                    'attaque' => $pokemonAttaque->attaque,
+                    'level' => $pokemonAttaque->level,
+                ];
+            });
+
+        return inertia('Admin/Pokemon/edit', ['pokemon' => $pokemon, 'attacks' => $pokemonAttacks]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Pokemon $pokemon)
     {
-        //
+        $pokemon->name = $request['name'];
+        $pokemon->description = $request['description'];
+        $pokemon->hp = $request['hp'];
+        $pokemon->att = $request['att'];
+        $pokemon->def = $request['def'];
+        $pokemon->attspe = $request['attspe'];
+        $pokemon->defspe = $request['defspe'];
+        $pokemon->vit = $request['vit'];
+        $pokemon->size = $request['size'];
+        $pokemon->weight = $request['weight'];
+
+        $pokemon->save();
     }
 
     /**

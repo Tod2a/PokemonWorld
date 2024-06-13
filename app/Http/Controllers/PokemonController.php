@@ -46,7 +46,7 @@ class PokemonController extends Controller
     {
         $pokemon = Pokemon::with(['type1', 'type2', 'resistances', 'weaknesses'])->findOrFail($id);
         $types = Type::all();
-        $pokemonAttaques = AttaqueLevelPokemon::where('pokemon_id', $id)
+        $pokemonAttacks = AttaqueLevelPokemon::where('pokemon_id', $id)
             ->with(['attaque', 'attaque.category', 'attaque.type'])
             ->get()
             ->map(function ($pokemonAttaque) {
@@ -56,6 +56,6 @@ class PokemonController extends Controller
                 ];
             });
 
-        return inertia('Guest/Pokemon/show', ['pokemon' => $pokemon, 'pokemonAttaques' => $pokemonAttaques, 'types' => $types]);
+        return inertia('Guest/Pokemon/show', ['pokemon' => $pokemon, 'pokemonAttaques' => $pokemonAttacks, 'types' => $types]);
     }
 }

@@ -13,7 +13,7 @@ use Inertia\Inertia;
 Route::get('/', [PokemonController::class, 'index'])->name('pokemon.home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('/admin/pokemon', AdminPokemonController::class);
+    Route::resource('/admin/pokemon', AdminPokemonController::class)->except('show');
 });
 
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');

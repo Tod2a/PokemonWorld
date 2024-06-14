@@ -36,7 +36,7 @@ form.is_starting = props.attack.is_starting;
     <Head title="Admin"/>
     <Authenticated-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Administration Attacks</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Administration Attacks</h2>
         </template>
         <div class="flex justify-center">
             <div class="my-3">
@@ -46,7 +46,7 @@ form.is_starting = props.attack.is_starting;
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         <form @submit.prevent="form.put(route('attack.update', props.attack))" class="flex flex-col">
                             <div>
@@ -103,7 +103,7 @@ form.is_starting = props.attack.is_starting;
                                     leave-to-class="opacity-0"
                                 >
 
-                                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">Saved.</p>
+                                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
                                 </Transition>
                             </div>
                         </form>

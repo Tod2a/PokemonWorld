@@ -26,7 +26,7 @@ const form=useForm({
     <Head title="Admin"/>
     <Authenticated-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">New Attack</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">New Attack</h2>
         </template>
         <div class="flex justify-center">
             <div class="my-3">
@@ -35,7 +35,7 @@ const form=useForm({
         </div>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         <form @submit.prevent="form.post(route('attack.store'))" class="flex flex-col">
                             <div>

@@ -18,7 +18,7 @@ const form = useForm({
     <Head title="Admin" />
     <authenticated-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Change image {{ props.pokemon.name }}</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Change image {{ props.pokemon.name }}</h2>
         </template>
         <div class="flex justify-center">
             <div class="my-3">
@@ -26,7 +26,7 @@ const form = useForm({
             </div>
         </div>
 
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg my-2">
             <form @submit.prevent="form.post(route('update.pokemon.image', props.pokemon), { forceFormData: true })">
                 <label for="imgurl">Modifier l'image: </label>
                 <input id="imgurl" type="file" @input="form.url = $event.target.files[0]">
@@ -42,7 +42,7 @@ const form = useForm({
                         leave-to-class="opacity-0"
                     >
 
-                        <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">Saved.</p>
+                        <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
                     </Transition>
                 </div>
             </form>

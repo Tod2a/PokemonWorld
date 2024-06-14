@@ -38,7 +38,7 @@ const form = useForm({
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Make a new pokemon</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Make a new pokemon</h2>
         </template>
         <div class="flex justify-center">
             <div class="my-3">
@@ -49,7 +49,7 @@ const form = useForm({
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                     <div class="p-6 text-gray-900">
                         <form @submit.prevent="form.post(route('pokemon.store'), { forceFormData: true })" class="flex flex-col">
@@ -179,7 +179,7 @@ const form = useForm({
                                     leave-to-class="opacity-0"
                                 >
 
-                                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">Saved.</p>
+                                    <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
                                 </Transition>
                             </div>
                         </form>

@@ -10,7 +10,7 @@ import { Head } from '@inertiajs/vue3';
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Administation Homepage</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Administation Homepage</h2>
         </template>
 
         <div class="py-12">
@@ -20,7 +20,7 @@ import { Head } from '@inertiajs/vue3';
                         
                     
                 </div>
-                <div class="bg-white my-2 p-6 text-gray-900 dark:text-gray-100">
+                <div class="bg-white my-2 p-6 text-gray-900">
                     <h3 class="flex justify-center py-5">Pokemon</h3>
                     <p>When you create a new pokemon, you will just see the startings attacks.</p>
                     <p>we recommend to set the level at 1, and leaving the input empty for the attacks not learned.</p>
@@ -28,7 +28,7 @@ import { Head } from '@inertiajs/vue3';
                     <p>The stats (hp, vit, attspe, ...) should be between 1 and 150</p>
                     <p>You can add one attack to a pokemon many times(a pokemon can learn the same attack at different level)</p>
                 </div>
-                <div class="bg-white my-2 p-6 text-gray-900 dark:text-gray-100">
+                <div class="bg-white my-2 p-6 text-gray-900">
                     <h3 class="flex justify-center py-5">Attacks</h3>
                     <p>Carefull when you delete attacks, the pokemons will lost the attack too.</p>
                     <p> the rules for the attacks:</p>

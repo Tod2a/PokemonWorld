@@ -28,7 +28,7 @@ class AttackSeeder extends Seeder
             'power' => 60,
             'accuracy' => 100,
             'maxpp' => 25,
-            'description' => 'coming soon',
+            'description' => 'A swift and aggressive attack where the Pokémon sinks its sharp teeth into the opponent, causing immediate pain and potential flinching.',
             'is_starting' => true,
             'category_id' => 1,
             'type_id' => 2,

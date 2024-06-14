@@ -86,7 +86,7 @@ onMounted(() => {
     <Head title="Admin"/>
     <authenticated-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Add new attack to {{ props.pokemon.name }}</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Add new attack to {{ props.pokemon.name }}</h2>
         </template>
         <div class="flex justify-center">
             <div class="my-3">
@@ -96,7 +96,7 @@ onMounted(() => {
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         <div class="flex justify-center">
                             <input type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
@@ -113,7 +113,7 @@ onMounted(() => {
                             leave-to-class="opacity-0"
                         >
 
-                            <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">Saved.</p>
+                            <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
                         </Transition>
                         <table class="table-auto w-full">
                             <thead>
@@ -152,7 +152,7 @@ onMounted(() => {
                         </table>
                         <Modal :show="confirmingAttackAdd" @close="closeModal">
                             <div class="p-6">
-                                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                <h2 class="text-lg font-medium text-gray-900">
                                     Are you sure you want to add this attack?
                                 </h2> 
                                 <label for="level">Insert the level when the pokemon learn the attack</label>

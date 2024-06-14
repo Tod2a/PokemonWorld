@@ -47,7 +47,7 @@ const getStatColor = (stat) => {
                     </div>
                     <div class="bg-white px-4 py-4 my-4 rounded-lg">
                         <h3>Resistances/Weaknesses</h3>
-                        <ul class="flex items-center space-x-4">
+                        <ul class="flex items-center justify-between">
                             <li v-for="type in types" :key="type.id" class="flex items-center">
                                 <div>
                                     <img :src="type.imgurl" class="w-10 h-10" />

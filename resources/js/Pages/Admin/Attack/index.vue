@@ -114,6 +114,7 @@ const closeModal = () => {
                                     <td class="border px-4 py-2">{{ attack.maxpp }}</td>
                                     <td class="border px-4 py-2">{{ attack.type.name }}</td>
                                     <td class="border px-4 py-2 space-x-4">
+                                        <Link :href="route('attack.edit', attack.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</Link>
                                         <DangerButton @click="confirmAttackDeletion(attack.id, attack.name)">Delete</DangerButton>
                                     </td>
                                 </tr>

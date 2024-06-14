@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttackCreateRequest;
+use App\Http\Requests\AttackUpdateRequest;
 use App\Models\Attack;
 use App\Models\Category;
 use App\Models\Type;
@@ -85,15 +86,29 @@ class AttackController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $attack = Attack::with(['category', 'type'])->findOrFail($id);
+        $types = Type::all();
+        $categories = Category::all();
+        return inertia('Admin/Attack/edit', ['attack' => $attack, 'categories' => $categories, 'types' => $types]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AttackUpdateRequest $request, Attack $attack)
     {
-        //
+        $validatedData = $request->validated();
+
+        $attack->name = $validatedData['name'];
+        $attack->power = $validatedData['power'];
+        $attack->accuracy = $validatedData['accuracy'];
+        $attack->maxpp = $validatedData['maxpp'];
+        $attack->description = $validatedData['description'];
+        $attack->category_id = $validatedData['category'];
+        $attack->type_id = $validatedData['type'];
+        $attack->is_starting = $validatedData['is_starting'];
+
+        $attack->save();
     }
 
     /**

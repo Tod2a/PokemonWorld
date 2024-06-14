@@ -29,7 +29,7 @@ class PokemonUpdateRequest extends FormRequest
             'name' => [
                 'required',
                 'max:50',
-                Rule::unique('pokemon')->ignore($pokemonId), // Ignore le Pokémon actuellement en édition
+                Rule::unique('pokemon')->ignore($pokemonId),
             ],
             'description' => 'required',
             'hp' => 'required|integer|min:1|max:150',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Attaque;
 use App\Models\AttaqueLevelPokemon;
+use App\Models\Pokemon;
 use Illuminate\Http\Request;
 
 class AttaquePokemonController extends Controller
@@ -20,9 +21,12 @@ class AttaquePokemonController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
-        //
+        $pokemon = Pokemon::findOrFail($id);
+        $attacks = Attaque::paginate(12);
+
+        return inertia('Admin/AttaquePokemon/create', ['pokemon' => $pokemon, 'attacks' => $attacks]);
     }
 
     /**

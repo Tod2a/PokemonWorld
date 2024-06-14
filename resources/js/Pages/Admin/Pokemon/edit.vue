@@ -206,7 +206,14 @@ const closeModal = () => {
                     <Link :href="route('edit.pokemon.image', props.pokemon)" class="bg-gray-300 mx-2 px-2 py-2 rounded-lg">Change image</Link>
                 </div>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
-                    <h3 class="mx-2 my-2">Attacks</h3>
+                    <div class="flex justify-center">
+                        <div class="flex flex-col">
+                            <h3 class="mx-2 my-2">Attacks</h3>
+                            <Link :href="route('attaquepokemon.create', props.pokemon.id)" class="bg-gray-300 px-2 py-2 rounded-lg">Add Attack</Link>
+                        </div>
+                        
+                    </div>
+                    
                     <table class="table-auto w-full">
                         <thead>
                             <tr class="uppercase text-left">

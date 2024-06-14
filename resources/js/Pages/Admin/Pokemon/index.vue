@@ -127,9 +127,9 @@ const closeModal = () => {
                         <tfoot>
                             <tr>
                                 <td colspan="4" class="px-6">
-                                    <Link :href="pokemons.prev_page_url" v-if="pokemons.prev_page_url">&lt; Previous</Link>
+                                    <button @click="fetchPokemons(pokemons.prev_page_url)" v-if="pokemons.prev_page_url">&lt; Previous</button>
                                         Page {{ pokemons.current_page }} of {{ pokemons.last_page }}
-                                    <Link :href="pokemons.next_page_url" v-if="pokemons.next_page_url">Next &gt;</Link>
+                                    <button @click="fetchPokemons(pokemons.next_page_url)" v-if="pokemons.next_page_url">Next &gt;</button>>
                                 </td>
                             </tr>
                         </tfoot>

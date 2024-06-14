@@ -5,6 +5,8 @@ import { onMounted } from 'vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
+import { ref } from 'vue';
+import Modal from '@/Components/Modal.vue';
 
 const props = defineProps({
     pokemon: Object,
@@ -43,6 +45,24 @@ form.type1 = props.pokemon.type1.id;
 form.type2 = props.pokemon.type2 ? props.pokemon.type2.id : null;
 form.resistances = props.pokemon.resistances.map(resistance => resistance.id);
 form.weaknesses = props.pokemon.weaknesses.map(weakness => weakness.id);
+
+const confirmingAttackDeletion = ref(false);
+let $idattack = ref(0);
+
+const confirmAttackDeletion = ($id) => {
+    $idattack.value = $id;
+    confirmingAttackDeletion.value = true;
+};
+
+const deleteAttack = () => {
+    form.delete(route('attaquepokemon.destroy', $idattack.value), {
+        onSuccess : () => closeModal(),
+    });
+};
+
+const closeModal = () => {
+    confirmingAttackDeletion.value = false;
+};
 
 </script>
 
@@ -211,11 +231,25 @@ form.weaknesses = props.pokemon.weaknesses.map(weakness => weakness.id);
                                 <td class="border px-4 py-2">{{ attack.attaque.type.name }}</td>
                                 <td class="border px-4 py-2 space-x-4">
                                     <Link :href="route('attaquepokemon.edit', attack.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</Link>
-                                    <DangerButton @click="confirmPokemonDeletion(attack.id)">Delete</DangerButton>
+                                    <DangerButton @click="confirmAttackDeletion(attack.id)">Delete</DangerButton>
                                 </td>
                             </tr>
                         </tbody>    
                     </table>
+
+                    <Modal :show="confirmingAttackDeletion" @close="closeModal">
+                        <div class="p-6">
+                            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                Are you sure you want to delete this attack?
+                            </h2> 
+                                                    
+                            <div class="mt-6 flex justify-end">
+                                <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
+                            
+                                <DangerButton @click="deleteAttack">Delete</DangerButton>
+                            </div>
+                        </div>
+                    </Modal>
                 </div>
             </div>
         </div>

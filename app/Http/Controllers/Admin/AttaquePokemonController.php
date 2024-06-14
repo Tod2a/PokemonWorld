@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Attaque;
 use App\Models\AttaqueLevelPokemon;
 use Illuminate\Http\Request;
 
@@ -70,6 +71,7 @@ class AttaquePokemonController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $attackpokemon = AttaqueLevelPokemon::findOrFail($id);
+        $attackpokemon->delete();
     }
 }

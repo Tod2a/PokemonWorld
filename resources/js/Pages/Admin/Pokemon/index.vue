@@ -33,7 +33,7 @@ const debouncedSearch = (() => {
         clearTimeout(timerId);
 
         timerId = setTimeout(() => {
-            fetchPokemons(route('pokemon.search'));
+            fetchPokemons(route('adminpokemon.search'));
         }, 300);
     };
 })();

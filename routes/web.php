@@ -5,7 +5,7 @@ use App\Http\Controllers\{
     ProfileController,
     Admin\PokemonController as AdminPokemonController,
     Admin\AttackPokemonController as AttackPokemonController,
-    Admin\AttackController as AttackController
+    Admin\AttackController as AdminAttackController
 };
 
 use Illuminate\Foundation\Application;
@@ -16,14 +16,15 @@ Route::get('/', [PokemonController::class, 'index'])->name('pokemon.home');
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('/admin/pokemon', AdminPokemonController::class)->except('show');
-    Route::get('/admin/pokemon/search', [AdminPokemonController::class, 'search'])->name('adminpokmon.search');
+    Route::get('/admin/pokemon/search', [AdminPokemonController::class, 'search'])->name('adminpokemon.search');
     Route::get('admin/pokemon/editimg/{pokemon}', [AdminPokemonController::class, 'edit_image'])->name('edit.pokemon.image');
     Route::post('admin/pokemon/{pokemon}/editimg', [AdminPokemonController::class, 'update_image'])->name('update.pokemon.image');
     Route::resource('admin/attackpokemon', AttackPokemonController::class)->except('index', 'show', 'create');
     //need a parameter to the url of create
     Route::get('admin/attackpokemon/create/{pokemon}', [AttackPokemonController::class, 'create'])->name('attackpokemon.create');
     Route::get('/admin/attackpokemon/search', [AttackPokemonController::class, 'search'])->name('attackpokemon.search');
-    Route::resource('admin/attack', AttackController::class)->except('show');
+    Route::resource('admin/attack', AdminAttackController::class)->except('show');
+    Route::get('admin/attack/search', [AdminAttackController::class, 'search'])->name('adminattack.search');
 });
 
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');

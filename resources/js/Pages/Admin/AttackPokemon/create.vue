@@ -78,7 +78,6 @@ const debouncedSearch = (() => {
 
 onMounted(() => {
     debouncedSearch();
-    console.log(attacks);
 })
 
 </script>

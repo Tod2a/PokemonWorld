@@ -30,6 +30,11 @@ const showingNavigationDropdown = ref(false);
                                     Pokemon
                                 </NavLink>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('attack.index')" :active="route().current('attack.*')">
+                                    Attack
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -116,6 +121,11 @@ const showingNavigationDropdown = ref(false);
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('pokemon.index')" :active="route().current('pokemon.index')">
                             Admin Pokemon
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('attack.index')" :active="route().current('attack.index')">
+                            Admin Attack
                         </ResponsiveNavLink>
                     </div>
                     

@@ -10,6 +10,8 @@ class Attack extends Model
 {
     use HasFactory;
 
+    protected $table = 'attacks';
+
     public function type()
     {
         return $this->belongsTo(Type::class);

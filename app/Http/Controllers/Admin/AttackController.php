@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AttackCreateRequest;
 use App\Models\Attack;
+use App\Models\Category;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -45,15 +47,29 @@ class AttackController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+        $categories = Category::all();
+        return inertia('Admin/Attack/create', ['types' => $types, 'categories' => $categories]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AttackCreateRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        $attack = Attack::make();
+        $attack->name = $validatedData['name'];
+        $attack->power = $validatedData['power'];
+        $attack->accuracy = $validatedData['accuracy'];
+        $attack->maxpp = $validatedData['maxpp'];
+        $attack->description = $validatedData['description'];
+        $attack->category_id = $validatedData['category'];
+        $attack->type_id = $validatedData['type'];
+        $attack->is_starting = $validatedData['is_starting'];
+
+        $attack->save();
     }
 
     /**

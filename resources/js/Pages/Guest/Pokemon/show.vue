@@ -61,34 +61,46 @@ const getStatColor = (stat) => {
                     <div class="bg-white px-4 py-4 my-4 rounded-lg">
                         <h3>Stats</h3>
                         <div class="flex justify-between px-10">
-                            <div class="flex flex-col">
+                            <div class="flex flex-col items-center">
                                 <p>Hp</p>
-                                <div :class="['h-4', getStatColor(pokemon.hp)]" :style="{ weight: (pokemon.hp / 150 * 100) + '%' }"></div>
+                                <div class="h-20 w-6 bg-gray-300 relative">
+                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.hp)]" :style="{ height: (pokemon.hp / 150 * 100) + '%' }"></div>
+                                </div>
                                 <p>{{ pokemon.hp }}</p>
                             </div>
-                            <div class="flex flex-col">
+                            <div class="flex flex-col items-center">
                                 <p>Att</p>
-                                <div :class="['h-4', getStatColor(pokemon.att)]" :style="{ weight: (pokemon.att / 150 * 100) + '%' }"></div>
+                                <div class="h-20 w-6 bg-gray-300 relative">
+                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.att)]" :style="{ height: (pokemon.att / 150 * 100) + '%' }"></div>
+                                </div>
                                 <p>{{ pokemon.att }}</p>
                             </div>
-                            <div class="flex flex-col">
+                            <div class="flex flex-col items-center">
                                 <p>Def</p>
-                                <div :class="['h-4', getStatColor(pokemon.def)]" :style="{ weight: (pokemon.def / 150 * 100) + '%' }"></div>
+                                <div class="h-20 w-6 bg-gray-300 relative">
+                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.def)]" :style="{ height: (pokemon.def / 150 * 100) + '%' }"></div>
+                                </div>
                                 <p>{{ pokemon.def }}</p>
                             </div>
-                            <div class="flex flex-col">
+                            <div class="flex flex-col items-center">
                                 <p>AttSpe</p>
-                                <div :class="['h-4', getStatColor(pokemon.attspe)]" :style="{ weight: (pokemon.attspe / 150 * 100) + '%' }"></div>
+                                <div class="h-20 w-6 bg-gray-300 relative">
+                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.attspe)]" :style="{ height: (pokemon.attspe / 150 * 100) + '%' }"></div>
+                                </div>
                                 <p>{{ pokemon.attspe }}</p>
                             </div>
-                            <div class="flex flex-col">
+                            <div class="flex flex-col items-center">
                                 <p>DefSpe</p>
-                                <div :class="['h-4', getStatColor(pokemon.defspe)]" :style="{ weight: (pokemon.defspe / 150 * 100) + '%' }"></div>
+                                <div class="h-20 w-6 bg-gray-300 relative">
+                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.defspe)]" :style="{ height: (pokemon.defspe / 150 * 100) + '%' }"></div>
+                                </div>
                                 <p>{{ pokemon.defspe }}</p>
                             </div>
-                            <div class="flex flex-col">
+                            <div class="flex flex-col items-center">
                                 <p>Vit</p>
-                                <div :class="['h-4', getStatColor(pokemon.vit)]" :style="{ weight: (pokemon.vit / 150 * 100) + '%' }"></div>
+                                <div class="h-20 w-6 bg-gray-300 relative">
+                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.vit)]" :style="{ height: (pokemon.vit / 150 * 100) + '%' }"></div>
+                                </div>
                                 <p>{{ pokemon.vit }}</p>
                             </div>
                         </div>

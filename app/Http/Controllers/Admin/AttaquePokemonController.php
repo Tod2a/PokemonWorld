@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Attaque;
 use App\Models\AttaqueLevelPokemon;
 use App\Models\Pokemon;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class AttaquePokemonController extends Controller
@@ -19,14 +20,39 @@ class AttaquePokemonController extends Controller
     }
 
     /**
+     * seaching for the attacks list
+     */
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $type = $request->input('type');
+
+        $attacks = Attaque::with(['type', 'category']);
+
+        if ($query) {
+            $attacks->where('name', 'like', $query . '%');
+        }
+
+        if ($type) {
+            $attacks->whereHas('type', function ($query) use ($type) {
+                $query->where('name', $type);
+            });
+        }
+
+        $result = $attacks->paginate(12);
+
+        return response()->json($result);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create(string $id)
     {
         $pokemon = Pokemon::findOrFail($id);
-        $attacks = Attaque::paginate(12);
+        $types = Type::all();
 
-        return inertia('Admin/AttaquePokemon/create', ['pokemon' => $pokemon, 'attacks' => $attacks]);
+        return inertia('Admin/AttaquePokemon/create', ['pokemon' => $pokemon, 'types' => $types]);
     }
 
     /**

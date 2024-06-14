@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('admin/attaquepokemon', AttaquePokemonController::class)->except('index', 'show', 'create');
     //need a parameter to the url of create
     Route::get('admin/attaquepokemon/create/{pokemon}', [AttaquePokemonController::class, 'create'])->name('attaquepokemon.create');
+    Route::get('/admin/attaquepokemon/search', [AttaquePokemonController::class, 'search'])->name('attaquepokemon.search');
 });
 
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');

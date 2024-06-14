@@ -118,6 +118,11 @@ class PokemonController extends Controller
         return inertia('Admin/Pokemon/edit', ['pokemon' => $pokemon, 'types' => $types, 'attacks' => $pokemonAttacks]);
     }
 
+    public function edit_image(Pokemon $pokemon)
+    {
+        return inertia('Admin/Pokemon/editimg', ['pokemon' => $pokemon]);
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -150,6 +155,19 @@ class PokemonController extends Controller
             $pokemon->weaknesses()->sync($request['weaknesses']);
         } else {
             $pokemon->weaknesses()->detach();
+        }
+    }
+
+    public function update_image(Request $request, Pokemon $pokemon)
+    {
+        $request->validate([
+            'url' => 'required|image|mimes:jpg,png|max:2048',
+        ]);
+
+        if ($request->hasFile('url')) {
+            $path = $request->file('url')->store('images/pokemon', 'public');
+            $pokemon->imgurl = 'storage/' . $path;
+            $pokemon->save();
         }
     }
 

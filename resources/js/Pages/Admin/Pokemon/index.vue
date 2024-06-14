@@ -4,10 +4,41 @@ import DangerButton from '@/Components/DangerButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import Modal from '@/Components/Modal.vue';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
-defineProps({
-    pokemon:Array
+const props = defineProps({
+    types: Array,
+})
+
+const searchQuery = ref('');
+const typeQuery = ref('');
+const pokemons = ref([]);
+
+const fetchPokemons = async (url) => {
+    const response = await axios.get(url, {
+        params: {
+            query: searchQuery.value,
+            type: typeQuery.value
+        },
+        headers: {
+            'X-Inertia': true
+        }
+    });
+    pokemons.value = response.data;
+};
+
+const debouncedSearch = (() => {
+    let timerId;
+    return () => {
+        clearTimeout(timerId);
+
+        timerId = setTimeout(() => {
+            fetchPokemons(route('pokemon.search'));
+        }, 300);
+    };
+})();
+onMounted(() => {
+    debouncedSearch();
 })
 
 const form = useForm({
@@ -52,6 +83,13 @@ const closeModal = () => {
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="flex justify-center">
+                        <input type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
+                        <select v-model="typeQuery" @change="debouncedSearch">
+                            <option value="">All Types</option>
+                            <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
+                        </select>
+                    </div>
                     <table class="table-auto w-full"> 
                         <thead>
                             <tr class="uppercase text-left">
@@ -69,7 +107,7 @@ const closeModal = () => {
                             </tr>
                         </thead>
                         <tbody> 
-                            <tr v-for="poke in pokemon.data" :key="poke.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
+                            <tr v-for="poke in pokemons.data" :key="poke.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
                                 <td class="border px-4 py-2"> {{ poke.name }}</td>
                                 <td class="border px-4 py-2"> {{ poke.hp }}</td>
                                 <td class="border px-4 py-2"> {{ poke.att }}</td>
@@ -89,9 +127,9 @@ const closeModal = () => {
                         <tfoot>
                             <tr>
                                 <td colspan="4" class="px-6">
-                                    <Link :href="pokemon.prev_page_url" v-if="pokemon.prev_page_url">&lt; Previous</Link>
-                                    Page {{ pokemon.current_page }} of {{ pokemon.last_page }}
-                                    <Link :href="pokemon.next_page_url" v-if="pokemon.next_page_url">Next &gt;</Link>
+                                    <Link :href="pokemons.prev_page_url" v-if="pokemons.prev_page_url">&lt; Previous</Link>
+                                        Page {{ pokemons.current_page }} of {{ pokemons.last_page }}
+                                    <Link :href="pokemons.next_page_url" v-if="pokemons.next_page_url">Next &gt;</Link>
                                 </td>
                             </tr>
                         </tfoot>

@@ -16,7 +16,8 @@ Route::get('/', [PokemonController::class, 'index'])->name('pokemon.home');
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('/admin/pokemon', AdminPokemonController::class)->except('show');
-    route::get('admin/pokemon/editimg/{pokemon}', [AdminPokemonController::class, 'edit_image'])->name('edit.pokemon.image');
+    Route::get('/admin/pokemon/search', [AdminPokemonController::class, 'search'])->name('adminpokmon.search');
+    Route::get('admin/pokemon/editimg/{pokemon}', [AdminPokemonController::class, 'edit_image'])->name('edit.pokemon.image');
     Route::post('admin/pokemon/{pokemon}/editimg', [AdminPokemonController::class, 'update_image'])->name('update.pokemon.image');
     Route::resource('admin/attackpokemon', AttackPokemonController::class)->except('index', 'show', 'create');
     //need a parameter to the url of create

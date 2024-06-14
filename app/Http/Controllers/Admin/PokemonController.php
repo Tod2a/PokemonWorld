@@ -19,10 +19,40 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemon = Pokemon::with(['type1', 'type2'])->paginate(12);
+        $types = Type::all();
 
-        return inertia('Admin/Pokemon/index', ['pokemon' => $pokemon]);
+        return inertia('Admin/Pokemon/index', ['types' => $types]);
     }
+
+    /**
+     * Function to search pokemon
+     */
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $type = $request->input('type');
+
+        $pokemons = Pokemon::with(['type1', 'type2']);
+
+        if ($query) {
+            $pokemons->where('name', 'like', $query . '%');
+        }
+
+        if ($type) {
+            $pokemons->where(function ($query) use ($type) {
+                $query->whereHas('type1', function ($query) use ($type) {
+                    $query->where('name', $type);
+                })->orWhereHas('type2', function ($query) use ($type) {
+                    $query->where('name', $type);
+                });
+            });
+        }
+
+        $result = $pokemons->paginate(12);
+
+        return response()->json($result);
+    }
+
 
     /**
      * Show the form for creating a new resource.

@@ -28,6 +28,19 @@ import { Head } from '@inertiajs/vue3';
                     <p>The stats (hp, vit, attspe, ...) should be between 1 and 150</p>
                     <p>You can add one attack to a pokemon many times(a pokemon can learn the same attack at different level)</p>
                 </div>
+                <div class="bg-white my-2 p-6 text-gray-900 dark:text-gray-100">
+                    <h3 class="flex justify-center py-5">Attacks</h3>
+                    <p>Carefull when you delete attacks, the pokemons will lost the attack too.</p>
+                    <p> the rules for the attacks:</p>
+                    <ul>
+                        <li>all attacks should have a category, physical, special or status</li>
+                        <li>one type too</li>
+                        <li>the power should be between 0 and 200</li>
+                        <li>the accuracy between 10 and 100</li>
+                        <li>mappp between 5 and 40</li>
+                        <li>is starting checkbox is for the starter attacks, if checked = true</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </AuthenticatedLayout>

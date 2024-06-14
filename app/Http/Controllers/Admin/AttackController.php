@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Attack;
 use Illuminate\Http\Request;
 
 class AttackController extends Controller
@@ -12,7 +13,8 @@ class AttackController extends Controller
      */
     public function index()
     {
-        //
+        $attacks = Attack::with(['type', 'category'])->paginate(12);
+        return inertia('Admin/Attack/index', ['attacks' => $attacks]);
     }
 
     /**

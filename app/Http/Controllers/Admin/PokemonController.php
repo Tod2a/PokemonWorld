@@ -19,9 +19,9 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemons = Pokemon::with(['type1', 'type2'])->paginate(12);
+        $pokemon = Pokemon::with(['type1', 'type2'])->paginate(12);
 
-        return inertia('Admin/Pokemon/index', ['pokemon' => $pokemons]);
+        return inertia('Admin/Pokemon/index', ['pokemon' => $pokemon]);
     }
 
     /**

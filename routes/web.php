@@ -4,7 +4,8 @@ use App\Http\Controllers\{
     PokemonController,
     ProfileController,
     Admin\PokemonController as AdminPokemonController,
-    Admin\AttackPokemonController as AttackPokemonController
+    Admin\AttackPokemonController as AttackPokemonController,
+    Admin\AttackController as AttackController
 };
 
 use Illuminate\Foundation\Application;
@@ -21,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
     //need a parameter to the url of create
     Route::get('admin/attackpokemon/create/{pokemon}', [AttackPokemonController::class, 'create'])->name('attackpokemon.create');
     Route::get('/admin/attackpokemon/search', [AttackPokemonController::class, 'search'])->name('attackpokemon.search');
+    Route::resource('admin/attack', AttackController::class)->except('show');
 });
 
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');

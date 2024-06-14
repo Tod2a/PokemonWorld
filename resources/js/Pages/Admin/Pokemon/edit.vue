@@ -3,6 +3,8 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import { onMounted } from 'vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import DangerButton from '@/Components/DangerButton.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 const props = defineProps({
     pokemon: Object,
@@ -27,8 +29,6 @@ const form = useForm({
     weaknesses: [],
 });
 
-
-
 form.name = props.pokemon.name;
 form.description = props.pokemon.description;
 form.hp = props.pokemon.hp;
@@ -51,7 +51,7 @@ form.weaknesses = props.pokemon.weaknesses.map(weakness => weakness.id);
     <Head title="Admin" />
     <authenticated-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Administation {{ props.pokemon.name }}</h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Administration {{ props.pokemon.name }}</h2>
         </template>
         <div class="flex justify-center">
             <div class="my-3">
@@ -184,6 +184,38 @@ form.weaknesses = props.pokemon.weaknesses.map(weakness => weakness.id);
                     <h3 class="mx-2 my-2">Image</h3>
                     <img :src="'http://pokemonworld.test/' + props.pokemon.imgurl" class="my-5"/>
                     <Link :href="route('edit.pokemon.image', props.pokemon)" class="bg-gray-300 mx-2 px-2 py-2 rounded-lg">Change image</Link>
+                </div>
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
+                    <h3 class="mx-2 my-2">Attacks</h3>
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr class="uppercase text-left">
+                                <th class="px-4 py-2 border">Category</th>
+                                <th class="px-4 py-2 border">Name</th>
+                                <th class="px-4 py-2 border">level</th>
+                                <th class="px-4 py-2 border">power</th>
+                                <th class="px-4 py-2 border">accuracy</th>
+                                <th class="px-4 py-2 border">MaxPP</th>
+                                <th class="px-4 py-2 border">type</th>
+                                <th class="px-4 py-2 border">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="attack in attacks" :key="attack.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
+                                <td class="border px-4 py-2">{{ attack.attaque.category.name }}</td>
+                                <td class="border px-4 py-2">{{ attack.attaque.name }}</td>
+                                <td class="border px-4 py-2">{{ attack.level }}</td>
+                                <td class="border px-4 py-2">{{ attack.attaque.power }}</td>
+                                <td class="border px-4 py-2">{{ attack.attaque.accuracy }}</td>
+                                <td class="border px-4 py-2">{{ attack.attaque.maxpp }}</td>
+                                <td class="border px-4 py-2">{{ attack.attaque.type.name }}</td>
+                                <td class="border px-4 py-2 space-x-4">
+                                    <Link :href="route('attaquepokemon.edit', attack.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</Link>
+                                    <DangerButton @click="confirmPokemonDeletion(attack.id)">Delete</DangerButton>
+                                </td>
+                            </tr>
+                        </tbody>    
+                    </table>
                 </div>
             </div>
         </div>

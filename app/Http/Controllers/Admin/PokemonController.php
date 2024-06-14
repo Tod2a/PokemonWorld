@@ -78,7 +78,7 @@ class PokemonController extends Controller
 
         if ($request['attacks'] !== null) {
             foreach ($request['attacks'] as $attack => $level) {
-                if ($attack > 0 && $level !== null) {
+                if ($attack > 0 && $level !== null && $level < 100) {
                     $attaquePokemon = AttaqueLevelPokemon::make();
                     $attaquePokemon->pokemon_id = $pokemon->id;
                     $attaquePokemon->attaque_id = $attack;
@@ -112,6 +112,7 @@ class PokemonController extends Controller
                 return [
                     'attaque' => $pokemonAttaque->attaque,
                     'level' => $pokemonAttaque->level,
+                    'id' => $pokemonAttaque->id,
                 ];
             });
 

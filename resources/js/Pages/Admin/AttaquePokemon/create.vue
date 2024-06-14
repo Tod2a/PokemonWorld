@@ -7,11 +7,46 @@ import DangerButton from '@/Components/DangerButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import { ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
+import InputError from '@/Components/InputError.vue';
 
 const props = defineProps({
     pokemon: Object,
     types: Array,
 })
+
+const form = useForm({
+    pokemon: null,
+    attack: null,
+    level: null,
+})
+
+form.pokemon = props.pokemon.id;
+
+const confirmingAttackAdd = ref(false);
+let errorlevel = null;
+
+const confirmAttackAdd = ($id) => {
+    form.attack = $id;
+    confirmingAttackAdd.value = true;
+};
+
+const addAttack = () => {
+    if (form.level < 1) {
+        errorlevel = 'Level must be at least 1';
+    } else {
+        errorlevel = null;
+            
+        form.post(route('attaquepokemon.store'), {
+            onSuccess : () => closeModal(),
+        });
+    }
+};
+
+const closeModal = () => {
+    confirmingAttackAdd.value = false;
+    form.reset();
+    form.pokemon = props.pokemon.id;
+};
 
 const searchQuery = ref('');
 const typeQuery = ref('');
@@ -72,6 +107,15 @@ onMounted(() => {
                                 <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
                             </select>
                         </div>
+                        <Transition
+                            enter-active-class="transition ease-in-out"
+                            enter-from-class="opacity-0"
+                            leave-active-class="transition ease-in-out"
+                            leave-to-class="opacity-0"
+                        >
+
+                            <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">Saved.</p>
+                        </Transition>
                         <table class="table-auto w-full">
                             <thead>
                                 <tr class="uppercase text-left">
@@ -81,7 +125,7 @@ onMounted(() => {
                                     <th class="px-4 py-2 border">accuracy</th>
                                     <th class="px-4 py-2 border">MaxPP</th>
                                     <th class="px-4 py-2 border">type</th>
-                                    <th class="px-4 py-2 border">Actions</th>
+                                    <th class="px-4 py-2 border">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,7 +137,7 @@ onMounted(() => {
                                     <td class="border px-4 py-2">{{ attack.maxpp }}</td>
                                     <td class="border px-4 py-2">{{ attack.type.name }}</td>
                                     <td class="border px-4 py-2 space-x-4">
-
+                                        <PrimaryButton @click="confirmAttackAdd(attack.id)">Add</PrimaryButton>
                                     </td>
                                 </tr>
                             </tbody> 
@@ -107,7 +151,21 @@ onMounted(() => {
                                 </tr>
                             </tfoot>   
                         </table>
-                        
+                        <Modal :show="confirmingAttackAdd" @close="closeModal">
+                            <div class="p-6">
+                                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                    Are you sure you want to add this attack?
+                                </h2> 
+                                <label for="level">Insert the level when the pokemon learn the attack</label>
+                                <input id="level" type="number" class="mt-1 block w-3/4" placeholder="Level" v-model="form.level" min="1" required/> 
+                                <InputError :message="errorlevel" class="mt-2" />               
+                                <div class="mt-6 flex justify-end">
+                                    <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
+                            
+                                    <PrimaryButton @click="addAttack">Add</PrimaryButton>
+                                </div>
+                            </div>
+                        </Modal>
                     </div>
                 </div>
             </div>

@@ -60,7 +60,17 @@ class AttaquePokemonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'pokemon' => 'required|min:1',
+            'attack' => 'required|min:1',
+            'level' => 'required|integer|min:1|max:100',
+        ]);
+
+        $attackPokemon = AttaqueLevelPokemon::make();
+        $attackPokemon->attaque_id = $request['attack'];
+        $attackPokemon->pokemon_id = $request['pokemon'];
+        $attackPokemon->level = $request['level'];
+        $attackPokemon->save();
     }
 
     /**

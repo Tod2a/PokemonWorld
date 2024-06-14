@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('power');
             $table->integer('accuracy');
             $table->integer('maxpp');
-            $table->string('description');
+            $table->text('description');
             $table->boolean('is_starting');
             $table->foreignId('category_id')->constrained();
             $table->foreignId('type_id')->constrained()->onDelete('cascade');

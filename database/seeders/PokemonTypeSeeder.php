@@ -51,5 +51,11 @@ class PokemonTypeSeeder extends Seeder
 
         $folunarque->resistances()->sync([$water->id, $electric->id, $grass->id, $psychic->id, $ground->id, $ghost->id, $dark->id], false);
         $folunarque->weaknesses()->sync([$fight->id, $fairy->id, $fire->id, $ice->id, $bug->id, $poison->id, $flying->id], false);
+
+        $noctoflore->resistances()->sync([$water->id, $electric->id, $grass->id, $psychic->id, $ground->id, $ghost->id, $dark->id]);
+        $noctoflore->weaknesses()->sync([$fight->id, $fairy->id, $fire->id, $ice->id, $bug->id, $poison->id, $flying->id], false);
+
+        $emberaptor->resistances()->sync([$steel->id, $fairy->id, $fire->id, $ice->id, $bug->id, $grass->id]);
+        $emberaptor->weaknesses()->sync([$water->id, $rock->id, $ground->id]);
     }
 }

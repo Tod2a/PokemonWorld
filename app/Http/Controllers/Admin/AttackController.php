@@ -101,6 +101,7 @@ class AttackController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $attack = Attack::findOrFail($id);
+        $attack->delete();
     }
 }

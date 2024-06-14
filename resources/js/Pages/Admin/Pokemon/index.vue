@@ -42,13 +42,15 @@ onMounted(() => {
 })
 
 const form = useForm({
-    id: null
+    id: null,
+    name: null
 })
 
 const confirmingPokemonDeletion = ref(false);
 
-const confirmPokemonDeletion = ($id) => {
+const confirmPokemonDeletion = ($id, $name) => {
     form.id = $id;
+    form.name = $name;
     confirmingPokemonDeletion.value = true;
 };
 
@@ -61,6 +63,7 @@ const deletePokemon = () => {
 const closeModal = () => {
     confirmingPokemonDeletion.value = false;
     form.reset();
+    debouncedSearch();
 };
 
 </script>
@@ -120,7 +123,7 @@ const closeModal = () => {
                                 <td class="flex border px-4 py-2">{{ poke.type1.name }} <div v-if="poke.type2 !== null">/{{ poke.type2.name }}</div></td>
                                 <td class="border px-4 py-2 space-x-4">
                                     <Link :href="route('pokemon.edit', poke.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</Link>
-                                    <DangerButton @click="confirmPokemonDeletion(poke.id)">Delete</DangerButton>
+                                    <DangerButton @click="confirmPokemonDeletion(poke.id, poke.name)">Delete</DangerButton>
                                 </td>
                             </tr>
                         </tbody>
@@ -138,7 +141,7 @@ const closeModal = () => {
                     <Modal :show="confirmingPokemonDeletion" @close="closeModal">
                         <div class="p-6">
                             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                Are you sure you want to delete this pokemon?
+                                Are you sure you want to delete this pokemon? ({{ form.name }})
                             </h2> 
                                                     
                             <div class="mt-6 flex justify-end">

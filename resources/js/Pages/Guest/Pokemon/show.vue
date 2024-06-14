@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/vue3';
 
 defineProps({
     pokemon: Object,
-    pokemonAttaques: Array,
+    pokemonAttacks: Array,
     types: Array
 })
 
@@ -103,15 +103,15 @@ const getStatColor = (stat) => {
                         <span class="px-3">Type</span>
                         <span>Description</span>
                     </li>
-                    <li v-for="pokemonAttaque in pokemonAttaques" :key="pokemonAttaque.attaque.id" class="flex py-2">
-                        <span class="px-6"><img :src="pokemonAttaque.attaque.category.imgurl" :alt="pokemonAttaque.attaque.category.name"/></span>
-                        <span class="px-6">{{ pokemonAttaque.attaque.name }}</span>
-                        <span class="px-6">{{ pokemonAttaque.level }}</span>
-                        <span class="px-6">{{ pokemonAttaque.attaque.power }}</span>
-                        <span class="px-8">{{ pokemonAttaque.attaque.accuracy }}</span>
-                        <span class="px-8">{{ pokemonAttaque.attaque.maxpp }}</span>
-                        <span class="px-2"><img :src="pokemonAttaque.attaque.type.imgurl" :alt="pokemonAttaque.attaque.type.name" class="w-1/4"/></span>
-                        <span class="px-1">{{ pokemonAttaque.attaque.description }}</span>
+                    <li v-for="pokemonAttack in pokemonAttacks" :key="pokemonAttack.attack.id" class="flex py-2">
+                        <span class="px-6"><img :src="pokemonAttack.attack.category.imgurl" :alt="pokemonAttack.attack.category.name"/></span>
+                        <span class="px-6">{{ pokemonAttack.attack.name }}</span>
+                        <span class="px-6">{{ pokemonAttack.level }}</span>
+                        <span class="px-6">{{ pokemonAttack.attack.power }}</span>
+                        <span class="px-8">{{ pokemonAttack.attack.accuracy }}</span>
+                        <span class="px-8">{{ pokemonAttack.attack.maxpp }}</span>
+                        <span class="px-2"><img :src="pokemonAttack.attack.type.imgurl" :alt="pokemonAttack.attack.type.name" class="w-1/4"/></span>
+                        <span class="px-1">{{ pokemonAttack.attack.description }}</span>
                     </li>
                 </ul>
             </div>

@@ -55,7 +55,7 @@ const confirmAttackDeletion = ($id) => {
 };
 
 const deleteAttack = () => {
-    form.delete(route('attaquepokemon.destroy', $idattack.value), {
+    form.delete(route('attackpokemon.destroy', $idattack.value), {
         onSuccess : () => closeModal(),
     });
 };
@@ -209,7 +209,7 @@ const closeModal = () => {
                     <div class="flex justify-center">
                         <div class="flex flex-col">
                             <h3 class="mx-2 my-2">Attacks</h3>
-                            <Link :href="route('attaquepokemon.create', props.pokemon.id)" class="bg-gray-300 px-2 py-2 rounded-lg">Add Attack</Link>
+                            <Link :href="route('attackpokemon.create', props.pokemon.id)" class="bg-gray-300 px-2 py-2 rounded-lg">Add Attack</Link>
                         </div>
                         
                     </div>
@@ -229,15 +229,15 @@ const closeModal = () => {
                         </thead>
                         <tbody>
                             <tr v-for="attack in attacks" :key="attack.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
-                                <td class="border px-4 py-2">{{ attack.attaque.category.name }}</td>
-                                <td class="border px-4 py-2">{{ attack.attaque.name }}</td>
+                                <td class="border px-4 py-2">{{ attack.attack.category.name }}</td>
+                                <td class="border px-4 py-2">{{ attack.attack.name }}</td>
                                 <td class="border px-4 py-2">{{ attack.level }}</td>
-                                <td class="border px-4 py-2">{{ attack.attaque.power }}</td>
-                                <td class="border px-4 py-2">{{ attack.attaque.accuracy }}</td>
-                                <td class="border px-4 py-2">{{ attack.attaque.maxpp }}</td>
-                                <td class="border px-4 py-2">{{ attack.attaque.type.name }}</td>
+                                <td class="border px-4 py-2">{{ attack.attack.power }}</td>
+                                <td class="border px-4 py-2">{{ attack.attack.accuracy }}</td>
+                                <td class="border px-4 py-2">{{ attack.attack.maxpp }}</td>
+                                <td class="border px-4 py-2">{{ attack.attack.type.name }}</td>
                                 <td class="border px-4 py-2 space-x-4">
-                                    <Link :href="route('attaquepokemon.edit', attack.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</Link>
+                                    <Link :href="route('attackpokemon.edit', attack.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</Link>
                                     <DangerButton @click="confirmAttackDeletion(attack.id)">Delete</DangerButton>
                                 </td>
                             </tr>

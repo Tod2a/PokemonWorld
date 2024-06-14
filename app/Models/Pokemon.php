@@ -21,9 +21,9 @@ class Pokemon extends Model
         return $this->belongsTo(Type::class, "type2_id");
     }
 
-    public function pokemonAttaqueLevels()
+    public function attackLevelPokemon()
     {
-        return $this->HasMany(AttaqueLevelPokemon::class);
+        return $this->HasMany(AttackLevelPokemon::class);
     }
 
     public function resistances()

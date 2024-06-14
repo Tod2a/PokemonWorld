@@ -22,8 +22,8 @@ class Category extends Model
         ];
     }
 
-    public function Attaques()
+    public function Attacks()
     {
-        return $this->hasMany(Attaque::class);
+        return $this->hasMany(Attack::class);
     }
 }

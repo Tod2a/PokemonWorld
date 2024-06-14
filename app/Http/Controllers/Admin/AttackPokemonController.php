@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Attaque;
-use App\Models\AttaqueLevelPokemon;
+use App\Models\Attack;
+use App\Models\AttackLevelPokemon;
 use App\Models\Pokemon;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
-class AttaquePokemonController extends Controller
+class AttackPokemonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class AttaquePokemonController extends Controller
         $query = $request->input('query');
         $type = $request->input('type');
 
-        $attacks = Attaque::with(['type', 'category']);
+        $attacks = Attack::with(['type', 'category']);
 
         if ($query) {
             $attacks->where('name', 'like', $query . '%');
@@ -52,7 +52,7 @@ class AttaquePokemonController extends Controller
         $pokemon = Pokemon::findOrFail($id);
         $types = Type::all();
 
-        return inertia('Admin/AttaquePokemon/create', ['pokemon' => $pokemon, 'types' => $types]);
+        return inertia('Admin/AttackPokemon/create', ['pokemon' => $pokemon, 'types' => $types]);
     }
 
     /**
@@ -66,8 +66,8 @@ class AttaquePokemonController extends Controller
             'level' => 'required|integer|min:1|max:100',
         ]);
 
-        $attackPokemon = AttaqueLevelPokemon::make();
-        $attackPokemon->attaque_id = $request['attack'];
+        $attackPokemon = AttackLevelPokemon::make();
+        $attackPokemon->attack_id = $request['attack'];
         $attackPokemon->pokemon_id = $request['pokemon'];
         $attackPokemon->level = $request['level'];
         $attackPokemon->save();
@@ -86,8 +86,8 @@ class AttaquePokemonController extends Controller
      */
     public function edit(string $id)
     {
-        $attackPokemon = AttaqueLevelPokemon::with(['attaque', 'pokemon'])->findOrFail($id);
-        return inertia('Admin/AttaquePokemon/edit', ['attack' => $attackPokemon]);
+        $attackPokemon = AttackLevelPokemon::with(['attack', 'pokemon'])->findOrFail($id);
+        return inertia('Admin/AttackPokemon/edit', ['attack' => $attackPokemon]);
     }
 
     /**
@@ -99,7 +99,7 @@ class AttaquePokemonController extends Controller
             'level' => 'required|min:1|max:100',
         ]);
 
-        $attackPokemon = AttaqueLevelPokemon::findOrFail($id);
+        $attackPokemon = AttackLevelPokemon::findOrFail($id);
 
         $attackPokemon->level = $request['level'];
 
@@ -111,7 +111,7 @@ class AttaquePokemonController extends Controller
      */
     public function destroy(string $id)
     {
-        $attackpokemon = AttaqueLevelPokemon::findOrFail($id);
+        $attackpokemon = AttackLevelPokemon::findOrFail($id);
         $attackpokemon->delete();
     }
 }

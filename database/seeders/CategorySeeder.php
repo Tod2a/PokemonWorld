@@ -14,17 +14,17 @@ class CategorySeeder extends Seeder
     {
         \App\Models\Category::create([
             'name' => \App\Models\Category::PHYSICS,
-            'imgurl' => '/storage/images/attaque/physical.png'
+            'imgurl' => '/storage/images/attack/physical.png'
         ]);
 
         \App\Models\Category::create([
             'name' => \App\Models\Category::SPECIAL,
-            'imgurl' => '/storage/images/attaque/special.png'
+            'imgurl' => '/storage/images/attack/special.png'
         ]);
 
         \App\Models\Category::create([
             'name' => \App\Models\Category::STATUS,
-            'imgurl' => '/storage/images/attaque/status.png'
+            'imgurl' => '/storage/images/attack/status.png'
         ]);
     }
 }

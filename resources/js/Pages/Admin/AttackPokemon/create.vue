@@ -36,7 +36,7 @@ const addAttack = () => {
     } else {
         errorlevel = null;
             
-        form.post(route('attaquepokemon.store'), {
+        form.post(route('attackpokemon.store'), {
             onSuccess : () => closeModal(),
         });
     }
@@ -71,7 +71,7 @@ const debouncedSearch = (() => {
         clearTimeout(timerId);
 
         timerId = setTimeout(() => {
-            fetchAttacks(route('attaquepokemon.search'));
+            fetchAttacks(route('attackpokemon.search'));
         }, 300);
     };
 })();

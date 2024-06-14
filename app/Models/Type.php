@@ -9,14 +9,14 @@ class Type extends Model
 {
     use HasFactory;
 
-    public function Pokemons()
+    public function Pokemon()
     {
         return $this->hasMany(Pokemon::class);
     }
 
-    public function Attaques()
+    public function Attacks()
     {
-        return $this->hasMany(Attaque::class);
+        return $this->hasMany(Attack::class);
     }
 
     public function resistantPokemons()

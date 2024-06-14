@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AttaqueLevelPokemon extends Model
+class AttackLevelPokemon extends Model
 {
     use HasFactory;
 
@@ -14,8 +14,8 @@ class AttaqueLevelPokemon extends Model
         return $this->belongsTo(Pokemon::class);
     }
 
-    public function attaque()
+    public function attack()
     {
-        return $this->belongsTo(Attaque::class);
+        return $this->belongsTo(Attack::class);
     }
 }

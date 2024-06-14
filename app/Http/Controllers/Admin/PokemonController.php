@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PokemonCreateRequest;
 use App\Http\Requests\PokemonUpdateRequest;
-use App\Models\Attaque;
-use App\Models\AttaqueLevelPokemon;
+use App\Models\Attack;
+use App\Models\AttackLevelPokemon;
 use App\Models\Pokemon;
 use App\Models\Type;
-use Database\Seeders\AttaqueSeeder;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
@@ -31,7 +30,7 @@ class PokemonController extends Controller
     public function create()
     {
         $types = Type::all();
-        $attacks = Attaque::where('is_starting', true)->get();
+        $attacks = Attack::where('is_starting', true)->get();
         return inertia('Admin/Pokemon/create', ['types' => $types, 'attacks' => $attacks]);
     }
 
@@ -79,11 +78,11 @@ class PokemonController extends Controller
         if ($request['attacks'] !== null) {
             foreach ($request['attacks'] as $attack => $level) {
                 if ($attack > 0 && $level !== null && $level < 100) {
-                    $attaquePokemon = AttaqueLevelPokemon::make();
-                    $attaquePokemon->pokemon_id = $pokemon->id;
-                    $attaquePokemon->attaque_id = $attack;
-                    $attaquePokemon->level = $level;
-                    $attaquePokemon->save();
+                    $attackPokemon = AttackLevelPokemon::make();
+                    $attackPokemon->pokemon_id = $pokemon->id;
+                    $attackPokemon->attack_id = $attack;
+                    $attackPokemon->level = $level;
+                    $attackPokemon->save();
                 }
             }
         }
@@ -105,14 +104,14 @@ class PokemonController extends Controller
     {
         $pokemon = Pokemon::with(['type1', 'type2', 'resistances', 'weaknesses'])->findOrFail($id);
         $types = Type::all();
-        $pokemonAttacks = AttaqueLevelPokemon::where('pokemon_id', $id)
-            ->with(['attaque', 'attaque.category', 'attaque.type'])
+        $pokemonAttacks = AttackLevelPokemon::where('pokemon_id', $id)
+            ->with(['attack', 'attack.category', 'attack.type'])
             ->get()
-            ->map(function ($pokemonAttaque) {
+            ->map(function ($pokemonAttack) {
                 return [
-                    'attaque' => $pokemonAttaque->attaque,
-                    'level' => $pokemonAttaque->level,
-                    'id' => $pokemonAttaque->id,
+                    'attack' => $pokemonAttack->attack,
+                    'level' => $pokemonAttack->level,
+                    'id' => $pokemonAttack->id,
                 ];
             });
 

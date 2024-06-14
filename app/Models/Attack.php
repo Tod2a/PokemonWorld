@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Attaque extends Model
+class Attack extends Model
 {
     use HasFactory;
 
@@ -15,9 +15,9 @@ class Attaque extends Model
         return $this->belongsTo(Type::class);
     }
 
-    public function pokemonAttaqueLevels()
+    public function attackLevelPokemon()
     {
-        return $this->HasMany(AttaqueLevelPokemon::class);
+        return $this->HasMany(AttackLevelPokemon::class);
     }
 
     public function category()

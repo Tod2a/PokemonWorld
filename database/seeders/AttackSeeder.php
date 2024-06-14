@@ -5,14 +5,14 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AttaqueSeeder extends Seeder
+class AttackSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Pound',
             'power' => 40,
             'accuracy' => 100,
@@ -23,7 +23,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 13,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Bite',
             'power' => 60,
             'accuracy' => 100,
@@ -34,7 +34,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 2,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Leaf Blade',
             'power' => 60,
             'accuracy' => 100,
@@ -45,7 +45,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 10,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Pound1',
             'power' => 40,
             'accuracy' => 100,
@@ -56,7 +56,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 13,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Bite1',
             'power' => 60,
             'accuracy' => 100,
@@ -67,7 +67,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 2,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Leaf Blade1',
             'power' => 60,
             'accuracy' => 100,
@@ -78,7 +78,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 10,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Pound2',
             'power' => 40,
             'accuracy' => 100,
@@ -89,7 +89,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 13,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Bite2',
             'power' => 60,
             'accuracy' => 100,
@@ -100,7 +100,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 2,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Leaf Blade2',
             'power' => 60,
             'accuracy' => 100,
@@ -111,7 +111,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 10,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Pound3',
             'power' => 40,
             'accuracy' => 100,
@@ -122,7 +122,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 13,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Bite3',
             'power' => 60,
             'accuracy' => 100,
@@ -133,7 +133,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 2,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Leaf Blade3',
             'power' => 60,
             'accuracy' => 100,
@@ -144,7 +144,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 10,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Pound4',
             'power' => 40,
             'accuracy' => 100,
@@ -155,7 +155,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 13,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Bite4',
             'power' => 60,
             'accuracy' => 100,
@@ -166,7 +166,7 @@ class AttaqueSeeder extends Seeder
             'type_id' => 2,
         ]);
 
-        \App\Models\Attaque::create([
+        \App\Models\Attack::create([
             'name' => 'Leaf Blade4',
             'power' => 60,
             'accuracy' => 100,

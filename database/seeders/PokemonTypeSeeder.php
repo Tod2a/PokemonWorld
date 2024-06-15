@@ -52,10 +52,25 @@ class PokemonTypeSeeder extends Seeder
         $folunarque->resistances()->sync([$water->id, $electric->id, $grass->id, $psychic->id, $ground->id, $ghost->id, $dark->id], false);
         $folunarque->weaknesses()->sync([$fight->id, $fairy->id, $fire->id, $ice->id, $bug->id, $poison->id, $flying->id], false);
 
-        $noctoflore->resistances()->sync([$water->id, $electric->id, $grass->id, $psychic->id, $ground->id, $ghost->id, $dark->id]);
+        $noctoflore->resistances()->sync([$water->id, $electric->id, $grass->id, $psychic->id, $ground->id, $ghost->id, $dark->id], false);
         $noctoflore->weaknesses()->sync([$fight->id, $fairy->id, $fire->id, $ice->id, $bug->id, $poison->id, $flying->id], false);
 
-        $emberaptor->resistances()->sync([$steel->id, $fairy->id, $fire->id, $ice->id, $bug->id, $grass->id]);
-        $emberaptor->weaknesses()->sync([$water->id, $rock->id, $ground->id]);
+        $emberaptor->resistances()->sync([$steel->id, $fairy->id, $fire->id, $ice->id, $bug->id, $grass->id], false);
+        $emberaptor->weaknesses()->sync([$water->id, $rock->id, $ground->id], false);
+
+        $infernalynx->resistances()->sync([$steel->id, $fairy->id, $fire->id, $ice->id, $bug->id, $grass->id], false);
+        $infernalynx->weaknesses()->sync([$water->id, $rock->id, $ground->id], false);
+
+        $phoenixiraptor->resistances()->sync([$steel->id, $fight->id, $fairy->id, $fire->id, $bug->id, $grass->id, $ground->id], false);
+        $phoenixiraptor->weaknesses()->sync([$water->id, $electric->id, $rock->id], false);
+
+        $aquadon->resistances()->sync([$steel->id, $water->id, $fire->id, $ice->id], false);
+        $aquadon->weaknesses()->sync([$electric->id, $grass->id], false);
+
+        $glacierippo->resistances()->sync([$water->id, $ice->id], false);
+        $glacierippo->weaknesses()->sync([$fight->id, $electric->id, $grass->id, $rock->id], false);
+
+        $cryostodon->resistances()->sync([$water->id, $ice->id], false);
+        $cryostodon->weaknesses()->sync([$fight->id, $electric->id, $grass->id, $rock->id], false);
     }
 }

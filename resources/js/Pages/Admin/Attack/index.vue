@@ -20,9 +20,6 @@ const fetchAttacks = async (url) => {
             query: searchQuery.value,
             type: typeQuery.value
         },
-        headers: {
-            'X-Inertia': true
-        }
     });
     attacks.value = response.data;
 };
@@ -118,7 +115,7 @@ const closeModal = () => {
                                         <DangerButton @click="confirmAttackDeletion(attack.id, attack.name)">Delete</DangerButton>
                                     </td>
                                 </tr>
-                            </tbody> 
+                            </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="7" class="px-6">
@@ -127,17 +124,17 @@ const closeModal = () => {
                                         <button @click="fetchAttacks(attacks.next_page_url)" v-if="attacks.next_page_url">Next &gt;</button>
                                     </td>
                                 </tr>
-                            </tfoot>   
+                            </tfoot>
                         </table>
                         <Modal :show="confirmingAttackDeletion" @close="closeModal">
                         <div class="p-6">
                             <h2 class="text-lg font-medium text-gray-900">
                                 Are you sure you want to delete this attack? ({{ form.name }})
-                            </h2> 
-                                                    
+                            </h2>
+
                             <div class="mt-6 flex justify-end">
                                 <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
-                            
+
                                 <DangerButton @click="deleteAttack">Delete</DangerButton>
                             </div>
                         </div>

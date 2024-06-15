@@ -20,9 +20,6 @@ const fetchPokemons = async (url) => {
             query: searchQuery.value,
             type: typeQuery.value
         },
-        headers: {
-            'X-Inertia': true
-        }
     });
     pokemons.value = response.data;
 };
@@ -93,7 +90,7 @@ const closeModal = () => {
                             <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
                         </select>
                     </div>
-                    <table class="table-auto w-full"> 
+                    <table class="table-auto w-full">
                         <thead>
                             <tr class="uppercase text-left">
                                 <th class="px-4 py-2 border">Name</th>
@@ -109,7 +106,7 @@ const closeModal = () => {
                                 <th class="px-4 py-2 border">Actions</th>
                             </tr>
                         </thead>
-                        <tbody> 
+                        <tbody>
                             <tr v-for="poke in pokemons.data" :key="poke.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
                                 <td class="border px-4 py-2"> {{ poke.name }}</td>
                                 <td class="border px-4 py-2"> {{ poke.hp }}</td>
@@ -142,11 +139,11 @@ const closeModal = () => {
                         <div class="p-6">
                             <h2 class="text-lg font-medium text-gray-900">
                                 Are you sure you want to delete this pokemon? ({{ form.name }})
-                            </h2> 
-                                                    
+                            </h2>
+
                             <div class="mt-6 flex justify-end">
                                 <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
-                            
+
                                 <DangerButton @click="deletePokemon">Delete</DangerButton>
                             </div>
                         </div>

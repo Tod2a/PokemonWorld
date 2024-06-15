@@ -35,7 +35,7 @@ const addAttack = () => {
         errorlevel = 'Level must be at least 1';
     } else {
         errorlevel = null;
-            
+
         form.post(route('attackpokemon.store'), {
             onSuccess : () => closeModal(),
         });
@@ -58,9 +58,6 @@ const fetchAttacks = async (url) => {
             query: searchQuery.value,
             type: typeQuery.value
         },
-        headers: {
-            'X-Inertia': true
-        }
     });
     attacks.value = response.data;
 };
@@ -139,7 +136,7 @@ onMounted(() => {
                                         <PrimaryButton @click="confirmAttackAdd(attack.id)">Add</PrimaryButton>
                                     </td>
                                 </tr>
-                            </tbody> 
+                            </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="7" class="px-6">
@@ -148,19 +145,19 @@ onMounted(() => {
                                         <button @click="fetchAttacks(attacks.next_page_url)" v-if="attacks.next_page_url">Next &gt;</button>
                                     </td>
                                 </tr>
-                            </tfoot>   
+                            </tfoot>
                         </table>
                         <Modal :show="confirmingAttackAdd" @close="closeModal">
                             <div class="p-6">
                                 <h2 class="text-lg font-medium text-gray-900">
                                     Are you sure you want to add this attack?
-                                </h2> 
+                                </h2>
                                 <label for="level">Insert the level when the pokemon learn the attack</label>
-                                <input id="level" type="number" class="mt-1 block w-3/4" placeholder="Level" v-model="form.level" min="1" required/> 
-                                <InputError :message="errorlevel" class="mt-2" />               
+                                <input id="level" type="number" class="mt-1 block w-3/4" placeholder="Level" v-model="form.level" min="1" required/>
+                                <InputError :message="errorlevel" class="mt-2" />
                                 <div class="mt-6 flex justify-end">
                                     <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
-                            
+
                                     <PrimaryButton @click="addAttack">Add</PrimaryButton>
                                 </div>
                             </div>

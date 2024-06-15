@@ -17,9 +17,6 @@ const fetchPokemons = async (url) => {
             query: searchQuery.value,
             type: typeQuery.value
         },
-        headers: {
-            'X-Inertia': true
-        }
     });
     pokemons.value = response.data;
 };

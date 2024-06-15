@@ -43,66 +43,66 @@ const getStatColor = (stat) => {
                             <img :src="pokemon.type1.imgurl"/>
                             <img :src="pokemon.type2.imgurl" :alt="pokemon.type2.name" v-if="pokemon.type2"/>
                         </div>
-                        <div class="w-full sm:max-w-md bg-white rounded-lg px-2 py-2">
-                            <h3>About {{ pokemon.name }}</h3>
-                            <p>size: {{ pokemon.size/100 }}M</p>
-                            <p>weight: {{ pokemon.weight/100 }}Kg</p>
-                            <p>description: {{ pokemon.description }}</p>
+                        <div class="w-full sm:max-w-md bg-white rounded-lg px-2 py-2 bg-yellow-200 border-4 border-red-600">
+                            <h3 class="font-bold">About {{ pokemon.name }}</h3>
+                            <div><div class="font-bold">Size: </div>{{ pokemon.size/100 }}M</div>
+                            <div><div class="font-bold">Weight: </div>{{ pokemon.weight/100 }}Kg</div>
+                            <div><div class="font-bold">Description: </div>{{ pokemon.description }}</div>
                         </div>
                     </div>
-                    <div class="bg-white px-4 py-4 my-4 rounded-lg">
-                        <h3>Resistances/Weaknesses</h3>
+                    <div class="bg-white px-4 py-4 my-4 rounded-lg bg-yellow-200 border-4 border-red-600">
+                        <h3 class="font-bold">Resistances/Weaknesses</h3>
                         <ul class="flex items-center justify-between">
                             <li v-for="type in types" :key="type.id" class="flex items-center">
                                 <div>
                                     <img :src="type.imgurl" class="w-10 h-10" />
                                     <div v-if="pokemon.resistances.some(resistance => resistance.name === type.name)" class="w-8 h-7 bg-green-300 ml-1"></div>
                                     <div v-else-if="pokemon.weaknesses.some(weakness => weakness.name === type.name)" class="w-8 h-7 bg-red-300 ml-1"></div>
-                                    <div v-else class="w-8 h-7 bg-white ml-1"></div>
+                                    <div v-else class="w-8 h-7 bg-transparent ml-1"></div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <div class="bg-white px-4 py-4 my-4 rounded-lg">
-                        <h3>Stats</h3>
+                    <div class="bg-white px-4 py-4 my-4 rounded-lg bg-yellow-200 border-4 border-red-600">
+                        <h3 class="font-bold">Stats</h3>
                         <div class="flex justify-between px-10">
                             <div class="flex flex-col items-center">
-                                <p>Hp</p>
+                                <p class="font-bold">Hp</p>
                                 <div class="h-20 w-6 bg-gray-300 relative">
                                     <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.hp)]" :style="{ height: (pokemon.hp / 150 * 100) + '%' }"></div>
                                 </div>
                                 <p>{{ pokemon.hp }}</p>
                             </div>
                             <div class="flex flex-col items-center">
-                                <p>Att</p>
+                                <p class="font-bold">Att</p>
                                 <div class="h-20 w-6 bg-gray-300 relative">
                                     <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.att)]" :style="{ height: (pokemon.att / 150 * 100) + '%' }"></div>
                                 </div>
                                 <p>{{ pokemon.att }}</p>
                             </div>
                             <div class="flex flex-col items-center">
-                                <p>Def</p>
+                                <p class="font-bold">Def</p>
                                 <div class="h-20 w-6 bg-gray-300 relative">
                                     <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.def)]" :style="{ height: (pokemon.def / 150 * 100) + '%' }"></div>
                                 </div>
                                 <p>{{ pokemon.def }}</p>
                             </div>
                             <div class="flex flex-col items-center">
-                                <p>AttSpe</p>
+                                <p class="font-bold">AttSpe</p>
                                 <div class="h-20 w-6 bg-gray-300 relative">
                                     <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.attspe)]" :style="{ height: (pokemon.attspe / 150 * 100) + '%' }"></div>
                                 </div>
                                 <p>{{ pokemon.attspe }}</p>
                             </div>
                             <div class="flex flex-col items-center">
-                                <p>DefSpe</p>
+                                <p class="font-bold">DefSpe</p>
                                 <div class="h-20 w-6 bg-gray-300 relative">
                                     <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.defspe)]" :style="{ height: (pokemon.defspe / 150 * 100) + '%' }"></div>
                                 </div>
                                 <p>{{ pokemon.defspe }}</p>
                             </div>
                             <div class="flex flex-col items-center">
-                                <p>Vit</p>
+                                <p class="font-bold">Vit</p>
                                 <div class="h-20 w-6 bg-gray-300 relative">
                                     <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.vit)]" :style="{ height: (pokemon.vit / 150 * 100) + '%' }"></div>
                                 </div>
@@ -110,12 +110,12 @@ const getStatColor = (stat) => {
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white px-4 py-4 my-4 rounded-lg">
-                        <h3>Attacks</h3>
+                    <div class="bg-white px-4 py-4 my-4 rounded-lg bg-yellow-200 border-4 border-red-600">
+                        <h3 class="font-bold">Attacks</h3>
                         <div class="overflow-x-auto">
                             <table class="table-auto w-full border-collapse">
                                 <thead>
-                                    <tr class="bg-gray-200">
+                                    <tr class="bg-yellow-400">
                                         <th class="border px-4 py-2">Category</th>
                                         <th class="border px-4 py-2">Name</th>
                                         <th class="border px-4 py-2">Level</th>

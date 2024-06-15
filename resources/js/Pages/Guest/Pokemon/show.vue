@@ -1,6 +1,7 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import PokemonLink from '@/Components/PokemonLink.vue';
 
 defineProps({
     pokemon: Object,
@@ -23,12 +24,16 @@ const getStatColor = (stat) => {
 <template>
     <head title="Pokedex"/>
     <GuestLayout>
+        
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{{ pokemon.name }}</h2>
         </template>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
+                <div class="flex">
+                    <PokemonLink :evopokemon="pokemon.evolution.prevolution_pokemon" :level="pokemon.evolution.level" v-if="pokemon.evolution !== null" class="mr-auto"/>
+                    <PokemonLink :evopokemon="pokemon.prevolution.evolution_pokemon" :level="pokemon.prevolution.level" v-if="pokemon.prevolution !== null" class="ml-auto"/>
+                </div>   
                 <div class="flex flex-col">
                     <div class="flex space-x-10">
                         <div class="w-full sm:max-w-md">

@@ -1,0 +1,61 @@
+classDiagram
+    class Categories {
+        - name: enum
+        - imgurl: string
+    }
+
+    class Types {
+        - name: string
+        - imgurl: string
+        - color: string
+    }
+
+    class Pokemon {
+        - name: string
+        - description: text
+        - hp: integer
+        - att: integer
+        - def: integer
+        - attspe: integer
+        - defspe: integer
+        - vit: integer
+        - size: integer
+        - weight: integer
+        - imgurl: string
+    }
+
+    class Attacks {
+        - name: string
+        - power: integer
+        - accuracy: integer
+        - maxpp: integer
+        - description: text
+        - is_starting: boolean
+    }
+
+    class AttackLevelPokemon {
+        - level: integer
+    }
+
+    class PokemonResistance {
+
+    }
+
+    class PokemonWeakness {
+
+    }
+
+    class Evolutions {
+        - level: integer
+    }
+
+    Categories -- Attacks : "HasMany"
+    Types -- Pokemon : "BelongsTo"
+    Types -- Attacks : "HasMany"
+    Pokemon -- AttackLevelPokemon : "HasMany"
+    Pokemon -- PokemonResistance : "HasMany"
+    Pokemon -- PokemonWeakness : "HasMany"
+    Pokemon -- Evolutions : "HasMany"
+    PokemonResistance -- Types
+    PokemonWeakness -- Types
+    AttackLevelPokemon -- Attacks

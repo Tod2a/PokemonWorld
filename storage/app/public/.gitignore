@@ -10,3 +10,4 @@
 !images/attack/*.png
 !images/layout
 !images/layout/*.jpg
+!images/*.txt

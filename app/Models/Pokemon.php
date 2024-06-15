@@ -28,12 +28,12 @@ class Pokemon extends Model
 
     public function resistances()
     {
-        return $this->belongsToMany(Type::class, 'pokemon_resistance');
+        return $this->belongsToMany(Type::class, 'pokemon_resistances');
     }
 
     public function weaknesses()
     {
-        return $this->belongsToMany(Type::class, 'pokemon_weakness');
+        return $this->belongsToMany(Type::class, 'pokemon_weaknesses');
     }
 
     public function evolution()

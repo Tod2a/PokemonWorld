@@ -21,11 +21,11 @@ class Type extends Model
 
     public function resistantPokemons()
     {
-        return $this->belongsToMany(Pokemon::class, 'pokemon_resistance');
+        return $this->belongsToMany(Pokemon::class, 'pokemon_resistances');
     }
 
     public function weakPokemons()
     {
-        return $this->belongsToMany(Pokemon::class, 'pokemon_weakness');
+        return $this->belongsToMany(Pokemon::class, 'pokemon_weaknesses');
     }
 }

@@ -37,11 +37,11 @@ classDiagram
         - level: integer
     }
 
-    class PokemonResistance {
+    class PokemonResistances {
 
     }
 
-    class PokemonWeakness {
+    class PokemonWeaknesses {
 
     }
 
@@ -53,9 +53,9 @@ classDiagram
     Types -- Pokemon : "BelongsTo"
     Types -- Attacks : "HasMany"
     Pokemon -- AttackLevelPokemon : "HasMany"
-    Pokemon -- PokemonResistance : "HasMany"
-    Pokemon -- PokemonWeakness : "HasMany"
+    Pokemon -- PokemonResistances : "HasMany"
+    Pokemon -- PokemonWeaknesses : "HasMany"
     Pokemon -- Evolutions : "HasMany"
-    PokemonResistance -- Types
-    PokemonWeakness -- Types
+    PokemonResistances -- Types
+    PokemonWeaknesses -- Types
     AttackLevelPokemon -- Attacks

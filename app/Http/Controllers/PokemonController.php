@@ -54,8 +54,9 @@ class PokemonController extends Controller
                     'attack' => $pokemonAttack->attack,
                     'level' => $pokemonAttack->level,
                 ];
-            });
+            })
+            ->sortBy('level');
 
-        return inertia('Guest/Pokemon/show', ['pokemon' => $pokemon, 'pokemonAttacks' => $pokemonAttacks, 'types' => $types]);
+        return inertia('Guest/Pokemon/show', ['pokemon' => $pokemon, 'pokemonAttacks' => $pokemonAttacks->values()->all(), 'types' => $types]);
     }
 }

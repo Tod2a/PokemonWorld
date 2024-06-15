@@ -187,5 +187,159 @@ class AttackSeeder extends Seeder
             'category_id' => 2,
             'type_id' => 15,
         ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Water Pulse',
+            'power' => 60,
+            'accuracy' => 100,
+            'maxpp' => 20,
+            'description' => 'The user attacks the target with a pulsing blast of water. It may also confuse the target, making it difficult for them to concentrate on the battle.',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 18,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Hydro Pump',
+            'power' => 110,
+            'accuracy' => 80,
+            'maxpp' => 5,
+            'description' => 'The user blasts the target with a huge volume of water launched under great pressure. It’s a highly powerful attack, though it can miss its mark.',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 18,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Aqua Tail',
+            'power' => 90,
+            'accuracy' => 90,
+            'maxpp' => 10,
+            'description' => 'The user attacks by swinging its tail as if it were a vicious wave in a raging storm. This move can strike with impressive power.',
+            'is_starting' => false,
+            'category_id' => 1,
+            'type_id' => 18,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Solar Beam',
+            'power' => 120,
+            'accuracy' => 100,
+            'maxpp' => 10,
+            'description' => 'In this two-turn attack, the user gathers light, then blasts a bundled beam on the next turn.',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 10,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Razor Leaf',
+            'power' => 55,
+            'accuracy' => 95,
+            'maxpp' => 25,
+            'description' => 'Sharp-edged leaves are launched to slash at opposing Pokémon. Critical hits land more easily.',
+            'is_starting' => false,
+            'category_id' => 1,
+            'type_id' => 10,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Flamethrower',
+            'power' => 90,
+            'accuracy' => 100,
+            'maxpp' => 15,
+            'description' => 'The target is scorched with an intense blast of fire. This may also leave the target with a burn.',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 7,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Fire Blast',
+            'power' => 110,
+            'accuracy' => 85,
+            'maxpp' => 5,
+            'description' => 'The target is attacked with an intense blast of all-consuming fire. This may also leave the target with a burn.',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 7,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Flare Blitz',
+            'power' => 120,
+            'accuracy' => 100,
+            'maxpp' => 15,
+            'description' => 'The user cloaks itself in fire and charges the target. The user sustains serious damage and may leave the target burned.',
+            'is_starting' => false,
+            'category_id' => 1,
+            'type_id' => 7,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Dark Pulse',
+            'power' => 80,
+            'accuracy' => 100,
+            'maxpp' => 15,
+            'description' => 'The user releases a horrible aura imbued with dark thoughts. This may also make the target flinch.',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 2,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Night Slash',
+            'power' => 70,
+            'accuracy' => 100,
+            'maxpp' => 15,
+            'description' => 'The user slashes the target the instant an opportunity arises. Critical hits land more easily.',
+            'is_starting' => false,
+            'category_id' => 1,
+            'type_id' => 2,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Air Slash',
+            'power' => 75,
+            'accuracy' => 95,
+            'maxpp' => 15,
+            'description' => 'The user attacks with a blade of air that slices even the sky. This may also make the target flinch.',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 8,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Brave Bird',
+            'power' => 120,
+            'accuracy' => 100,
+            'maxpp' => 15,
+            'description' => 'The user tucks in its wings and charges from a low altitude. The user also takes serious damage.',
+            'is_starting' => false,
+            'category_id' => 1,
+            'type_id' => 8,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Ice Beam',
+            'power' => 90,
+            'accuracy' => 100,
+            'maxpp' => 10,
+            'description' => 'The target is struck with an icy-cold beam of energy. This may also leave the target frozen.',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 12,
+        ]);
+
+        \App\Models\Attack::create([
+            'name' => 'Blizzard',
+            'power' => 110,
+            'accuracy' => 70,
+            'maxpp' => 5,
+            'description' => 'A howling blizzard is summoned to strike opposing Pokémon. This may also leave the opposing Pokémon frozen.',
+            'is_starting' => false,
+            'category_id' => 2,
+            'type_id' => 12,
+        ]);
     }
 }

@@ -7,6 +7,7 @@ import DangerButton from '@/Components/DangerButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import { ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
+import { TrashIcon, PencilIcon } from '@heroicons/vue/24/outline';
 
 const props = defineProps({
     pokemon: Object,
@@ -237,8 +238,10 @@ const closeModal = () => {
                                 <td class="border px-4 py-2">{{ attack.attack.maxpp }}</td>
                                 <td class="border px-4 py-2">{{ attack.attack.type.name }}</td>
                                 <td class="border px-4 py-2 space-x-4">
-                                    <Link :href="route('attackpokemon.edit', attack.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</Link>
-                                    <DangerButton @click="confirmAttackDeletion(attack.id)">Delete</DangerButton>
+                                    <div class="flex space-x-4">
+                                        <Link :href="route('attackpokemon.edit', attack.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
+                                        <Button @click="confirmAttackDeletion(attack.id)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
+                                    </div>                        
                                 </td>
                             </tr>
                         </tbody>    

@@ -5,6 +5,7 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import Modal from '@/Components/Modal.vue';
 import { ref, onMounted } from 'vue';
+import { TrashIcon, PencilIcon } from '@heroicons/vue/24/outline';
 
 const props = defineProps({
     types: Array,
@@ -111,8 +112,10 @@ const closeModal = () => {
                                     <td class="border px-4 py-2">{{ attack.maxpp }}</td>
                                     <td class="border px-4 py-2">{{ attack.type.name }}</td>
                                     <td class="border px-4 py-2 space-x-4">
-                                        <Link :href="route('attack.edit', attack.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</Link>
-                                        <DangerButton @click="confirmAttackDeletion(attack.id, attack.name)">Delete</DangerButton>
+                                        <div class="flex space-x-4">
+                                            <Link :href="route('attack.edit', attack.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
+                                            <Button @click="confirmAttackDeletion(attack.id, attack.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>

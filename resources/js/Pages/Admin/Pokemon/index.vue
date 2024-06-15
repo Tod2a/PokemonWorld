@@ -5,6 +5,7 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import Modal from '@/Components/Modal.vue';
 import { onMounted, ref } from 'vue';
+import { TrashIcon, PencilIcon } from '@heroicons/vue/24/outline';
 
 const props = defineProps({
     types: Array,
@@ -119,8 +120,10 @@ const closeModal = () => {
                                 <td class="border px-4 py-2"> {{ poke.weight }}</td>
                                 <td class="flex border px-4 py-2">{{ poke.type1.name }} <div v-if="poke.type2 !== null">/{{ poke.type2.name }}</div></td>
                                 <td class="border px-4 py-2 space-x-4">
-                                    <Link :href="route('pokemon.edit', poke.id)" class="px-1 py-1 bg-blue-300 rounded-lg">Edit</Link>
-                                    <DangerButton @click="confirmPokemonDeletion(poke.id, poke.name)">Delete</DangerButton>
+                                    <div class="flex space-x-4">
+                                        <Link :href="route('pokemon.edit', poke.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
+                                        <Button @click="confirmPokemonDeletion(poke.id, poke.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

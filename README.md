@@ -9,10 +9,10 @@
 
 ## Installation
 
-Clone the repository
-composer install
-npm install
-npm install @heroicons/vue@latest (to use the icons)
+ - Clone the repository
+ - composer install
+ - npm install
+ - npm install @heroicons/vue@latest (to use the icons)
 
 ## About Laravel
 

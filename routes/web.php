@@ -5,7 +5,8 @@ use App\Http\Controllers\{
     ProfileController,
     Admin\PokemonController as AdminPokemonController,
     Admin\AttackPokemonController as AttackPokemonController,
-    Admin\AttackController as AdminAttackController
+    Admin\AttackController as AdminAttackController,
+    AttackController
 };
 
 use Illuminate\Foundation\Application;
@@ -29,6 +30,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');
 Route::get('/pokemon/{id}', [PokemonController::class, 'show'])->name('pokemon.show');
+
+Route::get('/attack', [AttackController::class, 'index'])->name('front.attack.index');
+Route::get('attack/search', [AttackController::class, 'search'])->name('front.attack.search');
 
 Route::get('/admin', function () {
     return Inertia::render('Admin/index');

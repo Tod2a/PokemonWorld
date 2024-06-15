@@ -66,12 +66,12 @@ onMounted(() => {
                 </thead>
                 <tbody>
                     <tr v-for="attack in attacks.data" :key="attack.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
-                                    <td class="border px-4 py-2">{{ attack.category.name }}</td>
+                                    <td class="border px-4 py-2"><img :src="attack.category.imgurl" :alt="attack.category.name"/></td>
                                     <td class="border px-4 py-2">{{ attack.name }}</td>
                                     <td class="border px-4 py-2">{{ attack.power }}</td>
                                     <td class="border px-4 py-2">{{ attack.accuracy }}</td>
                                     <td class="border px-4 py-2">{{ attack.maxpp }}</td>
-                                    <td class="border px-4 py-2">{{ attack.type.name }}</td>
+                                    <td class="border px-4 py-2"><img :src="attack.type.imgurl" :alt="attack.type.name"/></td>
                                     <td class="border px-4 py-2 space-x-4">{{ attack.description }}</td>
                                 </tr>
                 </tbody>

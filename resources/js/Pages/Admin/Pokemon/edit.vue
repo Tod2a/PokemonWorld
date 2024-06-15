@@ -48,15 +48,18 @@ form.resistances = props.pokemon.resistances.map(resistance => resistance.id);
 form.weaknesses = props.pokemon.weaknesses.map(weakness => weakness.id);
 
 const confirmingAttackDeletion = ref(false);
-let $idattack = ref(0);
+let idattack = ref(0);
+let attackname = ref('');
 
-const confirmAttackDeletion = ($id) => {
-    $idattack.value = $id;
+
+const confirmAttackDeletion = (id, name) => {
+    idattack.value = id;
+    attackname.value = name;
     confirmingAttackDeletion.value = true;
 };
 
 const deleteAttack = () => {
-    form.delete(route('attackpokemon.destroy', $idattack.value), {
+    form.delete(route('attackpokemon.destroy', idattack.value), {
         onSuccess : () => closeModal(),
     });
 };
@@ -240,7 +243,7 @@ const closeModal = () => {
                                 <td class="border px-4 py-2 space-x-4">
                                     <div class="flex space-x-4">
                                         <Link :href="route('attackpokemon.edit', attack.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
-                                        <Button @click="confirmAttackDeletion(attack.id)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
+                                        <Button @click="confirmAttackDeletion(attack.id, attack.attack.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
                                     </div>                        
                                 </td>
                             </tr>
@@ -252,7 +255,7 @@ const closeModal = () => {
                     <Modal :show="confirmingAttackDeletion" @close="closeModal">
                         <div class="p-6">
                             <h2 class="text-lg font-medium text-gray-900">
-                                Are you sure you want to delete this attack?
+                                Are you sure you want to remove this attack ({{ attackname }}) from {{ props.pokemon.name}}? 
                             </h2> 
                                                     
                             <div class="mt-6 flex justify-end">

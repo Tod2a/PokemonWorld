@@ -91,44 +91,47 @@ const closeModal = () => {
                                 <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
                             </select>
                         </div>
-                        <table class="table-auto w-full">
-                            <thead>
-                                <tr class="uppercase text-left">
-                                    <th class="px-4 py-2 border">Category</th>
-                                    <th class="px-4 py-2 border">Name</th>
-                                    <th class="px-4 py-2 border">power</th>
-                                    <th class="px-4 py-2 border">accuracy</th>
-                                    <th class="px-4 py-2 border">MaxPP</th>
-                                    <th class="px-4 py-2 border">type</th>
-                                    <th class="px-4 py-2 border">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="attack in attacks.data" :key="attack.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
-                                    <td class="border px-4 py-2">{{ attack.category.name }}</td>
-                                    <td class="border px-4 py-2">{{ attack.name }}</td>
-                                    <td class="border px-4 py-2">{{ attack.power }}</td>
-                                    <td class="border px-4 py-2">{{ attack.accuracy }}</td>
-                                    <td class="border px-4 py-2">{{ attack.maxpp }}</td>
-                                    <td class="border px-4 py-2">{{ attack.type.name }}</td>
-                                    <td class="border px-4 py-2 space-x-4">
-                                        <div class="flex space-x-4">
-                                            <Link :href="route('attack.edit', attack.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
-                                            <Button @click="confirmAttackDeletion(attack.id, attack.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="7" class="px-6">
-                                        <button @click="fetchAttacks(attacks.prev_page_url)" v-if="attacks.prev_page_url">&lt; Previous</button>
-                                        Page {{ attacks.current_page }} of {{ attacks.last_page }}
-                                        <button @click="fetchAttacks(attacks.next_page_url)" v-if="attacks.next_page_url">Next &gt;</button>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                        <div class="overflow-x-auto">
+                            <table class="table-auto w-full">
+                                <thead>
+                                    <tr class="uppercase text-left">
+                                        <th class="px-4 py-2 border">Category</th>
+                                        <th class="px-4 py-2 border">Name</th>
+                                        <th class="px-4 py-2 border">power</th>
+                                        <th class="px-4 py-2 border">accuracy</th>
+                                        <th class="px-4 py-2 border">MaxPP</th>
+                                        <th class="px-4 py-2 border">type</th>
+                                        <th class="px-4 py-2 border">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="attack in attacks.data" :key="attack.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
+                                        <td class="border px-4 py-2">{{ attack.category.name }}</td>
+                                        <td class="border px-4 py-2">{{ attack.name }}</td>
+                                        <td class="border px-4 py-2">{{ attack.power }}</td>
+                                        <td class="border px-4 py-2">{{ attack.accuracy }}</td>
+                                        <td class="border px-4 py-2">{{ attack.maxpp }}</td>
+                                        <td class="border px-4 py-2">{{ attack.type.name }}</td>
+                                        <td class="border px-4 py-2 space-x-4">
+                                            <div class="flex space-x-4">
+                                                <Link :href="route('attack.edit', attack.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
+                                                <Button @click="confirmAttackDeletion(attack.id, attack.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="7" class="px-6">
+                                            <button @click="fetchAttacks(attacks.prev_page_url)" v-if="attacks.prev_page_url">&lt; Previous</button>
+                                            Page {{ attacks.current_page }} of {{ attacks.last_page }}
+                                            <button @click="fetchAttacks(attacks.next_page_url)" v-if="attacks.next_page_url">Next &gt;</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        
                         <Modal :show="confirmingAttackDeletion" @close="closeModal">
                         <div class="p-6">
                             <h2 class="text-lg font-medium text-gray-900">

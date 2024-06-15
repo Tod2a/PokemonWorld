@@ -214,8 +214,8 @@ const closeModal = () => {
                         </div>
                         
                     </div>
-                    
-                    <table class="table-auto w-full">
+                    <div class="overflow-x-auto">
+                        <table class="table-auto w-full">
                         <thead>
                             <tr class="uppercase text-left">
                                 <th class="px-4 py-2 border">Category</th>
@@ -247,6 +247,8 @@ const closeModal = () => {
                         </tbody>    
                     </table>
 
+                    </div>
+                    
                     <Modal :show="confirmingAttackDeletion" @close="closeModal">
                         <div class="p-6">
                             <h2 class="text-lg font-medium text-gray-900">

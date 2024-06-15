@@ -91,52 +91,55 @@ const closeModal = () => {
                             <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
                         </select>
                     </div>
-                    <table class="table-auto w-full">
-                        <thead>
-                            <tr class="uppercase text-left">
-                                <th class="px-4 py-2 border">Name</th>
-                                <th class="px-4 py-2 border">Hp</th>
-                                <th class="px-4 py-2 border">Att</th>
-                                <th class="px-4 py-2 border">Def</th>
-                                <th class="px-4 py-2 border">Attspe</th>
-                                <th class="px-4 py-2 border">Defspe</th>
-                                <th class="px-4 py-2 border">Vit</th>
-                                <th class="px-4 py-2 border">Size</th>
-                                <th class="px-4 py-2 border">Weight</th>
-                                <th class="px-4 py-2 border">Types</th>
-                                <th class="px-4 py-2 border">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="poke in pokemons.data" :key="poke.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
-                                <td class="border px-4 py-2"> {{ poke.name }}</td>
-                                <td class="border px-4 py-2"> {{ poke.hp }}</td>
-                                <td class="border px-4 py-2"> {{ poke.att }}</td>
-                                <td class="border px-4 py-2"> {{ poke.def }}</td>
-                                <td class="border px-4 py-2"> {{ poke.attspe }}</td>
-                                <td class="border px-4 py-2"> {{ poke.defspe }}</td>
-                                <td class="border px-4 py-2"> {{ poke.vit }}</td>
-                                <td class="border px-4 py-2"> {{ poke.size }}</td>
-                                <td class="border px-4 py-2"> {{ poke.weight }}</td>
-                                <td class="flex border px-4 py-2">{{ poke.type1.name }} <div v-if="poke.type2 !== null">/{{ poke.type2.name }}</div></td>
-                                <td class="border px-4 py-2 space-x-4">
-                                    <div class="flex space-x-4">
-                                        <Link :href="route('pokemon.edit', poke.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
-                                        <Button @click="confirmPokemonDeletion(poke.id, poke.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="4" class="px-6">
-                                    <button @click="fetchPokemons(pokemons.prev_page_url)" v-if="pokemons.prev_page_url">&lt; Previous</button>
-                                        Page {{ pokemons.current_page }} of {{ pokemons.last_page }}
-                                    <button @click="fetchPokemons(pokemons.next_page_url)" v-if="pokemons.next_page_url">Next &gt;</button>>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <div class="overflow-x-auto">
+                        <table class="table-auto w-full">
+                            <thead>
+                                <tr class="uppercase text-left">
+                                    <th class="px-4 py-2 border">Name</th>
+                                    <th class="px-4 py-2 border">Hp</th>
+                                    <th class="px-4 py-2 border">Att</th>
+                                    <th class="px-4 py-2 border">Def</th>
+                                    <th class="px-4 py-2 border">Attspe</th>
+                                    <th class="px-4 py-2 border">Defspe</th>
+                                    <th class="px-4 py-2 border">Vit</th>
+                                    <th class="px-4 py-2 border">Size</th>
+                                    <th class="px-4 py-2 border">Weight</th>
+                                    <th class="px-4 py-2 border">Types</th>
+                                    <th class="px-4 py-2 border">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="poke in pokemons.data" :key="poke.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
+                                    <td class="border px-4 py-2"> {{ poke.name }}</td>
+                                    <td class="border px-4 py-2"> {{ poke.hp }}</td>
+                                    <td class="border px-4 py-2"> {{ poke.att }}</td>
+                                    <td class="border px-4 py-2"> {{ poke.def }}</td>
+                                    <td class="border px-4 py-2"> {{ poke.attspe }}</td>
+                                    <td class="border px-4 py-2"> {{ poke.defspe }}</td>
+                                    <td class="border px-4 py-2"> {{ poke.vit }}</td>
+                                    <td class="border px-4 py-2"> {{ poke.size }}</td>
+                                    <td class="border px-4 py-2"> {{ poke.weight }}</td>
+                                    <td class="flex border px-4 py-2">{{ poke.type1.name }} <div v-if="poke.type2 !== null">/{{ poke.type2.name }}</div></td>
+                                    <td class="border px-4 py-2 space-x-4">
+                                        <div class="flex space-x-4">
+                                            <Link :href="route('pokemon.edit', poke.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
+                                            <Button @click="confirmPokemonDeletion(poke.id, poke.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" class="px-6">
+                                        <button @click="fetchPokemons(pokemons.prev_page_url)" v-if="pokemons.prev_page_url">&lt; Previous</button>
+                                            Page {{ pokemons.current_page }} of {{ pokemons.last_page }}
+                                        <button @click="fetchPokemons(pokemons.next_page_url)" v-if="pokemons.next_page_url">Next &gt;</button>>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
 
                     <Modal :show="confirmingPokemonDeletion" @close="closeModal">
                         <div class="p-6">

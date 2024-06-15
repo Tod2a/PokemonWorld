@@ -56,7 +56,7 @@ class PokemonController extends Controller
                 ];
             })
             ->sortBy('level');
-        $pokemon->imgurl = asset($pokemon->imgurl);
+
         return inertia('Guest/Pokemon/show', ['pokemon' => $pokemon, 'pokemonAttacks' => $pokemonAttacks->values()->all(), 'types' => $types]);
     }
 }

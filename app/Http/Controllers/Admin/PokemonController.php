@@ -144,7 +144,7 @@ class PokemonController extends Controller
                     'id' => $pokemonAttack->id,
                 ];
             });
-        $pokemon->imgurl = asset($pokemon->imgurl);
+
         return inertia('Admin/Pokemon/edit', ['pokemon' => $pokemon, 'types' => $types, 'attacks' => $pokemonAttacks]);
     }
 

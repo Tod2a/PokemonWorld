@@ -29,6 +29,8 @@ import { Link } from '@inertiajs/vue3';
             </div>
         </header>
 
+        <!-- https://dev.to/mmcclure11/mobile-responsive-table-with-tailwindcss-57db -->
+
         <div>
             <slot />
         </div>

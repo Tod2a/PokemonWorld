@@ -203,7 +203,7 @@ const closeModal = () => {
                 </div>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
                     <h3 class="mx-2 my-2">Image</h3>
-                    <img :src="'http://pokemonworld.test/' + props.pokemon.imgurl" class="my-5"/>
+                    <img :src="props.pokemon.imgurl" class="my-5"/>
                     <Link :href="route('edit.pokemon.image', props.pokemon)" class="bg-gray-300 mx-2 px-2 py-2 rounded-lg">Change image</Link>
                 </div>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">

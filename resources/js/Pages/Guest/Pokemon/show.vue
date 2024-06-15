@@ -32,7 +32,7 @@ const getStatColor = (stat) => {
                 <div class="flex flex-col">
                     <div class="flex space-x-10">
                         <div class="w-full sm:max-w-md">
-                            <img :src="`http://pokemonworld.test/${pokemon.imgurl}`" :alt="pokemon.name" class="rounded-lg"/>
+                            <img :src="pokemon.imgurl" :alt="pokemon.name" class="rounded-lg"/>
                         </div>
                         <div class="w-full sm:max-w-md flex flex-col justify-center items-center">
                             <img :src="pokemon.type1.imgurl"/>

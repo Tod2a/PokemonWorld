@@ -55,20 +55,20 @@ class EvolutionController extends Controller
         if ($request[('type')] === 2) {
 
             $validated = $request->validate([
-                'pokemon' => ['required', 'exists:pokemon,id', new NoEvolutionConflict()],
+                'pokemon' => ['required', 'exists:pokemon,id', new NoPrevolutionConflict()],
                 'type' => 'required|integer|in:1,2',
                 'level' => 'required|integer|min:1|max:100',
-                'evo' => ['required', 'exists:pokemon,id', new NoPrevolutionConflict()],
+                'evo' => ['required', 'exists:pokemon,id', new NoEvolutionConflict()],
             ]);
 
             $evolution->prevolution_id = $validated['pokemon'];
             $evolution->evolution_id = $validated['evo'];
         } else {
             $validated = $request->validate([
-                'pokemon' => ['required', 'exists:pokemon,id', new NoPrevolutionConflict()],
+                'pokemon' => ['required', 'exists:pokemon,id', new NoEvolutionConflict()],
                 'type' => 'required|integer|in:1,2',
                 'level' => 'required|integer|min:1|max:100',
-                'evo' => ['required', 'exists:pokemon,id', new NoEvolutionConflict()],
+                'evo' => ['required', 'exists:pokemon,id', new NoPrevolutionConflict()],
             ]);
 
             $evolution->prevolution_id = $validated['evo'];

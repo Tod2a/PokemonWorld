@@ -7,7 +7,7 @@ use Tests\DuskTestCase;
 
 class HomepageTest extends DuskTestCase
 {
-    public function testHomePageLoadsSuccessfully()
+    public function testHomepageLoadsSuccessfully()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
@@ -44,6 +44,19 @@ class HomepageTest extends DuskTestCase
                 ->select('#typesearch', 'Ice')
                 ->pause(2000)
                 ->assertSee('Cryostodon')
+                ->assertDontSee('Floroue');
+        });
+    }
+
+    public function testSearchByNameAndTypeWorks()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                ->waitForText('Floroue')
+                ->type('#namesearch', 'f')
+                ->select('#typesearch', 'Dark')
+                ->pause(2000)
+                ->assertSee('Folunarque')
                 ->assertDontSee('Floroue');
         });
     }

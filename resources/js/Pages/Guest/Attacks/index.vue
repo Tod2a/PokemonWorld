@@ -46,9 +46,9 @@ onMounted(() => {
         </template>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 px-12 py-12 bg-white shadow-md overflow-x-auto sm:rounded-lg">
-            <input type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
+            <input type="text" id="namesearch" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
 
-            <select v-model="typeQuery" @change="debouncedSearch">
+            <select id="typesearch" v-model="typeQuery" @change="debouncedSearch">
                 <option value="">All Types</option>
                 <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
             </select>
@@ -79,9 +79,9 @@ onMounted(() => {
                 <tfoot>
                     <tr>
                         <td colspan="4" class="px-6">
-                            <button @click="fetchAttacks(attacks.prev_page_url)" v-if="attacks.prev_page_url">&lt; Previous</button>
+                            <button id="fetchprev" @click="fetchAttacks(attacks.prev_page_url)" v-if="attacks.prev_page_url">&lt; Previous</button>
                             Page {{ attacks.current_page }} of {{ attacks.last_page }}
-                            <button @click="fetchAttacks(attacks.next_page_url)" v-if="attacks.next_page_url">Next &gt;</button>
+                            <button id="fetchnext" @click="fetchAttacks(attacks.next_page_url)" v-if="attacks.next_page_url">Next &gt;</button>
                         </td>
                     </tr>
                 </tfoot>

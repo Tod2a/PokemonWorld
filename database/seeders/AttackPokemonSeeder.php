@@ -228,5 +228,41 @@ class AttackPokemonSeeder extends Seeder
             'attack_id' => 30,
             'level' => 39,
         ]);
+
+        \App\Models\AttackLevelPokemon::create([
+            'pokemon_id' => 10,
+            'attack_id' => 2,
+            'level' => 1,
+        ]);
+
+        \App\Models\AttackLevelPokemon::create([
+            'pokemon_id' => 11,
+            'attack_id' => 2,
+            'level' => 1,
+        ]);
+
+        \App\Models\AttackLevelPokemon::create([
+            'pokemon_id' => 10,
+            'attack_id' => 4,
+            'level' => 20,
+        ]);
+
+        \App\Models\AttackLevelPokemon::create([
+            'pokemon_id' => 11,
+            'attack_id' => 4,
+            'level' => 20,
+        ]);
+
+        \App\Models\AttackLevelPokemon::create([
+            'pokemon_id' => 11,
+            'attack_id' => 12,
+            'level' => 22,
+        ]);
+
+        \App\Models\AttackLevelPokemon::create([
+            'pokemon_id' => 11,
+            'attack_id' => 27,
+            'level' => 30,
+        ]);
     }
 }

@@ -47,5 +47,11 @@ class EvolutionSeeder extends Seeder
             'evolution_id' => 9,
             'level' => 36,
         ]);
+
+        \App\Models\Evolution::create([
+            'prevolution_id' => 10,
+            'evolution_id' => 11,
+            'level' => 22,
+        ]);
     }
 }

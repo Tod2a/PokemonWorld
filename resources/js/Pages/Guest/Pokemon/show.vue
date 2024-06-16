@@ -37,7 +37,7 @@ defineProps({
                         <div class="w-full sm:max-w-md bg-white rounded-lg px-2 py-2 bg-yellow-200 border-4 border-red-600">
                             <h3 class="font-bold">About {{ pokemon.name }}</h3>
                             <div><div class="font-bold">Size: </div>{{ pokemon.size/100 }}M</div>
-                            <div><div class="font-bold">Weight: </div>{{ pokemon.weight/100 }}Kg</div>
+                            <div><div class="font-bold">Weight: </div>{{ pokemon.weight/1000 }}Kg</div>
                             <div><div class="font-bold">Description: </div>{{ pokemon.description }}</div>
                         </div>
                     </div>

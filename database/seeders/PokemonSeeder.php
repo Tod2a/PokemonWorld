@@ -22,7 +22,7 @@ class PokemonSeeder extends Seeder
             'defspe' => 50,
             'vit' => 50,
             'size' => 60,
-            'weight' => 340,
+            'weight' => 3400,
             'type1_id' => 10,
             'type2_id' => null,
             'imgurl' => 'storage/images/pokemon/floroue.jpg'
@@ -38,7 +38,7 @@ class PokemonSeeder extends Seeder
             'defspe' => 56,
             'vit' => 69,
             'size' => 96,
-            'weight' => 1075,
+            'weight' => 10750,
             'type1_id' => 10,
             'type2_id' => 2,
             'imgurl' => 'storage/images/pokemon/folunarque.jpg'
@@ -54,7 +54,7 @@ class PokemonSeeder extends Seeder
             'defspe' => 63,
             'vit' => 96,
             'size' => 111,
-            'weight' => 2620,
+            'weight' => 26200,
             'type1_id' => 10,
             'type2_id' => 2,
             'imgurl' => 'storage/images/pokemon/noctoflore.jpg'
@@ -70,7 +70,7 @@ class PokemonSeeder extends Seeder
             'defspe' => 35,
             'vit' => 70,
             'size' => 86,
-            'weight' => 526,
+            'weight' => 5260,
             'type1_id' => 7,
             'type2_id' => null,
             'imgurl' => 'storage/images/pokemon/emberaptor.jpg'
@@ -86,7 +86,7 @@ class PokemonSeeder extends Seeder
             'defspe' => 36,
             'vit' => 85,
             'size' => 126,
-            'weight' => 2056,
+            'weight' => 20560,
             'type1_id' => 7,
             'type2_id' => null,
             'imgurl' => 'storage/images/pokemon/infernalynx.jpg'
@@ -102,7 +102,7 @@ class PokemonSeeder extends Seeder
             'defspe' => 45,
             'vit' => 112,
             'size' => 180,
-            'weight' => 3120,
+            'weight' => 31200,
             'type1_id' => 7,
             'type2_id' => 8,
             'imgurl' => 'storage/images/pokemon/phoenixiraptor.jpg'
@@ -118,7 +118,7 @@ class PokemonSeeder extends Seeder
             'defspe' => 71,
             'vit' => 36,
             'size' => 120,
-            'weight' => 1020,
+            'weight' => 10200,
             'type1_id' => 18,
             'type2_id' => null,
             'imgurl' => 'storage/images/pokemon/aquadon.jpg'
@@ -134,7 +134,7 @@ class PokemonSeeder extends Seeder
             'defspe' => 78,
             'vit' => 40,
             'size' => 142,
-            'weight' => 1820,
+            'weight' => 18200,
             'type1_id' => 18,
             'type2_id' => 12,
             'imgurl' => 'storage/images/pokemon/glacierippo.jpg'
@@ -150,10 +150,42 @@ class PokemonSeeder extends Seeder
             'defspe' => 96,
             'vit' => 51,
             'size' => 236,
-            'weight' => 11420,
+            'weight' => 114200,
             'type1_id' => 18,
             'type2_id' => 12,
             'imgurl' => 'storage/images/pokemon/cryostodon.jpg'
+        ]);
+
+        \App\Models\Pokemon::create([
+            'name' => 'Earthop',
+            'description' => 'Earthop is a Ground-type Pokémon with a soft, earthy brown coat. It has large, pointed ears and mischievous eyes that gleam with intelligence. Earthop digs complex burrows in the ground to hide and protect itself. Its snout is adorned with a small white star, and its strong paws are designed for rapid digging. Agile and quick, Earthop can leap on its hind legs to evade predators.',
+            'hp' => 60,
+            'att' => 70,
+            'def' => 68,
+            'attspe' => 32,
+            'defspe' => 47,
+            'vit' => 86,
+            'size' => 60,
+            'weight' => 4000,
+            'type1_id' => 11,
+            'type2_id' => null,
+            'imgurl' => 'storage/images/pokemon/earthop.jpg',
+        ]);
+
+        \App\Models\Pokemon::create([
+            'name' => 'Aerohare',
+            'description' => 'Aerohare is the majestic evolution of Earthop. Its ears have grown larger and developed membranes, allowing it to glide gracefully through the air. Its fur is lighter, with shades of beige and white. Aerohare enjoys perching at high altitudes, observing the world below with keen interest.',
+            'hp' => 82,
+            'att' => 86,
+            'def' => 72,
+            'attspe' => 41,
+            'defspe' => 49,
+            'vit' => 101,
+            'size' => 90,
+            'weight' => 6000,
+            'type1_id' => 11,
+            'type2_id' => 8,
+            'imgurl' => 'storage/images/pokemon/aerohare.jpg',
         ]);
     }
 }

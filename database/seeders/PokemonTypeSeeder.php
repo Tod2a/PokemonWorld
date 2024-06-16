@@ -24,6 +24,8 @@ class PokemonTypeSeeder extends Seeder
         $aquadon = Pokemon::where('name', 'Aquadon')->first();
         $glacierippo = Pokemon::where('name', 'Glacierippo')->first();
         $cryostodon = Pokemon::where('name', 'Cryostodon')->first();
+        $earthop = Pokemon::where('name', 'earthop')->first();
+        $aerohare = Pokemon::where('name', 'aerohare')->first();
 
         //get types
         $bug = Type::where('name', 'Bug')->first();
@@ -72,5 +74,11 @@ class PokemonTypeSeeder extends Seeder
 
         $cryostodon->resistances()->sync([$water->id, $ice->id], false);
         $cryostodon->weaknesses()->sync([$fight->id, $electric->id, $grass->id, $rock->id], false);
+
+        $earthop->resistances()->sync([$electric->id, $poison->id, $rock->id], false);
+        $earthop->weaknesses()->sync([$water->id, $ice->id, $grass->id], false);
+
+        $aerohare->resistances()->sync([$electric->id, $poison->id, $fight->id, $bug->id, $ground->id], false);
+        $aerohare->weaknesses()->sync([$water->id, $ice->id], false);
     }
 }

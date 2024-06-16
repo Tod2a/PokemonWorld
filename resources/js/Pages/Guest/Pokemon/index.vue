@@ -48,7 +48,7 @@ onMounted(() => {
             <div class="flex justify-center">
                 <input type="text" id="namesearch" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
 
-                <select in="typesearch" v-model="typeQuery" @change="debouncedSearch">
+                <select id="typesearch" v-model="typeQuery" @change="debouncedSearch">
                     <option value="">All Types</option>
                     <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
                 </select>

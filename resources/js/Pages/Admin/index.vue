@@ -23,22 +23,22 @@ import { Head } from '@inertiajs/vue3';
                 <div class="bg-white my-2 p-6 text-gray-900">
                     <h3 class="flex justify-center py-5">Pokemon</h3>
                     <p>When you create a new pokemon, you will just see the startings attacks.</p>
-                    <p>we recommend to set the level at 1, and leaving the input empty for the attacks not learned.</p>
-                    <p>You can add more attacks in the edit form when the pokemon is created</p>
-                    <p>The stats (hp, vit, attspe, ...) should be between 1 and 150</p>
-                    <p>You can add one attack to a pokemon many times(a pokemon can learn the same attack at different level)</p>
+                    <p>We recommend to set level at 1 for each attacks you want to learn or leaving the input empty.</p>
+                    <p>You can add more attacks in the edit form when the pokemon is created.</p>
+                    <p>The stats (hp, vit, attspe, ...) should be between 1 and 150.</p>
+                    <p>You can add one attack to a pokemon more than one time. (a pokemon can learn the same attack at different level)</p>
                 </div>
                 <div class="bg-white my-2 p-6 text-gray-900">
                     <h3 class="flex justify-center py-5">Attacks</h3>
-                    <p>Carefull when you delete attacks, the pokemons will lost the attack too.</p>
-                    <p> the rules for the attacks:</p>
+                    <p>Be careful when you delete an attack, the Pokemon will lost the attack too.</p>
+                    <p>Rules for the attacks:</p>
                     <ul>
-                        <li>all attacks should have a category, physical, special or status</li>
-                        <li>one type too</li>
-                        <li>the power should be between 0 and 200</li>
-                        <li>the accuracy between 10 and 100</li>
-                        <li>mappp between 5 and 40</li>
-                        <li>is starting checkbox is for the starter attacks, if checked = true</li>
+                        <li>All attacks should have a category: physical, special or status</li>
+                        <li>Attacks should have a type too</li>
+                        <li>The power should be between 0 and 200</li>
+                        <li>The accuracy between 10 and 100</li>
+                        <li>Maxpp between 5 and 40</li>
+                        <li>"Is Starting" checkbox is for the starter attacks, if is it checked = true</li>
                     </ul>
                 </div>
             </div>

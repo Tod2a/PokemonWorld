@@ -187,5 +187,53 @@ class PokemonSeeder extends Seeder
             'type2_id' => 8,
             'imgurl' => 'storage/images/pokemon/aerohare.jpg',
         ]);
+
+        \App\Models\Pokemon::create([
+            'name' => 'Crawbug',
+            'description' => 'Crawbug is a playful Bug-type Pokémon, resembling a small caterpillar. It has a vibrant green body with tiny orange spots and a cheerful face. Crawbug’s large, expressive eyes are always filled with curiosity as it explores its surroundings. Its antennae twitch constantly, sensing the world around it. Crawbug loves munching on leaves and often gets into mischief.',
+            'hp' => 40,
+            'att' => 51,
+            'def' => 38,
+            'attspe' => 62,
+            'defspe' => 47,
+            'vit' => 70,
+            'size' => 30,
+            'weight' => 1000,
+            'type1_id' => 1,
+            'type2_id' => null,
+            'imgurl' => 'storage/images/pokemon/crawbug.jpg',
+        ]);
+
+        \App\Models\Pokemon::create([
+            'name' => 'cocoonix',
+            'description' => 'Cocoonix is the evolved form of Crawbug. It encases itself in a sturdy, oval-shaped cocoon, which is a mix of earthy browns and greens, mimicking tree bark. While in this form, Cocoonix is immobile, focusing its energy on the transformation process. The only sign of life is the occasional twitch of its outer shell. Despite its stationary nature, Cocoonix’s inner development is rapid and intense.',
+            'hp' => 58,
+            'att' => 61,
+            'def' => 46,
+            'attspe' => 71,
+            'defspe' => 48,
+            'vit' => 54,
+            'size' => 50,
+            'weight' => 5000,
+            'type1_id' => 1,
+            'type2_id' => null,
+            'imgurl' => 'storage/images/pokemon/cocoonix.jpg',
+        ]);
+
+        \App\Models\Pokemon::create([
+            'name' => 'Flitterfly',
+            'description' => 'Flitterfly is the final evolution of Crawbug, emerging beautifully from Cocoonix. It is a stunning Bug/Fairy-type Pokémon with delicate, iridescent wings that shimmer in all colors of the rainbow. Flitterfly’s body is slender and elegant, adorned with small, sparkling patterns. Its eyes are bright and kind, exuding a calming aura. Flitterfly flutters gracefully through the air, spreading fairy dust that promotes growth and heals the plants it encounters.',
+            'hp' => 71,
+            'att' => 78,
+            'def' => 68,
+            'attspe' => 99,
+            'defspe' => 85,
+            'vit' => 110,
+            'size' => 50,
+            'weight' => 5000,
+            'type1_id' => 1,
+            'type2_id' => 5,
+            'imgurl' => 'storage/images/pokemon/flitterfly.jpg',
+        ]);
     }
 }

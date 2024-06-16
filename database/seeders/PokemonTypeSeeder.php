@@ -26,6 +26,9 @@ class PokemonTypeSeeder extends Seeder
         $cryostodon = Pokemon::where('name', 'Cryostodon')->first();
         $earthop = Pokemon::where('name', 'earthop')->first();
         $aerohare = Pokemon::where('name', 'aerohare')->first();
+        $crawbug = Pokemon::where('name', 'crawbug')->first();
+        $cocoonix = Pokemon::where('name', 'cocoonix')->first();
+        $flitterfly = Pokemon::where('name', 'flitterfly')->first();
 
         //get types
         $bug = Type::where('name', 'Bug')->first();
@@ -80,5 +83,14 @@ class PokemonTypeSeeder extends Seeder
 
         $aerohare->resistances()->sync([$electric->id, $poison->id, $fight->id, $bug->id, $ground->id], false);
         $aerohare->weaknesses()->sync([$water->id, $ice->id], false);
+
+        $crawbug->resistances()->sync([$fight->id, $grass->id, $ground->id], false);
+        $crawbug->weaknesses()->sync([$fire->id, $rock->id, $flying->id], false);
+
+        $cocoonix->resistances()->sync([$fight->id, $grass->id, $ground->id], false);
+        $cocoonix->weaknesses()->sync([$fire->id, $rock->id, $flying->id], false);
+
+        $flitterfly->resistances()->sync([$fight->id, $dragon->id, $bug->id, $grass->id, $ground->id, $dark->id], false);
+        $flitterfly->weaknesses()->sync([$steel->id, $fire->id, $poison->id, $rock->id, $flying->id], false);
     }
 }

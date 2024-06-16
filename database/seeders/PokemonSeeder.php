@@ -126,7 +126,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Glacierippo',
-            'description' => 'Aquadon\'s evolution, is a majestic water/ice Pokémon. Its imposing size contrasts with the playful grace of its precursor. Its robust body is now enveloped in a thick layer of sparkling ice, creating an aura of intense cold around it. The colorful corals that once adorned his back have fused with the ice, forming dazzling crystalline patterns that glisten in the sunlight. His big round eyes, once filled with curiosity, now shine with a cold glow, reflecting his new mastery of the Arctic cold. Glacierippo moves with a majestic, determined gait, leaving an icy imprint wherever he goes.',
+            'description' => 'Cryostodon is the formidable final evolution of Aquadon and Glacierippo, a majestic hippopotamus Pokémon infused with Ice and Water elements. It boasts a towering, muscular build covered in shimmering icy blue fur, adorned with glacial patterns across its body. Large, glowing ice formations adorn its back, emitting a cold, ethereal light. With sharp, piercing eyes and a serene demeanor, Cryostodon exudes ancient wisdom and power as it effortlessly navigates icy realms.',
             'hp' => 95,
             'att' => 74,
             'def' => 98,

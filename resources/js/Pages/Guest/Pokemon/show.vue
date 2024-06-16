@@ -2,22 +2,13 @@
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import PokemonLink from '@/Components/PokemonLink.vue';
+import StatShow from '@/Components/StatShow.vue';
 
 defineProps({
     pokemon: Object,
     pokemonAttacks: Array,
     types: Array
 })
-
-const getStatColor = (stat) => {
-    if (stat >= 100) {
-        return 'bg-green-500';
-    } else if (stat >= 50) {
-        return 'bg-yellow-500';
-    } else {
-        return 'bg-red-500';
-    }
-}
 
 </script>
 
@@ -66,48 +57,12 @@ const getStatColor = (stat) => {
                     <div class="bg-white px-4 py-4 my-4 rounded-lg bg-yellow-200 border-4 border-red-600">
                         <h3 class="font-bold">Stats</h3>
                         <div class="flex justify-between px-10">
-                            <div class="flex flex-col items-center">
-                                <p class="font-bold">Hp</p>
-                                <div class="h-20 w-6 bg-gray-300 relative">
-                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.hp)]" :style="{ height: (pokemon.hp / 150 * 100) + '%' }"></div>
-                                </div>
-                                <p>{{ pokemon.hp }}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p class="font-bold">Att</p>
-                                <div class="h-20 w-6 bg-gray-300 relative">
-                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.att)]" :style="{ height: (pokemon.att / 150 * 100) + '%' }"></div>
-                                </div>
-                                <p>{{ pokemon.att }}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p class="font-bold">Def</p>
-                                <div class="h-20 w-6 bg-gray-300 relative">
-                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.def)]" :style="{ height: (pokemon.def / 150 * 100) + '%' }"></div>
-                                </div>
-                                <p>{{ pokemon.def }}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p class="font-bold">AttSpe</p>
-                                <div class="h-20 w-6 bg-gray-300 relative">
-                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.attspe)]" :style="{ height: (pokemon.attspe / 150 * 100) + '%' }"></div>
-                                </div>
-                                <p>{{ pokemon.attspe }}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p class="font-bold">DefSpe</p>
-                                <div class="h-20 w-6 bg-gray-300 relative">
-                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.defspe)]" :style="{ height: (pokemon.defspe / 150 * 100) + '%' }"></div>
-                                </div>
-                                <p>{{ pokemon.defspe }}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p class="font-bold">Vit</p>
-                                <div class="h-20 w-6 bg-gray-300 relative">
-                                    <div :class="['absolute bottom-0 left-0 w-full', getStatColor(pokemon.vit)]" :style="{ height: (pokemon.vit / 150 * 100) + '%' }"></div>
-                                </div>
-                                <p>{{ pokemon.vit }}</p>
-                            </div>
+                            <StatShow :stat="pokemon.hp"/>
+                            <StatShow :stat="pokemon.att"/>
+                            <StatShow :stat="pokemon.def"/>
+                            <StatShow :stat="pokemon.attspe"/>
+                            <StatShow :stat="pokemon.defspe"/>
+                            <StatShow :stat="pokemon.vit"/>
                         </div>
                     </div>
                     <div class="bg-white px-4 py-4 my-4 rounded-lg bg-yellow-200 border-4 border-red-600">

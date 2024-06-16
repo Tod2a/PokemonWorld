@@ -17,6 +17,7 @@ const props = defineProps({
 const form = useForm({
     pokemon: null,
     attack: null,
+    name: null,
     level: null,
 })
 
@@ -25,8 +26,9 @@ form.pokemon = props.pokemon.id;
 const confirmingAttackAdd = ref(false);
 let errorlevel = null;
 
-const confirmAttackAdd = ($id) => {
-    form.attack = $id;
+const confirmAttackAdd = (id, name) => {
+    form.attack = id;
+    form.name = name
     confirmingAttackAdd.value = true;
 };
 
@@ -134,7 +136,7 @@ onMounted(() => {
                                     <td class="border px-4 py-2">{{ attack.maxpp }}</td>
                                     <td class="border px-4 py-2">{{ attack.type.name }}</td>
                                     <td class="border px-4 py-2 space-x-4">
-                                        <PrimaryButton @click="confirmAttackAdd(attack.id)">Add</PrimaryButton>
+                                        <PrimaryButton @click="confirmAttackAdd(attack.id, attack.name)">Add</PrimaryButton>
                                     </td>
                                 </tr>
                             </tbody>
@@ -153,7 +155,7 @@ onMounted(() => {
                         <Modal :show="confirmingAttackAdd" @close="closeModal">
                             <div class="p-6">
                                 <h2 class="text-lg font-medium text-gray-900">
-                                    Are you sure you want to add this attack?
+                                    Are you sure you want to add this attack ({{ form.name }})?
                                 </h2>
                                 <label for="level">Insert the level when the pokemon learn the attack</label>
                                 <input id="level" type="number" class="mt-1 block w-3/4" placeholder="Level" v-model="form.level" min="1" required/>

@@ -42,18 +42,18 @@ defineProps({
                         </div>
                     </div>
                     <div class="bg-white px-4 py-4 my-4 rounded-lg bg-yellow-200 border-4 border-red-600">
-    <h3 class="font-bold mb-2">Resistances/Weaknesses</h3>
-    <ul class="flex flex-wrap items-center justify-around gap-2">
-        <li v-for="type in types" :key="type.id" class="flex items-center">
-            <div class="flex flex-col items-center">
-                <img :src="type.imgurl" class="w-10 h-10" />
-                <div v-if="pokemon.resistances.some(resistance => resistance.name === type.name)" class="w-8 h-7 bg-green-300 mt-1"></div>
-                <div v-else-if="pokemon.weaknesses.some(weakness => weakness.name === type.name)" class="w-8 h-7 bg-red-300 mt-1"></div>
-                <div v-else class="w-8 h-7 bg-transparent mt-1"></div>
-            </div>
-        </li>
-    </ul>
-</div>
+                        <h3 class="font-bold mb-2">Resistances/Weaknesses</h3>
+                        <ul class="flex flex-wrap items-center justify-around gap-2">
+                            <li v-for="type in types" :key="type.id" class="flex items-center">
+                                <div class="flex flex-col items-center">
+                                    <img :src="type.imgurl" class="w-10 h-10" />
+                                    <div v-if="pokemon.resistances.some(resistance => resistance.name === type.name)" class="w-8 h-7 bg-green-300 mt-1"></div>
+                                    <div v-else-if="pokemon.weaknesses.some(weakness => weakness.name === type.name)" class="w-8 h-7 bg-red-300 mt-1"></div>
+                                    <div v-else class="w-8 h-7 bg-transparent mt-1"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="bg-white px-4 py-4 my-4 rounded-lg bg-yellow-200 border-4 border-red-600">
                         <h3 class="font-bold">Stats</h3>
                         <div class="flex justify-between px-10">

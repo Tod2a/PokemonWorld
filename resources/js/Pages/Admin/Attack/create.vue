@@ -30,7 +30,7 @@ const form=useForm({
         </template>
         <div class="flex justify-center">
             <div class="my-3">
-                <Link :href="route('attack.index')" class="bg-gray-300 px-2 py-2 rounded-lg">Back</Link>
+                <Link :href="route('attack.index')" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Back</Link>
             </div>
         </div>
         <div class="py-12">

@@ -48,8 +48,11 @@ form.resistances = props.pokemon.resistances.map(resistance => resistance.id);
 form.weaknesses = props.pokemon.weaknesses.map(weakness => weakness.id);
 
 const confirmingAttackDeletion = ref(false);
+const confirmingEvoDeletion = ref(false);
 let idattack = ref(0);
+let idevo = ref(0);
 let attackname = ref('');
+let evoname = ref('');
 
 
 const confirmAttackDeletion = (id, name) => {
@@ -58,15 +61,31 @@ const confirmAttackDeletion = (id, name) => {
     confirmingAttackDeletion.value = true;
 };
 
+const confirmEvoDeletion = (id, name) => {
+    idevo.value = id;
+    evoname.value = name;
+    confirmingEvoDeletion.value = true;
+}
+
 const deleteAttack = () => {
     form.delete(route('attackpokemon.destroy', idattack.value), {
-        onSuccess : () => closeModal(),
+        onSuccess : () => closeModalAttack(),
     });
 };
 
-const closeModal = () => {
+const deleteEvo = () => {
+    form.delete(route('evolution.destroy', idevo.value), {
+        onSuccess: () => closeModalEvo(),
+    });
+};
+
+const closeModalAttack = () => {
     confirmingAttackDeletion.value = false;
 };
+
+const closeModalEvo = () => {
+    confirmingEvoDeletion.value = false
+}
 
 </script>
 
@@ -79,7 +98,7 @@ const closeModal = () => {
         </template>
         <div class="flex justify-center">
             <div class="my-3">
-                <Link :href="route('pokemon.index')" class="bg-gray-300 px-2 py-2 rounded-lg">Back</Link>
+                <Link :href="route('pokemon.index')" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Back</Link>
             </div>
         </div>
 
@@ -205,15 +224,37 @@ const closeModal = () => {
                     </div>
                 </div>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
+                    <h3 class="mx-2 my-2">Evolutions</h3>
+                    <div v-if="props.pokemon.evolution === null || props.pokemon.prevolution === null" class="flex justify-center">
+                        <Link :href="route('evolution.create', props.pokemon.id)" class="p-2 bg-gray-300 rounded-lg hover:bg-gray-400">Add Evolution</Link>
+                    </div>
+                    <div class="flex">
+                        <div v-if="props.pokemon.prevolution !== null" class="mr-auto m-2">
+                            <div class="flex">
+                                <Link :href="route('evolution.edit', props.pokemon.prevolution.id)"><PencilIcon class="mx-1 w-5 h-5 text-blue-500" /></Link>        
+                                <div>prevolution: {{ props.pokemon.prevolution.prevolution_pokemon.name }} at level {{ props.pokemon.prevolution.level }}</div>
+                                <Button @click="confirmEvoDeletion(props.pokemon.prevolution.id, props.pokemon.prevolution.prevolution_pokemon.name)"><TrashIcon class="mx-1 w-5 h-5 text-red-400" /></Button>
+                            </div>   
+                        </div>
+                        <div v-if="props.pokemon.evolution !== null" class="ml-auto m-2">
+                            <div class="flex">
+                                <Link :href="route('evolution.edit', props.pokemon.evolution.id)"><PencilIcon class="mx-1 w-5 h-5 text-blue-500" /></Link>        
+                                <div>evolution: {{ props.pokemon.evolution.evolution_pokemon.name }} at level {{ props.pokemon.evolution.level }}</div>
+                                <Button @click="confirmEvoDeletion(props.pokemon.evolution.id, props.pokemon.evolution.evolution_pokemon.name)"><TrashIcon class="mx-1 w-5 h-5 text-red-400" /></Button>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
                     <h3 class="mx-2 my-2">Image</h3>
                     <img :src="'/' + props.pokemon.imgurl" class="my-5 max-w-xs max-h-xs"/>
-                    <Link :href="route('edit.pokemon.image', props.pokemon)" class="bg-gray-300 mx-2 px-2 py-2 rounded-lg">Change image</Link>
+                    <Link :href="route('edit.pokemon.image', props.pokemon)" class="bg-gray-300 mx-2 px-2 py-2 rounded-lg hover:bg-gray-400">Change image</Link>
                 </div>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
                     <div class="flex justify-center">
                         <div class="flex flex-col">
                             <h3 class="mx-2 my-2">Attacks</h3>
-                            <Link :href="route('attackpokemon.create', props.pokemon.id)" class="bg-gray-300 px-2 py-2 rounded-lg">Add Attack</Link>
+                            <Link :href="route('attackpokemon.create', props.pokemon.id)" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Add Attack</Link>
                         </div>
                         
                     </div>
@@ -252,16 +293,28 @@ const closeModal = () => {
 
                     </div>
                     
-                    <Modal :show="confirmingAttackDeletion" @close="closeModal">
+                    <Modal :show="confirmingAttackDeletion" @close="closeModalAttack">
                         <div class="p-6">
                             <h2 class="text-lg font-medium text-gray-900">
                                 Are you sure you want to remove this attack ({{ attackname }}) from {{ props.pokemon.name}}? 
                             </h2> 
                                                     
                             <div class="mt-6 flex justify-end">
-                                <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
+                                <SecondaryButton @click="closeModalAttack"> Cancel </SecondaryButton>
                             
                                 <DangerButton @click="deleteAttack">Delete</DangerButton>
+                            </div>
+                        </div>
+                    </Modal>
+                    <Modal :show="confirmingEvoDeletion" @close="closeModalEvo">
+                        <div class="p-6">
+                            <h2 class="text-lg font-medium text-gray-900">
+                                Are you sure you want to remove {{ evoname }} from evolution ?
+                            </h2>
+                            <div class="mt-6 flex justify-end">
+                                <SecondaryButton @click="closeModalEvo"> Cancel </SecondaryButton>
+                            
+                                <DangerButton @click="deleteEvo">Delete</DangerButton>
                             </div>
                         </div>
                     </Modal>

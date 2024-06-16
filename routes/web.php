@@ -7,26 +7,32 @@ use App\Http\Controllers\{
     Admin\AttackPokemonController as AttackPokemonController,
     Admin\AttackController as AdminAttackController,
     AttackController,
-    Admin\AdminController
+    Admin\AdminController,
+    Admin\EvolutionController,
 };
+use App\Models\Evolution;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [PokemonController::class, 'index'])->name('pokemon.home');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-    Route::resource('/admin/pokemon', AdminPokemonController::class)->except('show');
-    Route::get('/admin/pokemon/search', [AdminPokemonController::class, 'search'])->name('adminpokemon.search');
-    Route::get('admin/pokemon/editimg/{pokemon}', [AdminPokemonController::class, 'edit_image'])->name('edit.pokemon.image');
-    Route::post('admin/pokemon/{pokemon}/editimg', [AdminPokemonController::class, 'update_image'])->name('update.pokemon.image');
-    Route::resource('admin/attackpokemon', AttackPokemonController::class)->except('index', 'show', 'create');
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::resource('/pokemon', AdminPokemonController::class)->except('show');
+    Route::get('/pokemon/search', [AdminPokemonController::class, 'search'])->name('adminpokemon.search');
+    Route::get('/pokemon/editimg/{pokemon}', [AdminPokemonController::class, 'edit_image'])->name('edit.pokemon.image');
+    Route::post('/pokemon/{pokemon}/editimg', [AdminPokemonController::class, 'update_image'])->name('update.pokemon.image');
+    Route::resource('/attackpokemon', AttackPokemonController::class)->except('index', 'show', 'create');
     //need a parameter to the url of create
-    Route::get('admin/attackpokemon/create/{pokemon}', [AttackPokemonController::class, 'create'])->name('attackpokemon.create');
-    Route::get('/admin/attackpokemon/search', [AttackPokemonController::class, 'search'])->name('attackpokemon.search');
-    Route::resource('admin/attack', AdminAttackController::class)->except('show');
-    Route::get('admin/attack/search', [AdminAttackController::class, 'search'])->name('adminattack.search');
+    Route::get('/attackpokemon/create/{pokemon}', [AttackPokemonController::class, 'create'])->name('attackpokemon.create');
+    Route::get('/attackpokemon/search', [AttackPokemonController::class, 'search'])->name('attackpokemon.search');
+    Route::resource('/attack', AdminAttackController::class)->except('show');
+    Route::get('/attack/search', [AdminAttackController::class, 'search'])->name('adminattack.search');
+    Route::resource('/evolution', EvolutionController::class)->except('index', 'show', 'create');
+    //need a parameter too
+    Route::get('evolution/create/{pokemon}', [EvolutionController::class, 'create'])->name('evolution.create');
+    Route::get('evolution/search', [EvolutionController::class, 'search'])->name('evolution.search');
 });
 
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');

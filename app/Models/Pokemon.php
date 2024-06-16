@@ -38,12 +38,12 @@ class Pokemon extends Model
 
     public function evolution()
     {
-        return $this->hasOne(Evolution::class, 'evolution_id');
+        return $this->hasOne(Evolution::class, 'prevolution_id');
     }
 
     // Relation pour la pré-évolution du Pokémon
     public function prevolution()
     {
-        return $this->hasOne(Evolution::class, 'prevolution_id');
+        return $this->hasOne(Evolution::class, 'evolution_id');
     }
 }

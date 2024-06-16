@@ -13,7 +13,7 @@ class PokemonTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->pause(3000)
+                ->pause(1000)
                 ->screenshot('testHomepage2')
                 ->assertSee('Pokedex');
         });

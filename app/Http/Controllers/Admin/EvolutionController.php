@@ -81,7 +81,8 @@ class EvolutionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $evolution = Evolution::with(['prevolutionPokemon', 'evolutionPokemon'])->findOrFail($id);
+        return inertia('Admin/Evolution/edit', ['evolution' => $evolution]);
     }
 
     /**
@@ -89,7 +90,13 @@ class EvolutionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'level' => 'required|min:1|max:100',
+        ]);
+
+        $evolution = Evolution::findOrFail($id);
+        $evolution->level = $request['level'];
+        $evolution->save();
     }
 
     /**

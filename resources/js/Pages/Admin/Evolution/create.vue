@@ -93,8 +93,8 @@ const selectResult = (poke) => {
                             <div>
                                 <label for="type">Type: </label>
                                 <select class="block mt-1 w-full" id="type" v-model="form.type">
-                                    <option :value="1">Prevolution: The Pokémon selected will evolve into {{ props.pokemon.name }}</option>
-                                    <option :value="2">Evolution: {{ props.pokemon.name }} will evolve into the Pokémon selected</option>
+                                    <option :value="1">Prevolution: The selected pokemon will evolve into {{ props.pokemon.name }}</option>
+                                    <option :value="2">Evolution: {{ props.pokemon.name }} will evolve into the selected pokemon</option>
                                 </select>
                                 <div v-if="form.errors.type">{{ form.errors.type }}</div>
                             </div>

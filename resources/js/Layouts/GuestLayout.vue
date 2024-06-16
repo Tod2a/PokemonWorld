@@ -21,20 +21,20 @@ import { Link } from '@inertiajs/vue3';
         </div>
     </nav>
 
-    <div class="w-full min-h-screen bg-custom-background bg-fixed bg-cover bg-center bg-no-repeat flex flex-col items-center justify-start pt-6 sm:pt-0">
+    <div class="w-full min-h-screen bg-custom-background bg-fixed bg-cover bg-center bg-no-repeat flex flex-col items-center justify-start pt-6 sm:pt-0 overflow-x-hidden">
 
-        <header class="bg-yellow-400 text-red-600 text-4xl shadow my-2 rounded-lg" v-if="$slots.header">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 border-4 border-red-800 rounded-lg">
+        <header class="w-full flex justify-center items-center my-2">
+        <div class="bg-yellow-400 text-red-600 text-lg shadow rounded-lg border-4 border-red-800 flex justify-center items-center" v-if="$slots.header">
+            <div class="p-4 sm:p-6 lg:p-8">
                 <slot name="header" />
             </div>
-        </header>
-
-        <!-- https://dev.to/mmcclure11/mobile-responsive-table-with-tailwindcss-57db -->
-
-        <div>
-            <slot />
         </div>
-    </div>
+    </header>
+
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <slot />
+</div>
+</div>
 
 </template>
 

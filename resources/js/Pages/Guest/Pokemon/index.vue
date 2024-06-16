@@ -44,7 +44,7 @@ onMounted(() => {
             <h2 class="font-semibold leading-tight">Pokedex</h2>
         </template>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 px-12 py-12 bg-white shadow-md overflow-hidden sm:rounded-lg">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 px-12 py-12 bg-white shadow-md sm:rounded-lg overflow-x-auto">
             <input type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
 
             <select v-model="typeQuery" @change="debouncedSearch">
@@ -52,7 +52,7 @@ onMounted(() => {
                 <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
             </select>
 
-            <table class="table-auto w-full">
+            <table class="table-auto w-full overflow-x-auto">
                 <thead>
                     <tr>
                         <th class="px-6">Image</th>

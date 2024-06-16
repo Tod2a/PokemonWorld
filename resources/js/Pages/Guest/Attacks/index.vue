@@ -45,14 +45,15 @@ onMounted(() => {
             <h2 class="font-semibold leading-tight">Attacks</h2>
         </template>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 px-12 py-12 bg-white shadow-md overflow-hidden sm:rounded-lg">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 px-12 py-12 bg-white shadow-md overflow-x-auto sm:rounded-lg">
             <input type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
 
             <select v-model="typeQuery" @change="debouncedSearch">
                 <option value="">All Types</option>
                 <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
             </select>
-            <table class="table-auto w-full">
+            <div class="overflow-x-auto">
+                <table class="table-auto w-full">
                 <thead>
                     <tr class="uppercase text-left">
                         <th class="px-4 py-2 border">Category</th>
@@ -85,6 +86,7 @@ onMounted(() => {
                     </tr>
                 </tfoot>
             </table>
+            </div>
         </div>
     </GuestLayout>
 </template>

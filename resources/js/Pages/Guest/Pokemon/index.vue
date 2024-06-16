@@ -45,12 +45,15 @@ onMounted(() => {
         </template>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 px-12 py-12 bg-white shadow-md sm:rounded-lg overflow-x-auto">
-            <input type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
+            <div class="flex justify-center">
+                <input type="text" id="namesearch" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
 
-            <select v-model="typeQuery" @change="debouncedSearch">
-                <option value="">All Types</option>
-                <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
-            </select>
+                <select in="typesearch" v-model="typeQuery" @change="debouncedSearch">
+                    <option value="">All Types</option>
+                    <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
+                </select>
+            </div>
+            
 
             <table class="table-auto w-full overflow-x-auto">
                 <thead>

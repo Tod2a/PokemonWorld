@@ -24,6 +24,18 @@ class HomepageTest extends DuskTestCase
         });
     }
 
+    public function testSearchByNameWorks()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                ->waitForText('Floroue')
+                ->type('#namesearch', 'cryo')
+                ->pause(2000)
+                ->assertSee('Cryostodon')
+                ->assertDontSee('Floroue');
+        });
+    }
+
     public function testDetailWorks()
     {
         $this->browse(function (Browser $browser) {

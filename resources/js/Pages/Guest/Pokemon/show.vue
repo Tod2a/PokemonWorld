@@ -22,8 +22,8 @@ defineProps({
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex">
-                    <PokemonLink :evopokemon="pokemon.prevolution.prevolution_pokemon" :level="pokemon.prevolution.level" v-if="pokemon.prevolution !== null" class="mr-auto"/>
-                    <PokemonLink :evopokemon="pokemon.evolution.evolution_pokemon" :level="pokemon.evolution.level" v-if="pokemon.evolution !== null" class="ml-auto"/>
+                    <PokemonLink id="navprevo" :evopokemon="pokemon.prevolution.prevolution_pokemon" :level="pokemon.prevolution.level" v-if="pokemon.prevolution !== null" class="mr-auto"/>
+                    <PokemonLink id="navevo" :evopokemon="pokemon.evolution.evolution_pokemon" :level="pokemon.evolution.level" v-if="pokemon.evolution !== null" class="ml-auto"/>
                 </div>   
                 <div class="flex flex-col">
                     <div class="flex space-x-10">

@@ -69,7 +69,7 @@ onMounted(() => {
                             <img :src="pokemon.type1.imgurl" :alt=" pokemon.type1.name" v-if="pokemon.type1" class="sm:max-w-md"/>
                             <img :src="pokemon.type2.imgurl" :alt=" pokemon.type2.name" v-if="pokemon.type2" class="sm:max-w-md"/>
                         </td>
-                        <td class="px-6"><Link :href="route('pokemon.show', pokemon.id)" class="bg-blue-400 px-2 py-2 rounded-lg">Details</Link></td>
+                        <td class="px-6"><Link :href="route('pokemon.show', pokemon.id)" :id="'detail' + pokemon.id" class="bg-blue-400 px-2 py-2 rounded-lg">Details</Link></td>
                     </tr>
                 </tbody>
                 <tfoot>

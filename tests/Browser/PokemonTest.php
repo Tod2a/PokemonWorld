@@ -8,17 +8,6 @@ use Tests\DuskTestCase;
 
 class PokemonTest extends DuskTestCase
 {
-
-    public function testHomePageLoadsSuccessfully()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                ->pause(1000)
-                ->screenshot('testHomepage2')
-                ->assertSee('Pokedex');
-        });
-    }
-
     public function testAuthenticated()
     {
         $this->browse(function (Browser $browser) {

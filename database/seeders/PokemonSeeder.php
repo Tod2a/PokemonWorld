@@ -30,7 +30,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Folunarque',
-            'description' => 'Folunarque is the evolved form of Floroue. His stature has grown to resemble that of a full-grown wolf, with dark fur mingled with scarlet leaves. His eyes gleam with a mysterious glow, and floral patterns adorn his body. Folunarque moves silently through the woods, mastering the shadows to protect his territory.',
+            'description' => 'Folunarque is the evolved form of Floroue. His stature has grown to resemble that of a full-grown wolf, with dark fur interspersed with emerald green petals. His eyes gleam with a mysterious glow, and floral patterns adorn his body. Folunarque moves silently through the woods, mastering the shadows to protect his territory.',
             'hp' => 74,
             'att' => 56,
             'def' => 78,
@@ -110,7 +110,7 @@ class PokemonSeeder extends Seeder
 
         \App\Models\Pokemon::create([
             'name' => 'Aquadon',
-            'description' => 'Aquadon is a water-type Pokémon, similar to a small hippopotamus. Its skin is a brilliant light blue and smooth to the touch, dotted with wave-like patterns that sparkle in the sunlight. On its back, it proudly sports a row of colorful corals, forming a fan of bright, shimmering hues. Its large, round eyes shine with a soft, curious gleam, while its mischievous smile reveals pearly-white tusks. ',
+            'description' => 'Glacierippo is a Water/Ice type Pokémon, resembling a robust hippopotamus adapted to icy environments. Its skin is a cool, pale blue, smooth to the touch, and adorned with small ice crystals that glisten in the light. Proudly displayed on its back are several clusters of icy stalactites, shimmering with a frosty sheen. Its large, round eyes exude a gentle, curious gleam, complemented by a playful smile that reveals pearly-white tusks.',
             'hp' => 76,
             'att' => 65,
             'def' => 87,

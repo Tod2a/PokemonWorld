@@ -1,12 +1,10 @@
 <?php
 
-namespace Tests\Browser;
-
 use App\Models\User;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class PokemonTest extends DuskTestCase
+class AdminTest extends DuskTestCase
 {
     public function testAuthenticated()
     {

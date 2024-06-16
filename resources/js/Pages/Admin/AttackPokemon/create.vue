@@ -112,7 +112,8 @@ onMounted(() => {
 
                             <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
                         </Transition>
-                        <table class="table-auto w-full">
+                        <div class="overflow-x-auto">
+                            <table class="table-auto w-full">
                             <thead>
                                 <tr class="uppercase text-left">
                                     <th class="px-4 py-2 border">Category</th>
@@ -147,6 +148,8 @@ onMounted(() => {
                                 </tr>
                             </tfoot>
                         </table>
+                        </div>
+                        
                         <Modal :show="confirmingAttackAdd" @close="closeModal">
                             <div class="p-6">
                                 <h2 class="text-lg font-medium text-gray-900">

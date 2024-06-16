@@ -14,7 +14,7 @@ class FrontAttackTest extends DuskTestCase
         });
     }
 
-    public function testShowNextTwo()
+    public function testShowNextPage()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/attack')

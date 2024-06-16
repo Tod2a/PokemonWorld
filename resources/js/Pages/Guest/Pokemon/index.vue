@@ -78,9 +78,9 @@ onMounted(() => {
                 <tfoot>
                     <tr>
                         <td colspan="4" class="px-6">
-                            <button @click="fetchPokemons(pokemons.prev_page_url)" v-if="pokemons.prev_page_url">&lt; Previous</button>
+                            <button id="fetchprev" @click="fetchPokemons(pokemons.prev_page_url)" v-if="pokemons.prev_page_url">&lt; Previous</button>
                             Page {{ pokemons.current_page }} of {{ pokemons.last_page }}
-                            <button @click="fetchPokemons(pokemons.next_page_url)" v-if="pokemons.next_page_url">Next &gt;</button>
+                            <button id="fetchnext" @click="fetchPokemons(pokemons.next_page_url)" v-if="pokemons.next_page_url">Next &gt;</button>
                         </td>
                     </tr>
                 </tfoot>

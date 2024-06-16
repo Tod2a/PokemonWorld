@@ -22,6 +22,30 @@ class HomepageTest extends DuskTestCase
         });
     }
 
+    public function testShowNextPage()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                ->waitForText('Floroue')
+                ->click('#fetchnext')
+                ->waitForText('Page 2')
+                ->assertSee('Page 2');
+        });
+    }
+
+    public function testShowPreviousPage()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                ->waitForText('Floroue')
+                ->click('#fetchnext')
+                ->waitForText('Page 2')
+                ->click('#fetchprev')
+                ->waitForText('Page 1')
+                ->assertSee('Page 1');
+        });
+    }
+
     public function testSearchByNameWorks()
     {
         $this->browse(function (Browser $browser) {

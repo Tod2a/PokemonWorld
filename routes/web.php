@@ -6,9 +6,9 @@ use App\Http\Controllers\{
     Admin\PokemonController as AdminPokemonController,
     Admin\AttackPokemonController as AttackPokemonController,
     Admin\AttackController as AdminAttackController,
-    AttackController
+    AttackController,
+    Admin\AdminController
 };
-
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,6 +16,7 @@ use Inertia\Inertia;
 Route::get('/', [PokemonController::class, 'index'])->name('pokemon.home');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::resource('/admin/pokemon', AdminPokemonController::class)->except('show');
     Route::get('/admin/pokemon/search', [AdminPokemonController::class, 'search'])->name('adminpokemon.search');
     Route::get('admin/pokemon/editimg/{pokemon}', [AdminPokemonController::class, 'edit_image'])->name('edit.pokemon.image');
@@ -34,9 +35,6 @@ Route::get('/pokemon/{id}', [PokemonController::class, 'show'])->name('pokemon.s
 Route::get('/attack', [AttackController::class, 'index'])->name('front.attack.index');
 Route::get('attack/search', [AttackController::class, 'search'])->name('front.attack.search');
 
-Route::get('/admin', function () {
-    return Inertia::render('Admin/index');
-})->middleware(['auth', 'verified'])->name('admin');
 
 
 

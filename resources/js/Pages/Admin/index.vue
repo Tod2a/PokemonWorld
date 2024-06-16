@@ -1,7 +1,13 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
+const props = defineProps({
+    pokemon: Number,
+    attacks: Number,
+})
+
+console.log(props);
 
 </script>
 
@@ -16,9 +22,13 @@ import { Head } from '@inertiajs/vue3';
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
-                        <p>Welcome on the administation Homepage</p>
-                        
-                    
+                    <div class="flex">
+                        <div class="mr-auto">Welcome on the administation Homepage</div>
+                        <div class="flex flex-col">
+                            <Link :href="route('pokemon.index')">Count of pokemon: {{ props.pokemon }}</Link>
+                            <Link :href="route('attack.index')">Count of attacks: {{ props.attacks }}</Link>
+                        </div>
+                    </div> 
                 </div>
                 <div class="bg-white my-2 p-6 text-gray-900">
                     <h3 class="flex justify-center py-5">Pokemon</h3>

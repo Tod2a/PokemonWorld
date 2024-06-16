@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Evolution;
 use App\Models\Pokemon;
+use App\Rules\NoEvolutionConflict;
+use App\Rules\NoPrevolutionConflict;
 use Illuminate\Http\Request;
 
 class EvolutionController extends Controller
@@ -47,19 +49,28 @@ class EvolutionController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'pokemon' => 'required|exists:pokemon,id',
-            'type' => 'required|integer|in:1,2',
-            'level' => 'required|integer|min:1|max:100',
-            'evo' => 'required|exists:pokemon,id',
-        ]);
 
         $evolution = Evolution::make();
 
-        if ($validated[('type')] === 2) {
+        if ($request[('type')] === 2) {
+
+            $validated = $request->validate([
+                'pokemon' => ['required', 'exists:pokemon,id', new NoEvolutionConflict()],
+                'type' => 'required|integer|in:1,2',
+                'level' => 'required|integer|min:1|max:100',
+                'evo' => ['required', 'exists:pokemon,id', new NoPrevolutionConflict()],
+            ]);
+
             $evolution->prevolution_id = $validated['pokemon'];
             $evolution->evolution_id = $validated['evo'];
         } else {
+            $validated = $request->validate([
+                'pokemon' => ['required', 'exists:pokemon,id', new NoPrevolutionConflict()],
+                'type' => 'required|integer|in:1,2',
+                'level' => 'required|integer|min:1|max:100',
+                'evo' => ['required', 'exists:pokemon,id', new NoEvolutionConflict()],
+            ]);
+
             $evolution->prevolution_id = $validated['evo'];
             $evolution->evolution_id = $validated['pokemon'];
         }

@@ -64,6 +64,7 @@ const selectResult = (poke) => {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         <form @submit.prevent="form.post(route('evolution.store'))" class="flex flex-col">
+                            <div v-if="form.errors.pokemon"> {{ form.errors.pokemon }}</div>
                             <div class="relative">
                                 <input
                                     type="text"
@@ -84,6 +85,7 @@ const selectResult = (poke) => {
                                         </li>
                                     </ul>
                                 </div>
+                                <div v-if="form.errors.evo"> {{ form.errors.evo }}</div>
                             </div>
                             <div>
                                 <label for="level">Level: </label>

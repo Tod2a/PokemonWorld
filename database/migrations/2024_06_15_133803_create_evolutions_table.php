@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('evolutions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('prevolution_id')->nullable()->references('id')->on('pokemon')->onDelete('cascade');
-            $table->foreignId('evolution_id')->nullable()->references('id')->on('pokemon')->onDelete('cascade');
+            $table->foreignId('prevolution_id')->unique()->references('id')->on('pokemon')->onDelete('cascade');
+            $table->foreignId('evolution_id')->unique()->references('id')->on('pokemon')->onDelete('cascade');
             $table->integer('level');
             $table->timestamps();
-
-
-            $table->unique(['prevolution_id', 'evolution_id']);
         });
     }
 

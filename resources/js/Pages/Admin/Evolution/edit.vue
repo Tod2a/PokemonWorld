@@ -37,6 +37,7 @@ form.level = props.evolution.level;
 
                             <label for="level">Level: </label>
                             <input class="block mt-1 w-full" id="level" type="number" v-model="form.level">
+                            <div v-if="form.errors.level">{{ form.errors.level }}</div>
 
                             <div class="flex items-center gap-4">
                                 <PrimaryButton :disabled="form.processing">Save</PrimaryButton>

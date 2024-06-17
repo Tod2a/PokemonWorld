@@ -17,7 +17,6 @@ const form=useForm({
     description: null,
     category: null,
     type: null,
-    is_starting: null,
 })
 
 </script>
@@ -30,7 +29,7 @@ const form=useForm({
         </template>
         <div class="flex justify-center">
             <div class="my-3">
-                <Link :href="route('attack.index')" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Back</Link>
+                <Link id="linkback" :href="route('attack.index')" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Back</Link>
             </div>
         </div>
         <div class="py-12">
@@ -64,10 +63,6 @@ const form=useForm({
                                 <div v-if="form.errors.description">{{ form.errors.description }}</div>
                             </div>
                             <div>
-                                <label for="is_starting">Is Starting:</label>
-                                <input type="checkbox" id="is_starting" name="is_starting" v-model="form.is_starting">
-                            </div>
-                            <div>
                                 <label for="category">Category: </label>
                                 <select class="block mt-1 w-full" id="category" v-model="form.category">
                                     <option v-for="category in categories" :value="category.id" :key="category.id">{{ category.name }}</option>
@@ -83,7 +78,7 @@ const form=useForm({
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                                <PrimaryButton id="sendprocess" :disabled="form.processing">Save</PrimaryButton>
 
                                 <Transition
                                     enter-active-class="transition ease-in-out"

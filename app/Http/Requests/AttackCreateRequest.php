@@ -29,7 +29,6 @@ class AttackCreateRequest extends FormRequest
             'description' => 'required',
             'category' => 'required|exists:categories,id',
             'type' => 'required|exists:types,id',
-            'is_starting' => 'required|boolean',
         ];
     }
 }

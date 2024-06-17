@@ -18,7 +18,6 @@ const form = useForm({
     description: null,
     category: null,
     type: null,
-    is_starting: null,
 })
 
 form.name = props.attack.name;
@@ -28,7 +27,6 @@ form.maxpp = props.attack.maxpp;
 form.description = props.attack.description;
 form.category = props.attack.category.id;
 form.type = props.attack.type.id;
-form.is_starting = props.attack.is_starting;
 
 </script>
 
@@ -73,10 +71,6 @@ form.is_starting = props.attack.is_starting;
                                 <label for="description">Description: </label>
                                 <textarea class="block mt-1 w-full" id="description" v-model="form.description"/>
                                 <div v-if="form.errors.description">{{ form.errors.description }}</div>
-                            </div>
-                            <div>
-                                <label for="is_starting">Is Starting:</label>
-                                <input type="checkbox" id="is_starting" name="is_starting" v-model="form.is_starting">
                             </div>
                             <div>
                                 <label for="category">Category: </label>

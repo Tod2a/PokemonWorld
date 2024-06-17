@@ -75,7 +75,7 @@ const closeModal = () => {
         </template>
         <div class="flex justify-center">
             <div class="my-3">
-                <Link :href="route('attack.create')" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Create</Link>
+                <Link id="linkcreate" :href="route('attack.create')" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Create</Link>
             </div>
         </div>
 
@@ -84,7 +84,7 @@ const closeModal = () => {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         <div class="flex justify-center">
-                            <input type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
+                            <input id="namesearch" type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
 
                             <select v-model="typeQuery" @change="debouncedSearch">
                                 <option value="">All Types</option>
@@ -131,7 +131,7 @@ const closeModal = () => {
                                 </tfoot>
                             </table>
                         </div>
-                        
+
                         <Modal :show="confirmingAttackDeletion" @close="closeModal">
                         <div class="p-6">
                             <h2 class="text-lg font-medium text-gray-900">

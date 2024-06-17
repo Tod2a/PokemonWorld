@@ -35,14 +35,21 @@ console.log(props);
                     <p>When you create a new pokemon, you will just see the startings attacks.</p>
                     <p>We recommend to set level at 1 for each attacks you want to learn or leaving the input empty.</p>
                     <p>You can add more attacks in the edit form when the pokemon is created.</p>
-                    <p>The stats (hp, vit, attspe, ...) should be between 1 and 150.</p>
                     <p>You can add one attack to a pokemon more than one time. (a pokemon can learn the same attack at different level)</p>
+                    <p>You can add one evolution and one prevolution to your pokemon on the edit page, be careful to don't try ton put two prevolution/evolution to the same pokemon.</p>
+                    <p>Rules for the pokemon creation/edition: </p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Stats (hp, att, def, attspe, defspe, vit) should be between 1 and 150</li>
+                        <li>Type 1 is required, type2 is optional</li>
+                        <li>image is required</li>
+                        <li>a weakness can't be a resistance and a resistance can't be a weakness</li>
+                    </ul>
                 </div>
                 <div class="bg-white my-2 p-6 text-gray-900">
                     <h3 class="flex justify-center py-5">Attacks</h3>
                     <p>Be careful when you delete an attack, the Pokemon will lost the attack too.</p>
                     <p>Rules for the attacks:</p>
-                    <ul>
+                    <ul class="list-disc pl-5 space-y-2">
                         <li>All attacks should have a category: physical, special or status</li>
                         <li>Attacks should have a type too</li>
                         <li>The power should be between 0 and 200</li>

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('pokemon_id')->constrained()->onDelete('cascade');
             $table->foreignId('zone_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+
+            $table->unique(['pokemon_id', 'zone_id']);
         });
     }
 

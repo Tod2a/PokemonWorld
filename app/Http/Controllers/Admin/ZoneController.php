@@ -21,7 +21,11 @@ class ZoneController extends Controller
         $pokemonid = $request['pokemon'];
         $pokemon = Pokemon::findOrFail($pokemonid);
 
-        $pokemon->zones()->attach($id);
+        $relationExists = $pokemon->zones()->where('zone_id', $id)->exists();
+
+        if (!$relationExists) {
+            $pokemon->zones()->attach($id);
+        }
     }
 
     public function destroy(string $zoneId, string $pokemonId)

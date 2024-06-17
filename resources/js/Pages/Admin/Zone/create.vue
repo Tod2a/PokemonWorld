@@ -55,13 +55,13 @@ form.pokemon = props.pokemon.id;
                                 <tbody>
                                     <tr v-for="zone in props.zones.data" :key="zone.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
                                         <td class="border px-4 py-2">{{ zone.name }}</td>
-                                        <td class="border px-4 py-2">{{ zone.name }}</td>
+                                        <td class="border px-4 py-2">{{ zone.map.name }}</td>
                                         <td class="border px-4 py-2">{{ zone.row }}</td>
                                         <td class="border px-4 py-2">{{ zone.col }}</td>
                                         <td class="border px-4 py-2 space-x-4">
                                             <form @submit.prevent="form.post(route('zone.store', zone.id))">
                                                 <primary-button :disabled="form.processing">Add</primary-button>
-                                                
+
                                             </form>
                                         </td>
                                     </tr>
@@ -77,7 +77,7 @@ form.pokemon = props.pokemon.id;
                                 </tfoot>
                             </table>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>

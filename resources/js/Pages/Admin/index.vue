@@ -7,7 +7,6 @@ const props = defineProps({
     attacks: Number,
 })
 
-console.log(props);
 
 </script>
 

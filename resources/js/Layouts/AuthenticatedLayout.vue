@@ -18,7 +18,7 @@ const showingNavigationDropdown = ref(false);
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
-                            
+
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('admin')" :active="route().current('admin')">
@@ -32,7 +32,7 @@ const showingNavigationDropdown = ref(false);
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('attack.index')" :active="route().current('attack.*')">
-                                    Attack
+                                    Attacks
                                 </NavLink>
                             </div>
                         </div>
@@ -125,10 +125,10 @@ const showingNavigationDropdown = ref(false);
                     </div>
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('attack.index')" :active="route().current('attack.index')">
-                            Admin Attack
+                            Admin Attacks
                         </ResponsiveNavLink>
                     </div>
-                    
+
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">

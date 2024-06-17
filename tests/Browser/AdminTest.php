@@ -15,4 +15,28 @@ class AdminTest extends DuskTestCase
                 ->assertSee('Welcome');
         });
     }
+
+    public function testAdminPokemonLink()
+    {
+        $this->browse(function (Browser $browser) {
+            $user = User::find(1);
+            $browser->loginAs($user)
+                ->visit('/admin')
+                ->click('#linkpoke')
+                ->waitForText('Floroue')
+                ->assertSee('Floroue');
+        });
+    }
+
+    public function testAdminAttackLink()
+    {
+        $this->browse(function (Browser $browser) {
+            $user = User::find(1);
+            $browser->loginAs($user)
+                ->visit('/admin')
+                ->click('#linkattack')
+                ->waitForText('Pound')
+                ->assertSee('Pound');
+        });
+    }
 }

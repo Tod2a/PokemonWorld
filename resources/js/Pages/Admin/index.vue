@@ -25,10 +25,10 @@ console.log(props);
                     <div class="flex">
                         <div class="mr-auto">Welcome on the administation Homepage</div>
                         <div class="flex flex-col">
-                            <Link :href="route('pokemon.index')">Count of pokemon: {{ props.pokemon }}</Link>
-                            <Link :href="route('attack.index')">Count of attacks: {{ props.attacks }}</Link>
+                            <Link id="linkpoke" :href="route('pokemon.index')">Count of pokemon: {{ props.pokemon }}</Link>
+                            <Link id="linkattack" :href="route('attack.index')">Count of attacks: {{ props.attacks }}</Link>
                         </div>
-                    </div> 
+                    </div>
                 </div>
                 <div class="bg-white my-2 p-6 text-gray-900">
                     <h3 class="flex justify-center py-5">Pokemon</h3>

@@ -11,22 +11,21 @@ class MapController extends Controller
     public function index()
     {
         $maps = Map::all();
-        $zones = Zone::all();
-        return inertia('Guest/Map/index', ['maps' => $maps, 'zones' => $zones]);
+        return inertia('Guest/Map/index', ['maps' => $maps]);
     }
 
     public function search(Request $request)
     {
-        dd($request);
-        $map = $request->input('map');
-        dd($map);
+        // dd($request);
+        $map = $request->input('query');
+        // dd($map);
 
         $zones = Zone::with(['map'])->whereHas('map', function ($query) use ($map) {
             $query->where('name', 'like', '%' . $map . '%');
         })
             ->get();
 
-        dd($zones);
+        // dd($zones);
 
 
         return response()->json($zones);

@@ -15,5 +15,9 @@ class MapSeeder extends Seeder
         \App\Models\Map::create([
             'name' => 'astronia',
         ]);
+
+        \App\Models\Map::create([
+            'name' => 'zephyria',
+        ]);
     }
 }

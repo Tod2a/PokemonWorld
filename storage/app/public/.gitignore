@@ -14,3 +14,5 @@
 !images/map
 !images/map/astronia
 !images/map/astronia/*.png
+!images/map/zephyria
+!images/map/zephyria/*.png

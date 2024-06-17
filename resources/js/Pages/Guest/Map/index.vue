@@ -5,7 +5,6 @@ import { onMounted, ref } from 'vue';
 
 const props = defineProps({
   maps: Array,
-  zones: Array
 })
 
 const mapQuery = ref(props.maps.length > 0 ? props.maps[0].name : '');
@@ -19,7 +18,7 @@ const fetchZones = async () => {
     try {
         const response = await axios.get(route('front.map.search'), {
             params: {
-                map: mapQuery.value
+                query: mapQuery.value
             },
         });
         zones.value = response.data;
@@ -29,35 +28,37 @@ const fetchZones = async () => {
 };
 
 onMounted(() => {
-    //fetchZones();
+    fetchZones();
 });
 
+console.log(zones)
+
 const getImgUrl = (row, col) => {
-    const zone = props.zones.find(zone => zone.row === row && zone.col === col)
+    const zone = zones.value.find(zone => zone.row === row && zone.col === col)
 
     if(zone) {
         return zone.imgurl;
-    }    
+    }
 
     return '/storage/image/pokemon/floroue.png';
 }
 
 const getNameImg = (row, col) => {
-    const zone = props.zones.find(zone => zone.row === row && zone.col === col)
+    const zone = zones.value.find(zone => zone.row === row && zone.col === col)
 
     if(zone) {
         return zone.name;
-    }    
+    }
 
     return 'error';
 }
 
 const getZoneId = (row, col) => {
-    const zone = props.zones.find(zone => zone.row === row && zone.col === col)
+    const zone = zones.value.find(zone => zone.row === row && zone.col === col)
 
     if(zone) {
         return zone.id;
-    }    
+    }
 
     return 'error';
 }
@@ -83,17 +84,17 @@ const getZoneId = (row, col) => {
                 <div v-for="i in 4" :key="i" class="flex">
                     <div v-for="j in 4" :key="j">
                         <Link :href="route('front.map.show', getZoneId(i, j))">
-                            <img :src="getImgUrl(i,j)" alt="error" 
+                            <img :src="getImgUrl(i,j)" alt="error"
                                 @mouseover="showTooltip = true; tooltipText = getNameImg(i,j)"
                                 @mouseout="showTooltip = false"/>
-                            <div v-if="showTooltip" class="absolute bottom-0 right-1/4 bg-red-600 text-white p-2 shadow-md border border-gray-300">
+                            <div v-if="showTooltip" class="absolute bottom-0 right-0 bg-red-600 text-white p-2 shadow-md border border-gray-300">
                                 {{ tooltipText }}
                             </div>
                         </Link>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </GuestLayout>
 </template>

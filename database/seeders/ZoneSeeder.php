@@ -155,5 +155,149 @@ class ZoneSeeder extends Seeder
             'description' => 'Market Square bustles with life as the heart of the region\'s largest city. Lively stalls brim with exotic goods and fresh produce, while street performers entertain crowds beneath the shade of towering, centuries-old trees. Ornate architecture surrounds the square, with bustling cafes and shops offering everything from artisan crafts to high-tech gadgets. The air is filled with the aroma of street food and the chatter of locals and tourists alike, making Market Square a vibrant hub of commerce and culture.',
             'map_id' => 1
         ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon1',
+            'row' => 1,
+            'col' => 1,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon2',
+            'row' => 1,
+            'col' => 2,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon3',
+            'row' => 1,
+            'col' => 3,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon4',
+            'row' => 1,
+            'col' => 4,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon5',
+            'row' => 2,
+            'col' => 1,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon6',
+            'row' => 2,
+            'col' => 2,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon7',
+            'row' => 2,
+            'col' => 3,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon8',
+            'row' => 2,
+            'col' => 4,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon9',
+            'row' => 3,
+            'col' => 1,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon10',
+            'row' => 3,
+            'col' => 2,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon11',
+            'row' => 3,
+            'col' => 3,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon12',
+            'row' => 3,
+            'col' => 4,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon13',
+            'row' => 4,
+            'col' => 1,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon14',
+            'row' => 4,
+            'col' => 2,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon15',
+            'row' => 4,
+            'col' => 3,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
+
+        \App\Models\Zone::create([
+            'name' => 'coming soon16',
+            'row' => 4,
+            'col' => 4,
+            'imgurl' => '/storage/images/map/zephyria/comingsoon.png',
+            'description' => 'coming soon',
+            'map_id' => 2,
+        ]);
     }
 }

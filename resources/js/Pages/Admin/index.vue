@@ -56,7 +56,6 @@ console.log(props);
                         <li>The power should be between 0 and 200</li>
                         <li>The accuracy between 10 and 100</li>
                         <li>Maxpp between 5 and 40</li>
-                        <li>"Is Starting" checkbox is for the starter attacks, if is it checked = true</li>
                     </ul>
                 </div>
             </div>

@@ -48,6 +48,6 @@ class Pokemon extends Model
 
     public function zones()
     {
-        return $this->belongsToMany(Zone::class);
+        return $this->belongsToMany(Zone::class, 'pokemon_zone');
     }
 }

@@ -37,6 +37,7 @@ console.log(props);
                     <p>You can add more attacks in the edit form when the pokemon is created.</p>
                     <p>You can add one attack to a pokemon more than one time. (a pokemon can learn the same attack at different level)</p>
                     <p>You can add one evolution and one prevolution to your pokemon on the edit page, be careful to don't try ton put two prevolution/evolution to the same pokemon.</p>
+                    <p>For the zone management, you can add/delete zone on the pokemon's edit page</p>
                     <p>Rules for the pokemon creation/edition: </p>
                     <ul class="list-disc pl-5 space-y-2">
                         <li>Stats (hp, att, def, attspe, defspe, vit) should be between 1 and 150</li>

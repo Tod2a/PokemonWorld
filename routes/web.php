@@ -10,8 +10,10 @@ use App\Http\Controllers\{
     Admin\AdminController,
     Admin\EvolutionController,
     MapController,
+    Admin\ZoneController
 };
 use App\Models\Evolution;
+use App\Models\Zone;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,6 +36,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //need a parameter too
     Route::get('evolution/create/{pokemon}', [EvolutionController::class, 'create'])->name('evolution.create');
     Route::get('evolution/search', [EvolutionController::class, 'search'])->name('evolution.search');
+    Route::post('/zone/store/{zone}', [ZoneController::class, 'store'])->name('zone.store');
+    Route::get('/zone/create/{pokemon}', [ZoneController::class, 'create'])->name('zone.create');
+    Route::delete('/zone/{zone}/{pokemon}', [ZoneController::class, 'destroy'])->name('zone.destroy');
 });
 
 Route::get('/pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');

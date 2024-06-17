@@ -49,10 +49,13 @@ form.weaknesses = props.pokemon.weaknesses.map(weakness => weakness.id);
 
 const confirmingAttackDeletion = ref(false);
 const confirmingEvoDeletion = ref(false);
+const confirmingZoneDeletion = ref(false);
 let idattack = ref(0);
 let idevo = ref(0);
+let idzone = ref(0);
 let attackname = ref('');
 let evoname = ref('');
+let zonename = ref('');
 
 
 const confirmAttackDeletion = (id, name) => {
@@ -67,6 +70,12 @@ const confirmEvoDeletion = (id, name) => {
     confirmingEvoDeletion.value = true;
 }
 
+const confirmZoneDeletion = (id, name) => {
+    idzone.value = id;
+    zonename.value = name;
+    confirmingZoneDeletion.value = true;
+}
+
 const deleteAttack = () => {
     form.delete(route('attackpokemon.destroy', idattack.value), {
         onSuccess : () => closeModalAttack(),
@@ -79,13 +88,25 @@ const deleteEvo = () => {
     });
 };
 
+const deleteZone = () => {
+    form.delete(route('zone.destroy', [idzone.value, props.pokemon.id]), {
+        onSuccess: () => closeModalZone(),
+    });
+}
+
 const closeModalAttack = () => {
     confirmingAttackDeletion.value = false;
 };
 
 const closeModalEvo = () => {
-    confirmingEvoDeletion.value = false
+    confirmingEvoDeletion.value = false;
 }
+
+const closeModalZone = () => {
+    confirmingZoneDeletion.value = false;
+}
+
+console.log(props.pokemon);
 
 </script>
 
@@ -223,6 +244,7 @@ const closeModalEvo = () => {
                         </form>
                     </div>
                 </div>
+
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
                     <h3 class="mx-2 my-2">Evolutions</h3>
                     <div v-if="props.pokemon.evolution === null || props.pokemon.prevolution === null" class="flex justify-center">
@@ -245,52 +267,71 @@ const closeModalEvo = () => {
                         </div>
                     </div>
                 </div>
+
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
-                    <h3 class="mx-2 my-2">Image</h3>
+                    <div class="flex justify-center">
+                        <h3 class="mx-2 my-2">Image</h3>
+                    </div>
                     <img :src="'/' + props.pokemon.imgurl" class="my-5 max-w-xs max-h-xs"/>
                     <Link :href="route('edit.pokemon.image', props.pokemon)" class="bg-gray-300 mx-2 px-2 py-2 rounded-lg hover:bg-gray-400">Change image</Link>
                 </div>
+
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
+                    <div class="flex justify-center">
+                        <div class="flex flex-col">
+                            <h3 class="mx-2 my-2">Zones</h3>
+                            <Link :href="route('zone.create', props.pokemon.id)" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Add zone</Link>
+                        </div>
+                    </div>
+                    <div v-if="props.pokemon.zones.length > 0">
+                        <div v-for="zone in props.pokemon.zones" :key="zone.id" class="flex">
+                            <div>{{ zone.name }}</div>
+                            <div><Button @click="confirmZoneDeletion(zone.id, zone.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-2">
                     <div class="flex justify-center">
                         <div class="flex flex-col">
                             <h3 class="mx-2 my-2">Attacks</h3>
                             <Link :href="route('attackpokemon.create', props.pokemon.id)" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Add Attack</Link>
                         </div>
-                        
                     </div>
+
                     <div class="overflow-x-auto">
                         <table class="table-auto w-full">
-                        <thead>
-                            <tr class="uppercase text-left">
-                                <th class="px-4 py-2 border">Category</th>
-                                <th class="px-4 py-2 border">Name</th>
-                                <th class="px-4 py-2 border">level</th>
-                                <th class="px-4 py-2 border">power</th>
-                                <th class="px-4 py-2 border">accuracy</th>
-                                <th class="px-4 py-2 border">MaxPP</th>
-                                <th class="px-4 py-2 border">type</th>
-                                <th class="px-4 py-2 border">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="attack in attacks" :key="attack.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
-                                <td class="border px-4 py-2">{{ attack.attack.category.name }}</td>
-                                <td class="border px-4 py-2">{{ attack.attack.name }}</td>
-                                <td class="border px-4 py-2">{{ attack.level }}</td>
-                                <td class="border px-4 py-2">{{ attack.attack.power }}</td>
-                                <td class="border px-4 py-2">{{ attack.attack.accuracy }}</td>
-                                <td class="border px-4 py-2">{{ attack.attack.maxpp }}</td>
-                                <td class="border px-4 py-2">{{ attack.attack.type.name }}</td>
-                                <td class="border px-4 py-2 space-x-4">
-                                    <div class="flex space-x-4">
-                                        <Link :href="route('attackpokemon.edit', attack.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
-                                        <Button @click="confirmAttackDeletion(attack.id, attack.attack.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
-                                    </div>                        
-                                </td>
-                            </tr>
-                        </tbody>    
-                    </table>
-
+                            <thead>
+                                <tr class="uppercase text-left">
+                                    <th class="px-4 py-2 border">Category</th>
+                                    <th class="px-4 py-2 border">Name</th>
+                                    <th class="px-4 py-2 border">level</th>
+                                    <th class="px-4 py-2 border">power</th>
+                                    <th class="px-4 py-2 border">accuracy</th>
+                                    <th class="px-4 py-2 border">MaxPP</th>
+                                    <th class="px-4 py-2 border">type</th>
+                                    <th class="px-4 py-2 border">Actions</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr v-for="attack in attacks" :key="attack.id" class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
+                                    <td class="border px-4 py-2">{{ attack.attack.category.name }}</td>
+                                    <td class="border px-4 py-2">{{ attack.attack.name }}</td>
+                                    <td class="border px-4 py-2">{{ attack.level }}</td>
+                                    <td class="border px-4 py-2">{{ attack.attack.power }}</td>
+                                    <td class="border px-4 py-2">{{ attack.attack.accuracy }}</td>
+                                    <td class="border px-4 py-2">{{ attack.attack.maxpp }}</td>
+                                    <td class="border px-4 py-2">{{ attack.attack.type.name }}</td>
+                                    <td class="border px-4 py-2 space-x-4">
+                                        <div class="flex space-x-4">
+                                            <Link :href="route('attackpokemon.edit', attack.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
+                                            <Button @click="confirmAttackDeletion(attack.id, attack.attack.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
+                                        </div>                        
+                                    </td>
+                                </tr>
+                            </tbody>    
+                        </table>
                     </div>
                     
                     <Modal :show="confirmingAttackDeletion" @close="closeModalAttack">
@@ -306,6 +347,7 @@ const closeModalEvo = () => {
                             </div>
                         </div>
                     </Modal>
+
                     <Modal :show="confirmingEvoDeletion" @close="closeModalEvo">
                         <div class="p-6">
                             <h2 class="text-lg font-medium text-gray-900">
@@ -315,6 +357,19 @@ const closeModalEvo = () => {
                                 <SecondaryButton @click="closeModalEvo"> Cancel </SecondaryButton>
                             
                                 <DangerButton @click="deleteEvo">Delete</DangerButton>
+                            </div>
+                        </div>
+                    </Modal>
+
+                    <Modal :show="confirmingZoneDeletion" @close="closeModalZone">
+                        <div class="p-6">
+                            <h2 class="text-lg font-medium text-gray-900">
+                                Are you sure you want to remove {{ zonename }} from this pokemon ?
+                            </h2>
+                            <div class="mt-6 flex justify-end">
+                                <SecondaryButton @click="closeModalZone"> Cancel </SecondaryButton>
+                            
+                                <DangerButton @click="deleteZone">Delete</DangerButton>
                             </div>
                         </div>
                     </Modal>

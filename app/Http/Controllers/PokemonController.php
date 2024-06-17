@@ -44,7 +44,7 @@ class PokemonController extends Controller
 
     public function show($id)
     {
-        $pokemon = Pokemon::with(['type1', 'type2', 'resistances', 'weaknesses', 'evolution', 'prevolution', 'evolution.prevolutionPokemon', 'evolution.evolutionPokemon', 'prevolution.prevolutionPokemon', 'prevolution.evolutionPokemon'])->findOrFail($id);
+        $pokemon = Pokemon::with(['type1', 'type2', 'resistances', 'weaknesses', 'zones', 'evolution', 'prevolution', 'evolution.prevolutionPokemon', 'evolution.evolutionPokemon', 'prevolution.prevolutionPokemon', 'prevolution.evolutionPokemon'])->findOrFail($id);
         $types = Type::all();
         $pokemonAttacks = AttackLevelPokemon::where('pokemon_id', $id)
             ->with(['attack', 'attack.category', 'attack.type'])

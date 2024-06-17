@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             EvolutionSeeder::class,
             MapSeeder::class,
             ZoneSeeder::class,
+            PokemonZoneSeeder::class,
         ]);
     }
 }

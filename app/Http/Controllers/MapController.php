@@ -31,4 +31,11 @@ class MapController extends Controller
 
         return response()->json($zones);
     }
+
+    public function show(string $id)
+    {
+        $zone = Zone::with('pokemon')->findOrFail($id);
+
+        return inertia('Guest/Map/show', ['zone' => $zone]);
+    }
 }

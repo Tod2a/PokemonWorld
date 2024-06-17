@@ -52,6 +52,16 @@ const getNameImg = (row, col) => {
     return 'error';
 }
 
+const getZoneId = (row, col) => {
+    const zone = props.zones.find(zone => zone.row === row && zone.col === col)
+
+    if(zone) {
+        return zone.id;
+    }    
+
+    return 'error';
+}
+
 </script>
 
 <template>
@@ -72,12 +82,14 @@ const getNameImg = (row, col) => {
             <div>
                 <div v-for="i in 4" :key="i" class="flex">
                     <div v-for="j in 4" :key="j">
-                        <img :src="getImgUrl(i,j)" alt="error" 
-                            @mouseover="showTooltip = true; tooltipText = getNameImg(i,j)"
-                            @mouseout="showTooltip = false"/>
-                        <div v-if="showTooltip" class="absolute bottom-0 left-0 bg-white p-2 shadow-md border border-gray-300">
-                            {{ tooltipText }}
-                        </div>
+                        <Link :href="route('front.map.show', getZoneId(i, j))">
+                            <img :src="getImgUrl(i,j)" alt="error" 
+                                @mouseover="showTooltip = true; tooltipText = getNameImg(i,j)"
+                                @mouseout="showTooltip = false"/>
+                            <div v-if="showTooltip" class="absolute bottom-0 left-0 bg-white p-2 shadow-md border border-gray-300">
+                                {{ tooltipText }}
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

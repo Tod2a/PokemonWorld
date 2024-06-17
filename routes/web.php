@@ -44,6 +44,7 @@ Route::get('attack/search', [AttackController::class, 'search'])->name('front.at
 
 Route::get('/map', [MapController::class, 'index'])->name('front.map.index');
 Route::get('/map/search', [MapController::class, 'search'])->name('front.map.search');
+Route::get('/map/{id}', [MapController::class, 'show'])->name('front.map.show');
 
 
 

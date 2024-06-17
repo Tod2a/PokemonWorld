@@ -75,7 +75,7 @@ const getZoneId = (row, col) => {
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6 px-12 py-12 bg-white shadow-md sm:rounded-lg overflow-x-auto">
             <div class="flex justify-center">
 
-                <select id="mapsearch" v-model="mapQuery" @change="debouncedSearch">
+                <select id="mapsearch" v-model="mapQuery" @change="fetchZones">
                     <option v-for="map in props.maps" :value="map.name" :key="map.id">{{ map.name }}</option>
                 </select>
             </div>

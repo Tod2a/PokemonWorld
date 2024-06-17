@@ -17,7 +17,9 @@ const props = defineProps({
         </template>
         <div class="flex">
             <div class="w-full sm:max-w-md bg-white rounded-lg px-2 py-2 bg-yellow-200 border-4 border-red-600">
-                <div>Description: </div>
+                <div class="font-bold">Region: </div>
+                <div>{{ props.zone.map.name }}</div>
+                <div class="font-bold">Description: </div>
                 <div>{{ props.zone.description }}</div>
             </div>
             <img :src="props.zone.imgurl" class="m-auto"/>

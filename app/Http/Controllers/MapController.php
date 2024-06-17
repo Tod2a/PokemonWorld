@@ -34,7 +34,7 @@ class MapController extends Controller
 
     public function show(string $id)
     {
-        $zone = Zone::with('pokemon')->findOrFail($id);
+        $zone = Zone::with('pokemon', 'map')->findOrFail($id);
 
         return inertia('Guest/Map/show', ['zone' => $zone]);
     }

@@ -1,6 +1,6 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import PokemonLink from '@/Components/PokemonLink.vue';
 import StatShow from '@/Components/StatShow.vue';
 
@@ -38,6 +38,13 @@ defineProps({
                             <h3 class="font-bold">About {{ pokemon.name }}</h3>
                             <div><div class="font-bold">Size: </div>{{ pokemon.size/100 }}M</div>
                             <div><div class="font-bold">Weight: </div>{{ pokemon.weight/1000 }}Kg</div>
+                            <div>
+                                <div class="font-bold">Location: </div>
+                                <div v-if="pokemon.zones.length > 0">
+                                    <div v-for="zone in pokemon.zones" :key="zone">{{ zone.name }}<Link :href="route('front.map.show', zone.id)" class="text-white mx-1 bg-red-600 rounded-lg p-1">Go To</Link></div>
+                                </div>
+                                
+                            </div>
                             <div><div class="font-bold">Description: </div>{{ pokemon.description }}</div>
                         </div>
                     </div>

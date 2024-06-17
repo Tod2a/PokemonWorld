@@ -86,7 +86,7 @@ const getZoneId = (row, col) => {
                             <img :src="getImgUrl(i,j)" alt="error" 
                                 @mouseover="showTooltip = true; tooltipText = getNameImg(i,j)"
                                 @mouseout="showTooltip = false"/>
-                            <div v-if="showTooltip" class="absolute bottom-0 left-0 bg-white p-2 shadow-md border border-gray-300">
+                            <div v-if="showTooltip" class="absolute bottom-0 right-1/4 bg-red-600 text-white p-2 shadow-md border border-gray-300">
                                 {{ tooltipText }}
                             </div>
                         </Link>

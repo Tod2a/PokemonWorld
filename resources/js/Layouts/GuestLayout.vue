@@ -17,6 +17,9 @@ import { Link } from '@inertiajs/vue3';
             <Link :href="route('front.attack.index')" :active="route().current('front.attack.index')" class="inline-block px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
                 Attacks
             </Link>
+            <Link :href="route('front.map.index')" :active="route().current('front.attack.index')" class="inline-block px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                Maps
+            </Link>
             <!-- Ajoutez ici d'autres liens de la navigation -->
         </div>
     </nav>

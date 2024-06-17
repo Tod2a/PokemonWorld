@@ -41,9 +41,13 @@ class Pokemon extends Model
         return $this->hasOne(Evolution::class, 'prevolution_id');
     }
 
-    // Relation pour la pré-évolution du Pokémon
     public function prevolution()
     {
         return $this->hasOne(Evolution::class, 'evolution_id');
+    }
+
+    public function zones()
+    {
+        return $this->belongsToMany(Zone::class);
     }
 }

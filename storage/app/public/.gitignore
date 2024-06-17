@@ -11,3 +11,6 @@
 !images/layout
 !images/layout/*.jpg
 !images/*.txt
+!images/map
+!images/map/astronia
+!images/map/astronia/*.png

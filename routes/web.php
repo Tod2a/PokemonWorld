@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     AttackController,
     Admin\AdminController,
     Admin\EvolutionController,
+    MapController,
 };
 use App\Models\Evolution;
 use Illuminate\Foundation\Application;
@@ -41,7 +42,8 @@ Route::get('/pokemon/{id}', [PokemonController::class, 'show'])->name('pokemon.s
 Route::get('/attack', [AttackController::class, 'index'])->name('front.attack.index');
 Route::get('attack/search', [AttackController::class, 'search'])->name('front.attack.search');
 
-
+Route::get('/map', [MapController::class, 'index'])->name('front.map.index');
+Route::get('/map/search', [MapController::class, 'search'])->name('front.map.search');
 
 
 

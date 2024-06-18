@@ -43,7 +43,9 @@ defineProps({
                                 <div v-if="pokemon.zones.length > 0">
                                     <div v-for="zone in pokemon.zones" :key="zone">{{ zone.name }}<Link :href="route('front.map.show', zone.id)" class="text-white mx-1 bg-red-600 rounded-lg p-1">Go To</Link></div>
                                 </div>
-                                
+                                <div v-else>
+                                    No information
+                                </div>
                             </div>
                             <div><div class="font-bold">Description: </div>{{ pokemon.description }}</div>
                         </div>

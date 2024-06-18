@@ -84,6 +84,31 @@ class AdminAttacksTest extends DuskTestCase
         });
     }
 
+    public function testCeateAttackValidation()
+    {
+        $this->browse(function (Browser $browser) {
+            $user = User::find(1);
+            $browser->loginAs($user)
+                ->visit('/admin/attack')
+                ->waitForText('Pound')
+                ->click('#linkcreate')
+                ->waitForText('Name')
+                ->type('#name', 'Pound')
+                ->type('#power', 500)
+                ->type('#accuracy', 500)
+                ->type('#maxpp', 500)
+                ->type('#description', 'test description')
+                ->click('#sendprocess')
+                ->waitForText('already')
+                ->assertSee('The name has already been taken.')
+                ->assertSee('The power field must not be greater than 200.')
+                ->assertSee('The accuracy field must not be greater than 100.')
+                ->assertSee('The maxpp field must not be greater than 40')
+                ->assertSee('The category field is required.')
+                ->assertSee('The type field is required.');
+        });
+    }
+
     public function testEditAttack()
     {
         $this->browse(function (Browser $browser) {

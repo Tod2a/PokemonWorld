@@ -8,7 +8,6 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 defineProps({
     types: Array,
-    attacks: Array,
 })
 
 
@@ -28,7 +27,6 @@ const form = useForm({
     imgurl: null,
     resistances: [],
     weaknesses: [],
-    attacks: [],
 })
 
 </script>
@@ -158,15 +156,6 @@ const form = useForm({
                                 </div>
                             </div>
                             
-                            <div>
-                                <label for="attacks">Attacks</label>
-                                <ul>
-                                    <li v-for="attack in attacks" :key="attack.id">
-                                        {{ attack.name }}
-                                        <input type="number" v-model="form.attacks[attack.id]" placeholder="level ...">
-                                    </li>
-                                </ul>
-                            </div>
 
 
                             <div class="flex items-center gap-4">

@@ -60,8 +60,7 @@ class PokemonController extends Controller
     public function create()
     {
         $types = Type::all();
-        $attacks = Attack::where('is_starting', true)->get();
-        return inertia('Admin/Pokemon/create', ['types' => $types, 'attacks' => $attacks]);
+        return inertia('Admin/Pokemon/create', ['types' => $types]);
     }
 
     /**
@@ -102,18 +101,6 @@ class PokemonController extends Controller
         if ($request['weaknesses'] !== null) {
             foreach ($request->validated()['weaknesses'] as $weakness) {
                 $pokemon->weaknesses()->sync([$weakness], false);
-            }
-        }
-
-        if ($request['attacks'] !== null) {
-            foreach ($request['attacks'] as $attack => $level) {
-                if ($attack > 0 && $level !== null && $level < 100) {
-                    $attackPokemon = AttackLevelPokemon::make();
-                    $attackPokemon->pokemon_id = $pokemon->id;
-                    $attackPokemon->attack_id = $attack;
-                    $attackPokemon->level = $level;
-                    $attackPokemon->save();
-                }
             }
         }
     }

@@ -69,8 +69,6 @@ class AttackController extends Controller
         $attack->category_id = $validatedData['category'];
         $attack->type_id = $validatedData['type'];
 
-        $attack->is_starting = 0;
-
         $attack->save();
     }
 

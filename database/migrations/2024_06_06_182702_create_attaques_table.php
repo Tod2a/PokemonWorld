@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('accuracy');
             $table->integer('maxpp');
             $table->text('description');
-            $table->boolean('is_starting');
             $table->foreignId('category_id')->constrained();
             $table->foreignId('type_id')->constrained()->onDelete('cascade');
             $table->timestamps();

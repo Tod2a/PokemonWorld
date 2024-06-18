@@ -35,6 +35,9 @@ const confirmAttackAdd = (id, name) => {
 const addAttack = () => {
     if (form.level < 1) {
         errorlevel = 'Level must be at least 1';
+    } else if (form.level > 100)
+    {
+        errorlevel = 'Level must be less than 101';
     } else {
         errorlevel = null;
 

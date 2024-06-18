@@ -33,18 +33,9 @@ const confirmAttackAdd = (id, name) => {
 };
 
 const addAttack = () => {
-    if (form.level < 1) {
-        errorlevel = 'Level must be at least 1';
-    } else if (form.level > 100)
-    {
-        errorlevel = 'Level must be less than 101';
-    } else {
-        errorlevel = null;
-
-        form.post(route('attackpokemon.store'), {
-            onSuccess : () => closeModal(),
-        });
-    }
+    form.post(route('attackpokemon.store'), {
+        onSuccess : () => closeModal(),
+    });  
 };
 
 const closeModal = () => {
@@ -162,7 +153,7 @@ onMounted(() => {
                                 </h2>
                                 <label for="level">Insert the level when the pokemon learn the attack</label>
                                 <input id="level" type="number" class="mt-1 block w-3/4" placeholder="Level" v-model="form.level" min="1" required/>
-                                <InputError :message="errorlevel" class="mt-2" />
+                                <div v-if="form.errors.level">{{ form.errors.level }}</div>
                                 <div class="mt-6 flex justify-end">
                                     <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
 

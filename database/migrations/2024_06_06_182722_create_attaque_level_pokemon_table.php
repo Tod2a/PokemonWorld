@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('attack_id')->constrained()->onDelete('cascade');;
             $table->integer('level');
             $table->timestamps();
+
+            $table->unique(['pokemon_id', 'attack_id', 'level']);
         });
     }
 

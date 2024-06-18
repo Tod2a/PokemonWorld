@@ -31,9 +31,8 @@ const props = defineProps({
                 </div>
                 <div class="bg-white my-2 p-6 text-gray-900">
                     <h3 class="flex justify-center py-5">Pokemon</h3>
-                    <p>When you create a new pokemon, you will just see the startings attacks.</p>
-                    <p>We recommend to set level at 1 for each attacks you want to learn or leaving the input empty.</p>
-                    <p>You can add more attacks in the edit form when the pokemon is created.</p>
+                    <p>When you create a new pokemon, you will just see no attacks.</p>
+                    <p>You can add attacks in the edit form when the pokemon is created.</p>
                     <p>You can add one attack to a pokemon more than one time. (a pokemon can learn the same attack at different level)</p>
                     <p>You can add one evolution and one prevolution to your pokemon on the edit page, be careful to don't try ton put two prevolution/evolution to the same pokemon.</p>
                     <p>For the zone management, you can add/delete zone on the pokemon's edit page</p>

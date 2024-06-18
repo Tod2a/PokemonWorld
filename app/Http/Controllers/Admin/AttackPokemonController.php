@@ -8,6 +8,7 @@ use App\Models\AttackLevelPokemon;
 use App\Models\Pokemon;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AttackPokemonController extends Controller
 {
@@ -65,6 +66,18 @@ class AttackPokemonController extends Controller
             'attack' => 'required|min:1',
             'level' => 'required|integer|min:1|max:100',
         ]);
+
+        $uniqueRule = Rule::unique('attack_level_pokemon')
+            ->where('pokemon_id', $request->pokemon)
+            ->where('attack_id', $request->attack)
+            ->where('level', $request->level);
+
+        $request->validate([
+            'level' => $uniqueRule,
+        ], [
+            'level.unique' => 'this combinaison Pokemon/Attack/Level already exist.',
+        ]);
+
 
         $attackPokemon = AttackLevelPokemon::make();
         $attackPokemon->attack_id = $request['attack'];

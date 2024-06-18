@@ -86,7 +86,7 @@ const closeModal = () => {
                         <div class="flex justify-center">
                             <input id="namesearch" type="text" v-model="searchQuery" @input="debouncedSearch" placeholder="Search by name" />
 
-                            <select v-model="typeQuery" @change="debouncedSearch">
+                            <select id="typesearch" v-model="typeQuery" @change="debouncedSearch">
                                 <option value="">All Types</option>
                                 <option v-for="type in props.types" :value="type.name" :key="type.id">{{ type.name }}</option>
                             </select>
@@ -114,8 +114,8 @@ const closeModal = () => {
                                         <td class="border px-4 py-2">{{ attack.type.name }}</td>
                                         <td class="border px-4 py-2 space-x-4">
                                             <div class="flex space-x-4">
-                                                <Link :href="route('attack.edit', attack.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
-                                                <Button @click="confirmAttackDeletion(attack.id, attack.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
+                                                <Link :id="'edit' + attack.id" :href="route('attack.edit', attack.id)"><PencilIcon class="w-5 h-5 text-blue-500" /></Link>
+                                                <Button :id="'delete' + attack.id" @click="confirmAttackDeletion(attack.id, attack.name)"><TrashIcon class="w-5 h-5 text-red-400" /></Button>
                                             </div>
                                         </td>
                                     </tr>
@@ -123,9 +123,9 @@ const closeModal = () => {
                                 <tfoot>
                                     <tr>
                                         <td colspan="7" class="px-6">
-                                            <button @click="fetchAttacks(attacks.prev_page_url)" v-if="attacks.prev_page_url">&lt; Previous</button>
+                                            <button id="previousnav" @click="fetchAttacks(attacks.prev_page_url)" v-if="attacks.prev_page_url">&lt; Previous</button>
                                             Page {{ attacks.current_page }} of {{ attacks.last_page }}
-                                            <button @click="fetchAttacks(attacks.next_page_url)" v-if="attacks.next_page_url">Next &gt;</button>
+                                            <button id="nextnav" @click="fetchAttacks(attacks.next_page_url)" v-if="attacks.next_page_url">Next &gt;</button>
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -141,7 +141,7 @@ const closeModal = () => {
                             <div class="mt-6 flex justify-end">
                                 <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
 
-                                <DangerButton @click="deleteAttack">Delete</DangerButton>
+                                <DangerButton id="modaldelete" @click="deleteAttack">Delete</DangerButton>
                             </div>
                         </div>
                     </Modal>

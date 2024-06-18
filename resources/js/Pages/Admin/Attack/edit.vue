@@ -38,7 +38,7 @@ form.type = props.attack.type.id;
         </template>
         <div class="flex justify-center">
             <div class="my-3">
-                <Link :href="route('attack.index')" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Back</Link>
+                <Link id="editback" :href="route('attack.index')" class="bg-gray-300 px-2 py-2 rounded-lg hover:bg-gray-400">Back</Link>
             </div>
         </div>
 
@@ -88,7 +88,7 @@ form.type = props.attack.type.id;
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                                <PrimaryButton id="editsave" :disabled="form.processing">Save</PrimaryButton>
 
                                 <Transition
                                     enter-active-class="transition ease-in-out"

@@ -27,7 +27,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/pokemon/editimg/{pokemon}', [AdminPokemonController::class, 'edit_image'])->name('edit.pokemon.image');
     Route::post('/pokemon/{pokemon}/editimg', [AdminPokemonController::class, 'update_image'])->name('update.pokemon.image');
     Route::resource('/attackpokemon', AttackPokemonController::class)->except('index', 'show', 'create');
-    //need a parameter to the url of create
+    //need a parameter in the url of create
     Route::get('/attackpokemon/create/{pokemon}', [AttackPokemonController::class, 'create'])->name('attackpokemon.create');
     Route::get('/attackpokemon/search', [AttackPokemonController::class, 'search'])->name('attackpokemon.search');
     Route::resource('/attack', AdminAttackController::class)->except('show');
